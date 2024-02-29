@@ -50,6 +50,32 @@ def summerize_expenses():
 def delete_expense():
     print("expense deleted")
 
+def get_user_income():
+    print("get the income")
+
+def income_or_expense():
+    while True:
+        try:
+            print("-----------------------")
+            print("Welcome to Expensify")
+            print("-----------------------")
+            print()
+            print("SELECT AN OPTION")
+            user_input=input("Income(i/I) or Expense(e/E) or Exit (x):")
+            print()
+            if user_input=='I' or user_input =='i':
+                get_user_income()
+            elif user_input=='E'or user_input =='e':
+                menu_options()
+            elif user_input=='X' or user_input=='x':
+                print("Exiting the program. Goodbye!")
+                break     
+            else:
+                print("invalid input, please select I or E")
+        except Exception as e:
+            print()
+            print("invalid input, please select I or E")
+            print()
 
 def menu_options():
     options=["Add the expense","Show all the expense","Summerize expense","Delete expense","Exit"]
@@ -94,7 +120,7 @@ def menu_options():
             print()
 
 def main():
-    menu_options() 
+    income_or_expense()
 
 
 main()
