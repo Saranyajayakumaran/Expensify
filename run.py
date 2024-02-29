@@ -1,5 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
+from datetime import datetime
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -23,6 +24,7 @@ class Expense:
         self.date_time=date_time
 
 
+   
 
 def get_expense_of_user():
     """
@@ -31,16 +33,38 @@ def get_expense_of_user():
     """
     cost = float(input("Enter the amount which you spent:"))
     print(f"you have entered : {cost} euros")
+    user_selected_category=get_category()
+    print(user_selected_category)
+    message=input("Enter the detail of the expense:")
+    print(f"you entered {message}")
+    date_and_time=datetime.now()
+    print(date_and_time)
 
-    categories=["Food","Rent","Fun","Car","Miscellenious"]
+    
+def get_category():
+    categories=["Food","Home","Fun","Car","Miscellenious"]
 
     while True: 
-        for i , name_of_category in enumerate(categories,1):
-            print(f" {i}. {name_of_category}")
-        category_name=input("Select a category:",i)
-        print(f"you selcted:{category_name}")
-        break
-    
+        try:
+            for i , name_of_category in enumerate(categories,1):
+                print(f" {i}. {name_of_category}")
+            category_name_index=int(input("Select a category:"))-1
+            print(f"you selected:{category_name_index}")
+            
+            if category_name_index in range(len(categories)):
+                selected_category=categories[category_name_index]
+                return selected_category
+                
+            else:
+                print(f"Invalid category . Please enter a valid ocategory from {[1-{len(categories)}]}")
+        except Exception as e:
+            print(f"Invalid category . Please enter a valid ocategory from {[1-{len(categories)}]}")
+
+
+get_expense_of_user()
+
+
+"""   
 def  show_all_expense():
     print("All the expenses")
     
@@ -71,10 +95,10 @@ def income_or_expense():
                 print("Exiting the program. Goodbye!")
                 break     
             else:
-                print("invalid input, please select I or E")
+                print("invalid input, please select I or E or X")
         except Exception as e:
             print()
-            print("invalid input, please select I or E")
+            print("invalid input, please select I or E or X")
             print()
 
 def menu_options():
@@ -124,3 +148,4 @@ def main():
 
 
 main()
+"""
