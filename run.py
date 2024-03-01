@@ -37,11 +37,16 @@ def get_expense_of_user():
     print(user_selected_category)
     message=input("Enter the detail of the expense:")
     print(f"you entered {message}")
-    date_and_time=datetime.now()
+    date=datetime.now().strftime("%d-%M-%y")
+    time=datetime.now().strftime("%H:%M")
+    date_and_time=datetime.now().strftime("%d-%M-%y  %H:%M")
     print(date_and_time)
 
     
 def get_category():
+    """
+    Get the category of expense from the user 
+    """
     categories=["Food","Home","Fun","Car","Miscellenious"]
 
     while True: 
@@ -61,10 +66,9 @@ def get_category():
             print(f"Invalid category . Please enter a valid ocategory from {[1-{len(categories)}]}")
 
 
-get_expense_of_user()
+#get_expense_of_user()
 
-
-"""   
+  
 def  show_all_expense():
     print("All the expenses")
     
@@ -148,4 +152,3 @@ def main():
 
 
 main()
-"""
