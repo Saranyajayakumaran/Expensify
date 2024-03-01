@@ -14,7 +14,6 @@ SHEET=GSPREAD_CLIENT.open('Expense tracker')
 
 expenses = SHEET.worksheet('Expenses')
 datas=expenses.get_all_values()
-print(datas)
 
 class Expense:
     def __init__(self,amount,category,details="",date_time=None):
@@ -42,7 +41,7 @@ def get_expense_of_user():
     print(user_selected_category)
     message=input("Enter the detail of the expense:")
     print(f"you entered {message}")
-    date_and_time=datetime.now().strftime("%d-%M-%y  %H:%M")
+    date_and_time=datetime.now().strftime("%d-%m-%y  %H:%M")
     print(date_and_time)
 
     user_expense_data=Expense(amount=cost,category=user_selected_category,details=message,date_time=date_and_time)
@@ -72,10 +71,28 @@ def get_category():
             print(f"Invalid category . Please enter a valid ocategory from {[1-{len(categories)}]}")
 
 
-user_expense_details=get_expense_of_user()
 
-"""
+def save_expense_to_file(data):
+    """
+    Update the user expense details in the google sheet
+    add the values in new row
+    """
+    print()
+    print("updating datas in worksheet........\n")
+    expense_worksheet=SHEET.worksheet("Expenses")
+    expense_data=[data.amount,data.category,data.details,data.date_time]
+    expense_worksheet.append_row(expense_data)
+    print("Expense worksheet updated successfully........\n")
+    print(f"{data}")
+
+
+#user_expense_details=get_expense_of_user()
+#save_expense_to_file(user_expense_details)
+
+
+
 def  show_all_expense():
+
     print("All the expenses")
     
 def summerize_expenses():
@@ -127,7 +144,8 @@ def menu_options():
     
             if user_choice in range(len(options)+1):
                 if user_choice== 1:
-                    get_expense_of_user()
+                    user_expense_details=get_expense_of_user()
+                    save_expense_to_file(user_expense_details)
                 elif user_choice== 2:
                     show_all_expense()
                 elif user_choice== 3:
@@ -158,4 +176,3 @@ def main():
 
 
 main()
-"""
