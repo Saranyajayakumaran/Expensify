@@ -16,6 +16,9 @@ expenses = SHEET.worksheet('Expenses')
 datas=expenses.get_all_values()
 
 class Expense:
+    """
+    Class contains all the expense feilds to get from the user.
+    """
     def __init__(self,amount,category,details="",date_time=None):
         self.amount=amount
         self.category=category
@@ -25,9 +28,18 @@ class Expense:
     def __str__(self):
         return f"Expense details:\nCost: {self.amount}euros,\nCategory: {self.category},\nDetails: {self.details},\ndate_time: {self.date_time}"
         
+class Income:
+    """
+    Get income details form the user
+    """
+    def __init__(self,source,income_amount,date_time):
+        self.source=source
+        self.income_amount=income_amount
+        self.date_time=date_time
+    
+    def __str__(self):
+        return f"Income deatils:\nSource:{self.source},\nIncome:{self.income_amount},\nDate_Time:{self.date_time}"
 
-
-expense_list=[]  
 
 def get_expense_of_user():
     """
@@ -73,10 +85,10 @@ def get_category():
 
 
 def save_expense_to_file(data):
-    """
-    Update the user expense details in the google sheet
-    add the values in new row
-    """
+    
+    #Update the user expense details in the google sheet
+    #add the values in new row
+    
     print()
     print("updating datas in worksheet........\n")
     expense_worksheet=SHEET.worksheet("Expenses")
@@ -85,12 +97,43 @@ def save_expense_to_file(data):
     print("Expense worksheet updated successfully........\n")
     print(f"{data}")
 
+   
 
-#user_expense_details=get_expense_of_user()
-#save_expense_to_file(user_expense_details)
+def get_income_of_user():
+    """
+    Get income of the user
+    """
+    print("user income")
+    income_details=input("Give the source of income details:")
+    print(f"you entered: {income_details}")
+    income=int(input("Enter the income amount:"))
+    print(f"you entered: {income}")
+    current_date_time=datetime.now().strftime("%d-%m-%y  %H:%M")
+    print(f"{current_date_time}")
+
+    user_income_data=Income(source=income_details,income_amount=income,date_time=current_date_time)
+    return user_income_data
+
+def save_income_to_file(data):
+    
+    #Update the user income details in the google sheet
+    #add the values in new row
+    
+    print()
+    print("updating datas in worksheet........\n")
+    income_worksheet=SHEET.worksheet("Income")
+    income_data=[data.source,data.income_amount,data.date_time]
+    income_worksheet.append_row(income_data)
+    print("Income worksheet updated successfully........\n")
+    print(f"{data}")
 
 
+user_expense_details=get_expense_of_user()
+save_expense_to_file(user_expense_details)
+user_income_details=get_income_of_user()
+save_income_to_file(user_income_details)
 
+"""
 def  show_all_expense():
 
     print("All the expenses")
@@ -100,9 +143,6 @@ def summerize_expenses():
 
 def delete_expense():
     print("expense deleted")
-
-def get_user_income():
-    print("get the income")
 
 def income_or_expense():
     while True:
@@ -176,3 +216,4 @@ def main():
 
 
 main()
+"""
