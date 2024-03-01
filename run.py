@@ -23,24 +23,30 @@ class Expense:
         self.details=details
         self.date_time=date_time
 
+    def __str__(self):
+        return f"Expense details:\nCost: {self.amount}euros,\nCategory: {self.category},\nDetails: {self.details},\ndate_time: {self.date_time}"
+        
 
-   
+
+expense_list=[]  
 
 def get_expense_of_user():
     """
     Get the expenses form the user
     amount:int, category:string, details:string,date/time:date
     """
+
     cost = float(input("Enter the amount which you spent:"))
     print(f"you have entered : {cost} euros")
     user_selected_category=get_category()
     print(user_selected_category)
     message=input("Enter the detail of the expense:")
     print(f"you entered {message}")
-    date=datetime.now().strftime("%d-%M-%y")
-    time=datetime.now().strftime("%H:%M")
     date_and_time=datetime.now().strftime("%d-%M-%y  %H:%M")
     print(date_and_time)
+
+    user_expense_data=Expense(amount=cost,category=user_selected_category,details=message,date_time=date_and_time)
+    return user_expense_data
 
     
 def get_category():
@@ -66,9 +72,9 @@ def get_category():
             print(f"Invalid category . Please enter a valid ocategory from {[1-{len(categories)}]}")
 
 
-#get_expense_of_user()
+user_expense_details=get_expense_of_user()
 
-  
+"""
 def  show_all_expense():
     print("All the expenses")
     
@@ -152,3 +158,4 @@ def main():
 
 
 main()
+"""
