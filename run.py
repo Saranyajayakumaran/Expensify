@@ -88,7 +88,7 @@ def save_expense_to_file(data):
     
     #Update the user expense details in the google sheet
     #add the values in new row
-    
+
     print()
     print("updating datas in worksheet........\n")
     expense_worksheet=SHEET.worksheet("Expenses")
@@ -128,10 +128,33 @@ def save_income_to_file(data):
     print(f"{data}")
 
 
+
+def save_data_to_worksheet(data,worksheet_name):
+    """
+    Recevies data from user and inserted into relevant worksheet
+    """
+    print(f"updating datas in {worksheet} worksheet........\n")
+    print()
+    worksheet=SHEET.worksheet(worksheet_name)
+
+    if worksheet_name==Expense:
+        data_list=[data.amount,data.category,data.details,data.date_time]
+    elif worksheet_name==Income:
+        data_list=[data.source,data.income_amount,data.date_time]
+    else:
+        print("Invalid data type")
+        return
+
+    worksheet.append_row(data_list)
+    print(f"{worksheet_name}'worksheet updated successfully")
+    print(data)
+
+
+
 user_expense_details=get_expense_of_user()
-save_expense_to_file(user_expense_details)
+save_data_to_worksheet(user_expense_details,Expense)
 user_income_details=get_income_of_user()
-save_income_to_file(user_income_details)
+save_data_to_worksheet(user_income_details,Income)
 
 """
 def  show_all_expense():
