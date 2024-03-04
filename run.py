@@ -122,23 +122,42 @@ def save_data_to_worksheet(data,worksheet_name):
 
 
 def show_expense_data():
+    """
+    Show all the expenses to the user in table
+    """
     worksheet=SHEET.worksheet("Expenses")
     all_expense_data=worksheet.get_all_values()
     print(f"Expense datas:")
     print("{:<15} {:<15} {:<35} {:<20}".format("Amount(euro)","Category","Details","Date/Time"))
-    print("-"*70)
-    for row in all_expense_data:
+    print("-"*100)
+    for row in all_expense_data[1:]:
         print("{:<15} {:<15} {:<35} {:<20}".format(*row))
             
-    
+def show_income_data():
+    """
+    Show all the Incomes to the user in table
+    """
+    worksheet=SHEET.worksheet("Income")
+    all_income_data=worksheet.get_all_values()
+    print(f"Income datas:")
+    print("{:<25} {:<15} {:<15}".format("Income Type","Actual Income","Date/Time"))
+    print("-"*65)
+    for row in all_income_data[1:]:
+        print("{:<25} {:<15} {:<15} {:<20}".format(*row))
+            
     
 
 def show_user_data_in_table():
-
+    """
+    decide which data to be show to the user
+    """
+    
     show_datas=input("which data you want to see Expense or Income:")
 
     if(show_datas=="expense"):
         show_expense_data()
+    elif(show_datas=="income"):
+        show_income_data()
     else:
         print("Invalid data, Try Again")
 
@@ -149,7 +168,7 @@ def show_user_data_in_table():
 #user_expense_details=get_expense_of_user()
         
 #save_data_to_worksheet(user_expense_details,"Expenses")
-show_user_data_in_table()
+
 
 
 def  show_all_expense():
@@ -209,7 +228,7 @@ def menu_options():
                     user_expense_details=get_expense_of_user()
                     save_data_to_worksheet(user_expense_details,"Expenses")
                 elif user_choice== 2:
-                    show_all_expense()
+                   show_user_data_in_table()
                 elif user_choice== 3:
                     summerize_expenses()
                 elif user_choice== 4:
