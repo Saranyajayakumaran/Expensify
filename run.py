@@ -122,7 +122,25 @@ def save_data_to_worksheet(data,worksheet_name):
 
 
 def show_user_data_in_table(data):
-    print(data)
+
+    show_datas=input("which data you want to see Expense or Income:")
+
+    if(show_datas=="expense"):
+        worksheet=SHEET.worksheet("Expenses")
+        all_expense_data=worksheet.get_all_values()
+        print(f"Expense datas:")
+        for row in all_expense_data:
+            print(row)
+    
+    elif(show_datas=="income"):
+        worksheet=SHEET.worksheet("Income")
+        all_income_data=worksheet.get_all_values()
+        print("Income datas:")
+        for row in all_income_data:
+            print(row)    
+    else:
+        print("Invalid data, Try Again")
+
 
 
 
