@@ -151,27 +151,8 @@ def show_income_data():
         for row in all_income_data[1:]:
             print("{:<25} {:<15} {:<15}".format(*row))
                 
+
     
-
-def show_user_data_in_table():
-    """
-    decide which data to be show to the user
-    """
-    while True:
-        show_datas=input("which data you want to see Expense or Income or Home:")
-
-        if(show_datas=="expense"):
-            show_expense_data()
-        elif(show_datas=="income"):
-            show_income_data()
-        elif(show_datas=="home"):
-            print("Go to home page")
-            break
-        else:
-            print("Invalid data, Try Again")
-
-     
-
 #user_expense_details=get_expense_of_user()
         
 #save_data_to_worksheet(user_expense_details,"Expenses")
@@ -182,6 +163,9 @@ def delete_expense():
     print("expense deleted")
 
 def income_or_expense():
+    """
+    ask user which field they want t o choose income or expense
+    """
     while True:
         try:
             print("-----------------------")
@@ -192,10 +176,9 @@ def income_or_expense():
             user_input=input("Income(i/I) or Expense(e/E) or Exit (x):")
             print()
             if user_input=='I' or user_input =='i':
-                user_income_details=get_income_of_user()
-                save_data_to_worksheet(user_income_details,"Income")
+                income_menu_option()    
             elif user_input=='E'or user_input =='e':
-                menu_options()
+                expense_menu_options()
             elif user_input=='X' or user_input=='x':
                 print("Exiting the program. Goodbye!")
                 break     
@@ -206,7 +189,59 @@ def income_or_expense():
             print("invalid input, please select I or E or X")
             print()
 
-def menu_options():
+
+
+def income_menu_option():
+    """
+    Giving user the option for income field to add datas, show datas
+    """
+    income_options=["Add the income","Show all the income","Home"]
+
+    while True:
+        print()
+        print("****Options****")
+        for opt,options in enumerate(income_options,1):
+            print(f"{opt}.{options}")
+        try:
+            value_range=f"[1-{len(income_options)}]"
+            print()
+            selected_index=int(input(f"Select an option {value_range}"))
+            print()
+            print(f"you have selected: {selected_index}")
+            
+            
+            if selected_index in range(len(income_options)+1):
+                if selected_index== 1:
+                    user_income_details=get_income_of_user()
+                    save_data_to_worksheet(user_income_details,"Income")  
+                elif selected_index== 2:
+                   show_income_data()
+                elif selected_index==3:
+                    main()
+                    break
+                else:
+                    print()
+                    print("Invalid option, try again")
+                    print("---------------------------")
+            else:
+                print()
+                print("Invalid option, try again")
+                print("---------------------------")
+            
+        except:
+            print()
+            print(f"Invalid Input ,Please enter a number from {value_range}")
+            print()
+            print()
+
+
+
+
+def expense_menu_options():
+
+    """
+    Giving options for expense field to add datas, show datas and summerize expense
+    """
     options=["Add the expense","Show all the expense","Summerize expense","Delete expense","Home page"]
 
     while True:
@@ -228,7 +263,7 @@ def menu_options():
                     user_expense_details=get_expense_of_user()
                     save_data_to_worksheet(user_expense_details,"Expenses")
                 elif user_choice== 2:
-                   show_user_data_in_table()
+                   show_expense_data()
                 elif user_choice== 3:
                     summerize_expenses()
                 elif user_choice== 4:
