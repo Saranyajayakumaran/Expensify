@@ -127,11 +127,14 @@ def show_expense_data():
     """
     worksheet=SHEET.worksheet("Expenses")
     all_expense_data=worksheet.get_all_values()
-    print(f"Expense datas:")
-    print("{:<15} {:<15} {:<35} {:<20}".format("Amount(euro)","Category","Details","Date/Time"))
-    print("-"*100)
-    for row in all_expense_data[1:]:
-        print("{:<15} {:<15} {:<35} {:<20}".format(*row))
+    if len(all_expense_data)==0:
+        print("No expense data available")
+    else:
+        print(f"Expense datas:")
+        print("{:<15} {:<15} {:<35} {:<20}".format("Amount(euro)","Category","Details","Date/Time"))
+        print("-"*100)
+        for row in all_expense_data[1:]:
+            print("{:<15} {:<15} {:<35} {:<20}".format(*row))
             
 def show_income_data():
     """
@@ -139,42 +142,39 @@ def show_income_data():
     """
     worksheet=SHEET.worksheet("Income")
     all_income_data=worksheet.get_all_values()
-    print(f"Income datas:")
-    print("{:<25} {:<15} {:<15}".format("Income Type","Actual Income","Date/Time"))
-    print("-"*65)
-    for row in all_income_data[1:]:
-        print("{:<25} {:<15} {:<15} {:<20}".format(*row))
-            
+    if len(all_income_data)==0:
+        print("No Income data available")
+    else:
+        print(f"Income datas:")
+        print("{:<25} {:<15} {:<15}".format("Income Type","Actual Income","Date/Time"))
+        print("-"*65)
+        for row in all_income_data[1:]:
+            print("{:<25} {:<15} {:<15}".format(*row))
+                
     
 
 def show_user_data_in_table():
     """
     decide which data to be show to the user
     """
-    
-    show_datas=input("which data you want to see Expense or Income:")
+    while True:
+        show_datas=input("which data you want to see Expense or Income or Home:")
 
-    if(show_datas=="expense"):
-        show_expense_data()
-    elif(show_datas=="income"):
-        show_income_data()
-    else:
-        print("Invalid data, Try Again")
+        if(show_datas=="expense"):
+            show_expense_data()
+        elif(show_datas=="income"):
+            show_income_data()
+        elif(show_datas=="home"):
+            print("Go to home page")
+            break
+        else:
+            print("Invalid data, Try Again")
 
-
-
-       
+     
 
 #user_expense_details=get_expense_of_user()
         
 #save_data_to_worksheet(user_expense_details,"Expenses")
-
-
-
-def  show_all_expense():
-
-    print("All the expenses")
-    
 def summerize_expenses():
     print("Expense summerize")
 
