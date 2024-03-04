@@ -121,33 +121,35 @@ def save_data_to_worksheet(data,worksheet_name):
     print(data)
 
 
-def show_user_data_in_table(data):
+def show_expense_data():
+    worksheet=SHEET.worksheet("Expenses")
+    all_expense_data=worksheet.get_all_values()
+    print(f"Expense datas:")
+    print("{:<15} {:<15} {:<35} {:<20}".format("Amount(euro)","Category","Details","Date/Time"))
+    print("-"*70)
+    for row in all_expense_data:
+        print("{:<15} {:<15} {:<35} {:<20}".format(*row))
+            
+    
+    
+
+def show_user_data_in_table():
 
     show_datas=input("which data you want to see Expense or Income:")
 
     if(show_datas=="expense"):
-        worksheet=SHEET.worksheet("Expenses")
-        all_expense_data=worksheet.get_all_values()
-        print(f"Expense datas:")
-        for row in all_expense_data:
-            print(row)
-    
-    elif(show_datas=="income"):
-        worksheet=SHEET.worksheet("Income")
-        all_income_data=worksheet.get_all_values()
-        print("Income datas:")
-        for row in all_income_data:
-            print(row)    
+        show_expense_data()
     else:
         print("Invalid data, Try Again")
 
 
 
-
+       
 
 #user_expense_details=get_expense_of_user()
+        
 #save_data_to_worksheet(user_expense_details,"Expenses")
-show_user_data_in_table(datas)
+show_user_data_in_table()
 
 
 def  show_all_expense():
