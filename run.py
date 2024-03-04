@@ -133,13 +133,13 @@ def save_data_to_worksheet(data,worksheet_name):
     """
     Recevies data from user and inserted into relevant worksheet
     """
-    print(f"updating datas in {worksheet} worksheet........\n")
+    print(f"updating datas in {worksheet_name} worksheet........\n")
     print()
     worksheet=SHEET.worksheet(worksheet_name)
 
-    if worksheet_name==Expense:
+    if worksheet_name=="Expenses":
         data_list=[data.amount,data.category,data.details,data.date_time]
-    elif worksheet_name==Income:
+    elif worksheet_name=="Income":
         data_list=[data.source,data.income_amount,data.date_time]
     else:
         print("Invalid data type")
@@ -151,12 +151,9 @@ def save_data_to_worksheet(data,worksheet_name):
 
 
 
-user_expense_details=get_expense_of_user()
-save_data_to_worksheet(user_expense_details,Expense)
-user_income_details=get_income_of_user()
-save_data_to_worksheet(user_income_details,Income)
+#user_expense_details=get_expense_of_user()
+#save_data_to_worksheet(user_expense_details,"Expenses")
 
-"""
 def  show_all_expense():
 
     print("All the expenses")
@@ -178,7 +175,8 @@ def income_or_expense():
             user_input=input("Income(i/I) or Expense(e/E) or Exit (x):")
             print()
             if user_input=='I' or user_input =='i':
-                get_user_income()
+                user_income_details=get_income_of_user()
+                save_data_to_worksheet(user_income_details,"Income")
             elif user_input=='E'or user_input =='e':
                 menu_options()
             elif user_input=='X' or user_input=='x':
@@ -192,7 +190,7 @@ def income_or_expense():
             print()
 
 def menu_options():
-    options=["Add the expense","Show all the expense","Summerize expense","Delete expense","Exit"]
+    options=["Add the expense","Show all the expense","Summerize expense","Delete expense","Home page"]
 
     while True:
         print("****Options****")
@@ -201,8 +199,11 @@ def menu_options():
            print(f"{opt}.{option}")
         try:
             value_range=f"[1-{len(options)}]"
+            print()
             user_choice=int(input(f"Select an option {value_range}:"))
+            print()
             print(f"you ave selected:  {user_choice}")
+            print()
 
     
             if user_choice in range(len(options)+1):
@@ -216,7 +217,7 @@ def menu_options():
                 elif user_choice== 4:
                     delete_expense()
                 elif user_choice== 5:
-                    print("Exting.....")
+                    print("Going to home page.....")
                     break
 
                 else:
@@ -239,4 +240,3 @@ def main():
 
 
 main()
-"""
