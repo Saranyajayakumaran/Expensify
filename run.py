@@ -1,6 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
 from datetime import datetime
+from prettytable import PrettyTable
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -82,23 +83,7 @@ def get_category():
         except Exception as e:
             print(f"Invalid category . Please enter a valid ocategory from {[1-{len(categories)}]}")
 
-
-
-def save_expense_to_file(data):
-    
-    #Update the user expense details in the google sheet
-    #add the values in new row
-
-    print()
-    print("updating datas in worksheet........\n")
-    expense_worksheet=SHEET.worksheet("Expenses")
-    expense_data=[data.amount,data.category,data.details,data.date_time]
-    expense_worksheet.append_row(expense_data)
-    print("Expense worksheet updated successfully........\n")
-    print(f"{data}")
-
    
-
 def get_income_of_user():
     """
     Get income of the user
@@ -113,20 +98,6 @@ def get_income_of_user():
 
     user_income_data=Income(source=income_details,income_amount=income,date_time=current_date_time)
     return user_income_data
-
-def save_income_to_file(data):
-    
-    #Update the user income details in the google sheet
-    #add the values in new row
-    
-    print()
-    print("updating datas in worksheet........\n")
-    income_worksheet=SHEET.worksheet("Income")
-    income_data=[data.source,data.income_amount,data.date_time]
-    income_worksheet.append_row(income_data)
-    print("Income worksheet updated successfully........\n")
-    print(f"{data}")
-
 
 
 def save_data_to_worksheet(data,worksheet_name):
@@ -150,9 +121,16 @@ def save_data_to_worksheet(data,worksheet_name):
     print(data)
 
 
+def show_user_data_in_table(data):
+    print(data)
+
+
+
 
 #user_expense_details=get_expense_of_user()
 #save_data_to_worksheet(user_expense_details,"Expenses")
+show_user_data_in_table(datas)
+
 
 def  show_all_expense():
 
@@ -209,7 +187,7 @@ def menu_options():
             if user_choice in range(len(options)+1):
                 if user_choice== 1:
                     user_expense_details=get_expense_of_user()
-                    save_expense_to_file(user_expense_details)
+                    save_data_to_worksheet(user_expense_details,"Expenses")
                 elif user_choice== 2:
                     show_all_expense()
                 elif user_choice== 3:
