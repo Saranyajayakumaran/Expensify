@@ -88,7 +88,9 @@ def get_income_of_user():
     """
     Get income of the user
     """
-    print("user income")
+    print("============")
+    print("Income Details")
+    print("============")
     income_details=input("Give the source of income details:")
     print(f"you entered: {income_details}")
     income=int(input("Enter the income amount:"))
@@ -168,12 +170,18 @@ def income_or_expense():
     """
     while True:
         try:
-            print("-----------------------")
-            print("Welcome to Expensify")
-            print("-----------------------")
+            print("========================================")
+            print("         WELCOME TO EXPENSIFY         ")
+            print("========================================")
             print()
-            print("SELECT AN OPTION")
-            user_input=input("Income(i/I) or Expense(e/E) or Exit (x):")
+            print("What would you like to do today?")
+            print("Select an option from the following:")
+            print()
+            print("Manage Income(I/i)")
+            print("Manage Expense(E/e)")
+            print("Exit(X/x)")
+            print()
+            user_input=input("Enter your Choice:")
             print()
             if user_input=='I' or user_input =='i':
                 income_menu_option()    
@@ -195,7 +203,7 @@ def income_menu_option():
     """
     Giving user the option for income field to add datas, show datas
     """
-    income_options=["Add the income","Show all the income","Home"]
+    income_options=["Record new income","View all income","Return to Main Menu"]
 
     while True:
         print()
@@ -217,7 +225,7 @@ def income_menu_option():
                 elif selected_index== 2:
                    show_income_data()
                 elif selected_index==3:
-                    main()
+                    print("Returning to main menu...........")
                     break
                 else:
                     print()
@@ -242,7 +250,7 @@ def expense_menu_options():
     """
     Giving options for expense field to add datas, show datas and summerize expense
     """
-    options=["Add the expense","Show all the expense","Summerize expense","Delete expense","Home page"]
+    options=["Record new Expense","View all expense","Summerize Expenses","Delete Expense","Return to Main Menu"]
 
     while True:
         print("****Options****")
@@ -269,9 +277,8 @@ def expense_menu_options():
                 elif user_choice== 4:
                     delete_expense()
                 elif user_choice== 5:
-                    print("Going to home page.....")
+                    print("Returning to main menu.....")
                     break
-
                 else:
                     print()
                     print("Invalid option, try again")
