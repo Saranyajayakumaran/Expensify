@@ -46,8 +46,8 @@ def get_expense_of_user():
     Get the expenses form the user
     amount:int, category:string, details:string,date/time:date
     """
-
-    cost = float(input("Enter the amount which you spent:"))
+    print("Enter the amount which you spent:")
+    cost = validate_user_income_or_expense()
     print(f"you have entered : {cost} euros")
     user_selected_category=get_category()
     print(user_selected_category)
@@ -92,16 +92,29 @@ def get_income_of_user():
     print("============")
     income_details=input("Give the source of income details:")
     print(f"you entered: {income_details}")
-    income=int(input("Enter the income amount:"))
-    if income==0:
-        print("Please give a valid income, 0 cannot be an income")
-    else:
-        print(f"you entered: {income}")
+    print("Give your income_amount:")
+    income= validate_user_income_or_expense()
+    print(f"you entered: {income}")
     current_date_time=datetime.now().strftime("%d-%m-%y  %H:%M")
     print(f"{current_date_time}")
 
     user_income_data=Income(source=income_details,income_amount=income,date_time=current_date_time)
     return user_income_data
+
+
+def validate_user_income_or_expense():
+    while True:
+        try:
+            amount=float(input(""))
+            if amount==0:
+                print("Please give a valid amount, 0 is not allowed ")
+            elif amount<0:
+                print("Please give a valid amount, Negative values are not allowed")
+            else:
+                break
+        except ValueError:
+            print("Invalid input. please enter a valid number")
+    return amount
 
 
 def save_data_to_worksheet(data,worksheet_name):
@@ -168,7 +181,7 @@ def delete_expense():
 
 def income_or_expense():
     """
-    ask user which field they want t o choose income or expense
+    ask user which field they want to choose income or expense
     """
     while True:
         try:
@@ -194,6 +207,9 @@ def income_or_expense():
                 break     
             else:
                 print("invalid input, please select (1-3)")
+        
+       
+        
         except Exception as e:
             print()
             print("invalid input, please select (1-3)")
@@ -291,7 +307,8 @@ def expense_menu_options():
                 print("Invalid option, try again")
                 print("----------------------------")
                 print()
-        except:
+        
+        except ValueError:
             print()
             print(f"Invalid Input ,Please enter a number from {value_range}")
             print()
