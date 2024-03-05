@@ -58,7 +58,7 @@ def get_expense_of_user():
 
     user_expense_data=Expense(amount=cost,category=user_selected_category,details=message,date_time=date_and_time)
     return user_expense_data
-
+"""
 def validate_expense_message():
     while True:
         message=input("Give the details of expense shortly (1-30) characters:")
@@ -69,6 +69,7 @@ def validate_expense_message():
         else:
             break
     return message
+"""
     
 def get_category():
     """
@@ -110,17 +111,18 @@ def get_income_of_user():
 
     user_income_data=Income(source=income_details,income_amount=income,date_time=current_date_time)
     return user_income_data
-
+"""
 def validate_income_source():
     while True:
         income_details=input("Give the source of income details")
         if len(income_details)=="":
             income_details=="Random income"
-        elif len(income_details)>20:
+        elif len(income_details)>30:
             print("Give source details shortly within 20 characters")
         else:
             break
     return income_details
+"""
 
 
 def validate_user_income_or_expense():
@@ -137,6 +139,24 @@ def validate_user_income_or_expense():
             print("Invalid input. please enter a valid number")
     return amount
 
+
+def validate_text_inputs(text,max_len):
+    while True:
+            user_input=input(text)
+            if len(user_input)>max_len:
+                print(f"Please enter the data within {max_len} characters.")
+            else:
+                break
+    return user_input
+
+def validate_expense_message():
+    data=validate_text_inputs("Enter the expense details within 30 characters:",30)
+    return data
+
+def validate_income_source():
+    data=validate_text_inputs("Enter the income details within 30 characters:",25)
+    return data
+   
 
 def save_data_to_worksheet(data,worksheet_name):
     """
