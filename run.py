@@ -93,7 +93,10 @@ def get_income_of_user():
     income_details=input("Give the source of income details:")
     print(f"you entered: {income_details}")
     income=int(input("Enter the income amount:"))
-    print(f"you entered: {income}")
+    if income==0:
+        print("Please give a valid income, 0 cannot be an income")
+    else:
+        print(f"you entered: {income}")
     current_date_time=datetime.now().strftime("%d-%m-%y  %H:%M")
     print(f"{current_date_time}")
 
@@ -176,24 +179,24 @@ def income_or_expense():
             print("What would you like to do today?")
             print("Select an option from the following:")
             print()
-            print("Manage Income(I/i)")
-            print("Manage Expense(E/e)")
-            print("Exit(X/x)")
+            print("1.Manage Income(I/i)")
+            print("2.Manage Expense(E/e)")
+            print("3.Exit(X/x)")
             print()
-            user_input=input("Enter your Choice:")
+            user_input=int(input("Enter your Choice[1-3]:"))
             print()
-            if user_input=='I' or user_input =='i':
+            if user_input==1:
                 income_menu_option()    
-            elif user_input=='E'or user_input =='e':
+            elif user_input==2:
                 expense_menu_options()
-            elif user_input=='X' or user_input=='x':
+            elif user_input==3:
                 print("Exiting the program. Goodbye!")
                 break     
             else:
-                print("invalid input, please select I or E or X")
+                print("invalid input, please select (1-3)")
         except Exception as e:
             print()
-            print("invalid input, please select I or E or X")
+            print("invalid input, please select (1-3)")
             print()
 
 
