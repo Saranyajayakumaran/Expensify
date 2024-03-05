@@ -32,9 +32,9 @@ class Income:
     """
     Get income details form the user
     """
-    def __init__(self,source,income_amount,date_time):
-        self.source=source
+    def __init__(self,income_amount,source,date_time):
         self.income_amount=income_amount
+        self.source=source
         self.date_time=date_time
     
     def __str__(self):
@@ -51,7 +51,7 @@ def get_expense_of_user():
     print(f"you have entered : {cost} euros")
     user_selected_category=get_category()
     print(user_selected_category)
-    message=validate_message()
+    message=validate_expense_message()
     print(f"you entered {message}")
     date_and_time=datetime.now().strftime("%d-%m-%y  %H:%M")
     print(date_and_time)
@@ -59,7 +59,7 @@ def get_expense_of_user():
     user_expense_data=Expense(amount=cost,category=user_selected_category,details=message,date_time=date_and_time)
     return user_expense_data
 
-def validate_message():
+def validate_expense_message():
     while True:
         message=input("Give the details of expense shortly (1-30) characters:")
         if len(message)==0:
@@ -100,16 +100,27 @@ def get_income_of_user():
     print("============")
     print("Income Details")
     print("============")
-    income_details=input("Give the source of income details:")
-    print(f"you entered: {income_details}")
     print("Give your income_amount:")
     income= validate_user_income_or_expense()
     print(f"you entered: {income}")
+    income_details=validate_income_source()
+    print(f"you entered: {income_details}")
     current_date_time=datetime.now().strftime("%d-%m-%y  %H:%M")
     print(f"{current_date_time}")
 
     user_income_data=Income(source=income_details,income_amount=income,date_time=current_date_time)
     return user_income_data
+
+def validate_income_source():
+    while True:
+        income_details=input("Give the source of income details")
+        if len(income_details)=="":
+            income_details=="Random income"
+        elif len(income_details)>20:
+            print("Give source details shortly within 20 characters")
+        else:
+            break
+    return income_details
 
 
 def validate_user_income_or_expense():
