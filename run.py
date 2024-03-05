@@ -208,7 +208,9 @@ def income_or_expense():
             else:
                 print("invalid input, please select (1-3)")
         
-       
+        except KeyboardInterrupt:
+            print("\nKeyboard interruption detected. Exiting...")
+            break
         
         except Exception as e:
             print()
@@ -253,6 +255,10 @@ def income_menu_option():
                 print()
                 print("Invalid option, try again")
                 print("---------------------------")
+
+        except KeyboardInterrupt:
+            print("\nKeyboard interruption detected. Exiting...")
+            break
             
         except:
             print()
@@ -299,14 +305,18 @@ def expense_menu_options():
                     break
                 else:
                     print()
-                    print("Invalid option, try again")
+                    print(f"Invalid option, try again please enter a numnber from{value_range}")
                     print("---------------------------")
                     print()
             else:
                 print()
-                print("Invalid option, try again")
+                print(f"Invalid option, try again please enter a numnber from{value_range}")
                 print("----------------------------")
                 print()
+        
+        except KeyboardInterrupt:
+            print("\nKeyboard interruption detected. Exiting...")
+            break
         
         except ValueError:
             print()
