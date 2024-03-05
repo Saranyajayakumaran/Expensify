@@ -51,7 +51,7 @@ def get_expense_of_user():
     print(f"you have entered : {cost} euros")
     user_selected_category=get_category()
     print(user_selected_category)
-    message=input("Enter the detail of the expense:")
+    message=validate_message()
     print(f"you entered {message}")
     date_and_time=datetime.now().strftime("%d-%m-%y  %H:%M")
     print(date_and_time)
@@ -59,6 +59,16 @@ def get_expense_of_user():
     user_expense_data=Expense(amount=cost,category=user_selected_category,details=message,date_time=date_and_time)
     return user_expense_data
 
+def validate_message():
+    while True:
+        message=input("Give the details of expense shortly (1-30) characters:")
+        if len(message)==0:
+            message=="Random expense"
+        elif len(message)>30:
+            print("please give a short note within 30 characters")
+        else:
+            break
+    return message
     
 def get_category():
     """
