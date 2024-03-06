@@ -208,7 +208,7 @@ def summarize_expenses():
         print("No expense data available")
     else:
         category_totals = {}
-        for row in all_expense_data[1:]:  # Skip header row
+        for row in all_expense_data[1:]: 
             category = row[1]
             amount = float(row[0])
             if category in category_totals:
@@ -221,6 +221,7 @@ def summarize_expenses():
                 print(category_totals[category])
 
         print("Expense Summary by Category:")
+        print()
         for category, total in category_totals.items():
             print(f"{category}: {total} euros")
 
@@ -231,6 +232,22 @@ def summarize_expenses():
         print()
         print(f"You spent the most in the category '{max_category}' with a total of {max_expense} euros.")
 
+        income=sum_of_income()
+
+        balance_amount=income-max_expense
+
+        print(f"You have balance of {balance_amount} form your income")
+       
+
+def sum_of_income():
+    worksheet = SHEET.worksheet("Income")
+    all_income_data = worksheet.get_all_values()
+    total_income=0
+    for row in all_income_data[1:]:
+        income_amount=float(row[1])
+        total_income+=income_amount
+    return total_income
+       
 
 def delete_expense():
     print("expense deleted")
