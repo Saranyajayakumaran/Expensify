@@ -244,10 +244,12 @@ def sum_of_income():
     all_income_data = worksheet.get_all_values()
     total_income=0
     for row in all_income_data[1:]:
-        income_amount=float(row[1])
-        total_income+=income_amount
+            actual_income=row[1]
+            income_amount=float(actual_income)
+            total_income=total_income+income_amount
     return total_income
-       
+
+sum_of_income()     
 
 def delete_expense():
     print("expense deleted")
