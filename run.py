@@ -58,18 +58,7 @@ def get_expense_of_user():
 
     user_expense_data=Expense(amount=cost,category=user_selected_category,details=message,date_time=date_and_time)
     return user_expense_data
-"""
-def validate_expense_message():
-    while True:
-        message=input("Give the details of expense shortly (1-30) characters:")
-        if len(message)==0:
-            message=="Random expense"
-        elif len(message)>30:
-            print("please give a short note within 30 characters")
-        else:
-            break
-    return message
-"""
+
     
 def get_category():
     """
@@ -111,21 +100,13 @@ def get_income_of_user():
 
     user_income_data=Income(source=income_details,income_amount=income,date_time=current_date_time)
     return user_income_data
-"""
-def validate_income_source():
-    while True:
-        income_details=input("Give the source of income details")
-        if len(income_details)=="":
-            income_details=="Random income"
-        elif len(income_details)>30:
-            print("Give source details shortly within 20 characters")
-        else:
-            break
-    return income_details
-"""
+
 
 
 def validate_user_income_or_expense():
+    """
+    Validate user income amount and expense amount for zero and negative values
+    """
     while True:
         try:
             amount=float(input(""))
@@ -141,6 +122,9 @@ def validate_user_income_or_expense():
 
 
 def validate_text_inputs(text,max_len):
+    """
+    Validate user expense details and income details within 30 chracters
+    """
     while True:
             user_input=input(text)
             if len(user_input)>max_len:
@@ -214,8 +198,39 @@ def show_income_data():
 #user_expense_details=get_expense_of_user()
         
 #save_data_to_worksheet(user_expense_details,"Expenses")
-def summerize_expenses():
-    print("Expense summerize")
+def summarize_expenses():
+    """
+    Summarize expenses by category
+    """
+    worksheet = SHEET.worksheet("Expenses")
+    all_expense_data = worksheet.get_all_values()
+    if len(all_expense_data) == 0:
+        print("No expense data available")
+    else:
+        category_totals = {}
+        for row in all_expense_data[1:]:  # Skip header row
+            category = row[1]
+            amount = float(row[0])
+            if category in category_totals:
+                print(category)
+                print(category_totals)
+                category_totals[category] += amount
+                print(category_totals[category])
+            else:
+                category_totals[category] = amount
+                print(category_totals[category])
+
+        print("Expense Summary by Category:")
+        for category, total in category_totals.items():
+            print(f"{category}: {total} euros")
+
+        # Find the category with the maximum total expense
+        max_category = max(category_totals, key=category_totals.get)
+        max_expense = category_totals[max_category]
+
+        print()
+        print(f"You spent the most in the category '{max_category}' with a total of {max_expense} euros.")
+
 
 def delete_expense():
     print("expense deleted")
@@ -338,7 +353,7 @@ def expense_menu_options():
                 elif user_choice== 2:
                    show_expense_data()
                 elif user_choice== 3:
-                    summerize_expenses()
+                    summarize_expenses()
                 elif user_choice== 4:
                     delete_expense()
                 elif user_choice== 5:
