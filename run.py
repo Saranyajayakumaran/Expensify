@@ -233,23 +233,35 @@ def summarize_expenses():
         print(f"You spent the most in the category '{max_category}' with a total of {max_expense} euros.")
 
         income=sum_of_income()
+        expense=sum_of_expense()
 
-        balance_amount=income-max_expense
+        balance_amount=income-expense
+        print()
+        print(f"You have balance of {balance_amount} from your income")
 
-        print(f"You have balance of {balance_amount} form your income")
-       
+
+def sum_of_expense():
+    worksheet = SHEET.worksheet("Expenses")
+    all_expense_data = worksheet.get_all_values()
+    total_expense=0
+    for row in all_expense_data[1:]:
+        actual_expense=row[0]
+        expense_amount=float(actual_expense)
+        total_expense=total_expense+expense_amount
+    return total_expense
+
 
 def sum_of_income():
     worksheet = SHEET.worksheet("Income")
     all_income_data = worksheet.get_all_values()
     total_income=0
     for row in all_income_data[1:]:
-            actual_income=row[1]
-            income_amount=float(actual_income)
-            total_income=total_income+income_amount
+        actual_income=row[1]
+        income_amount=float(actual_income)
+        total_income=total_income+income_amount
     return total_income
 
-sum_of_income()     
+
 
 def delete_expense():
     print("expense deleted")
