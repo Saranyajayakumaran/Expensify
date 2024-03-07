@@ -19,6 +19,7 @@ class Expense:
     """
     Class contains all the expense feilds to get from the user.
     """
+    total_expense=0
     def __init__(self,amount,category,details="",date_time=None):
         self.amount=amount
         self.category=category
@@ -27,11 +28,25 @@ class Expense:
 
     def __str__(self):
         return f"Expense details:\nCost: {self.amount}euros,\nCategory: {self.category},\nDetails: {self.details},\ndate_time: {self.date_time}"
-        
+    
+    @classmethod
+    def sum_of_expense(cls):
+        cls.total_expense=0
+        worksheet = SHEET.worksheet("Expenses")
+        all_expense_data = worksheet.get_all_values()
+        for row in all_expense_data[1:]:
+            actual_expense=row[0]
+            expense_amount=float(actual_expense)
+            cls.total_expense+=expense_amount
+        return cls.total_expense
+
+
+            
 class Income:
     """
     Get income details form the user
     """
+    total_income=0
     def __init__(self,income_amount,source,date_time):
         self.income_amount=income_amount
         self.source=source
@@ -39,6 +54,18 @@ class Income:
     
     def __str__(self):
         return f"Income deatils:\nSource:{self.source},\nIncome:{self.income_amount},\nDate_Time:{self.date_time}"
+    
+    @classmethod
+    def sum_of_income(cls):
+        cls.total_income=0
+        worksheet = SHEET.worksheet("Income")
+        all_income_data = worksheet.get_all_values()
+        total_income=0
+        for row in all_income_data[1:]:
+            actual_income=row[1]
+            income_amount=float(actual_income)
+            cls.total_income+=income_amount
+        return cls.total_income
 
 
 def get_expense_of_user():
@@ -232,14 +259,18 @@ def summarize_expenses():
         print()
         print(f"You spent the most in the category '{max_category}' with a total of {max_expense} euros.")
 
-        income=sum_of_income()
-        expense=sum_of_expense()
+        #bal_amt_exp=Expense()
+        #bal_amt_inc=Income()
+
+        income=Income.sum_of_income()
+        expense=Expense.sum_of_expense()
 
         balance_amount=income-expense
         print()
         print(f"You have balance of {balance_amount} from your income")
+        print()
 
-
+"""
 def sum_of_expense():
     worksheet = SHEET.worksheet("Expenses")
     all_expense_data = worksheet.get_all_values()
@@ -260,6 +291,7 @@ def sum_of_income():
         income_amount=float(actual_income)
         total_income=total_income+income_amount
     return total_income
+"""
 
 
 
@@ -344,7 +376,9 @@ def income_menu_option():
                 print("---------------------------")
 
         except KeyboardInterrupt:
+            print()
             print("\nKeyboard interruption detected. Exiting...")
+            print()
             break
             
         except:
@@ -352,8 +386,6 @@ def income_menu_option():
             print(f"Invalid Input ,Please enter a number from {value_range}")
             print()
             print()
-
-
 
 
 def expense_menu_options():
@@ -402,7 +434,9 @@ def expense_menu_options():
                 print()
         
         except KeyboardInterrupt:
+            print()
             print("\nKeyboard interruption detected. Exiting...")
+            print()
             break
         
         except ValueError:
