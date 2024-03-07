@@ -60,7 +60,6 @@ class Income:
         cls.total_income=0
         worksheet = SHEET.worksheet("Income")
         all_income_data = worksheet.get_all_values()
-        total_income=0
         for row in all_income_data[1:]:
             actual_income=row[1]
             income_amount=float(actual_income)
@@ -200,10 +199,10 @@ def show_expense_data():
         print("No expense data available")
     else:
         print(f"Expense datas:")
-        print("{:<15} {:<15} {:<35} {:<20}".format("Amount(euro)","Category","Details","Date/Time"))
+        print("{:10}{:<15} {:<15} {:<35} {:<20}".format("ID","Amount(euro)","Category","Details","Date/Time"))
         print("-"*100)
         for row in all_expense_data[1:]:
-            print("{:<15} {:<15} {:<35} {:<20}".format(*row))
+            print("{:10}{:<15} {:<15} {:<35} {:<20}".format(*row))
             
 def show_income_data():
     """
@@ -215,10 +214,10 @@ def show_income_data():
         print("No Income data available")
     else:
         print(f"Income datas:")
-        print("{:<25} {:<15} {:<15}".format("Income Type","Actual Income","Date/Time"))
+        print("{:10}{:<25} {:<15} {:<15}".format("ID","Income Type","Actual Income","Date/Time"))
         print("-"*65)
         for row in all_income_data[1:]:
-            print("{:<25} {:<15} {:<15}".format(*row))
+            print("{:10}{:<25} {:<15} {:<15}".format(*row))
                 
 
     
