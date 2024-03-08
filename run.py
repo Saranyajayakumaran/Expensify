@@ -20,7 +20,8 @@ class Expense:
     Class contains all the expense feilds to get from the user.
     """
     total_expense=0
-    def __init__(self,amount,category,details="",date_time=None):
+    def __init__(self,id,amount,category,details="",date_time=None):
+        self.id=id
         self.amount=amount
         self.category=category
         self.details=details
@@ -35,7 +36,7 @@ class Expense:
         worksheet = SHEET.worksheet("Expenses")
         all_expense_data = worksheet.get_all_values()
         for row in all_expense_data[1:]:
-            actual_expense=row[0]
+            actual_expense=row[1]
             expense_amount=float(actual_expense)
             cls.total_expense+=expense_amount
         return cls.total_expense
@@ -47,7 +48,8 @@ class Income:
     Get income details form the user
     """
     total_income=0
-    def __init__(self,income_amount,source,date_time):
+    def __init__(self,id,income_amount,source,date_time):
+        self.id=id
         self.income_amount=income_amount
         self.source=source
         self.date_time=date_time
@@ -61,7 +63,7 @@ class Income:
         worksheet = SHEET.worksheet("Income")
         all_income_data = worksheet.get_all_values()
         for row in all_income_data[1:]:
-            actual_income=row[1]
+            actual_income=row[2]
             income_amount=float(actual_income)
             cls.total_income+=income_amount
         return cls.total_income
@@ -72,6 +74,7 @@ def get_expense_of_user():
     Get the expenses form the user
     amount:int, category:string, details:string,date/time:date
     """
+    id=create_id("Expenses")
     print("Enter the amount which you spent:")
     cost = validate_user_income_or_expense()
     print(f"you have entered : {cost} euros")
@@ -82,9 +85,19 @@ def get_expense_of_user():
     date_and_time=datetime.now().strftime("%d-%m-%y  %H:%M")
     print(date_and_time)
 
-    user_expense_data=Expense(amount=cost,category=user_selected_category,details=message,date_time=date_and_time)
+    user_expense_data=Expense(id=id,amount=cost,category=user_selected_category,details=message,date_time=date_and_time)
     return user_expense_data
 
+def create_id(worksheet_name):
+    # Retrieve the last assigned ID from the existing expenses
+    worksheet = SHEET.worksheet(worksheet_name)
+    all_expense_data = worksheet.get_all_values()
+    if len(all_expense_data) > 1:
+        last_id = int(all_expense_data[-1][0])  # Assuming the ID is stored in the first column
+        next_id = last_id + 1
+    else:
+        next_id = 1  # If there are no existing expenses, start with ID 1
+    print(next_id)
     
 def get_category():
     """
@@ -177,9 +190,9 @@ def save_data_to_worksheet(data,worksheet_name):
     worksheet=SHEET.worksheet(worksheet_name)
 
     if worksheet_name=="Expenses":
-        data_list=[data.amount,data.category,data.details,data.date_time]
+        data_list=[data.id,data.amount,data.category,data.details,data.date_time]
     elif worksheet_name=="Income":
-        data_list=[data.source,data.income_amount,data.date_time]
+        data_list=[data.id,data.source,data.income_amount,data.date_time]
     else:
         print("Invalid data type")
         return
@@ -235,17 +248,12 @@ def summarize_expenses():
     else:
         category_totals = {}
         for row in all_expense_data[1:]: 
-            category = row[1]
-            amount = float(row[0])
+            category = row[2]
+            amount = float(row[1])
             if category in category_totals:
-                print(category)
-                print(category_totals)
                 category_totals[category] += amount
-                print(category_totals[category])
             else:
                 category_totals[category] = amount
-                print(category_totals[category])
-
         print("Expense Summary by Category:")
         print()
         for category, total in category_totals.items():
