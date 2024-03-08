@@ -88,16 +88,7 @@ def get_expense_of_user():
     user_expense_data=Expense(id=id,amount=cost,category=user_selected_category,details=message,date_time=date_and_time)
     return user_expense_data
 
-def create_id(worksheet_name):
-    # Retrieve the last assigned ID from the existing expenses
-    worksheet = SHEET.worksheet(worksheet_name)
-    all_expense_data = worksheet.get_all_values()
-    if len(all_expense_data) > 1:
-        last_id = int(all_expense_data[-1][0])  # Assuming the ID is stored in the first column
-        next_id = last_id + 1
-    else:
-        next_id = 1  # If there are no existing expenses, start with ID 1
-    return next_id
+
     
 def get_category():
     """
@@ -142,6 +133,19 @@ def get_income_of_user():
     return user_income_data
 
 
+def create_id(worksheet_name):
+    """
+    Retrieve last id and create next id 
+    Create id for both expense and income worksheet
+    """
+    worksheet = SHEET.worksheet(worksheet_name)
+    all_expense_data = worksheet.get_all_values()
+    if len(all_expense_data) > 1:
+        last_id = int(all_expense_data[-1][0])  
+        next_id = last_id + 1
+    else:
+        next_id = 1  
+    return next_id
 
 def validate_user_income_or_expense():
     """
@@ -245,30 +249,26 @@ def summarize_expenses():
     worksheet = SHEET.worksheet("Expenses")
     all_expense_data = worksheet.get_all_values()
     if len(all_expense_data) == 0:
-        print("No expense data available")
+        print("No expense datas available")
     else:
-        category_totals = {}
+        sum_of_category = {}
         for row in all_expense_data[1:]: 
             category = row[2]
             amount = float(row[1])
-            if category in category_totals:
-                category_totals[category] += amount
+            if category in sum_of_category:
+                sum_of_category[category] += amount
             else:
-                category_totals[category] = amount
+                sum_of_category[category] = amount
         print("Expense Summary by Category:")
         print()
-        for category, total in category_totals.items():
+        for category, total in sum_of_category.items():
             print(f"{category}: {total} euros")
 
-        # Find the category with the maximum total expense
-        max_category = max(category_totals, key=category_totals.get)
-        max_expense = category_totals[max_category]
+        max_category = max(sum_of_category, key=sum_of_category.get)
+        max_expense = sum_of_category[max_category]
 
         print()
         print(f"You spent the most in the category '{max_category}' with a total of {max_expense} euros.")
-
-        #bal_amt_exp=Expense()
-        #bal_amt_inc=Income()
 
         income=Income.sum_of_income()
         expense=Expense.sum_of_expense()
@@ -277,31 +277,6 @@ def summarize_expenses():
         print()
         print(f"You have balance of {balance_amount} from your income")
         print()
-
-"""
-def sum_of_expense():
-    worksheet = SHEET.worksheet("Expenses")
-    all_expense_data = worksheet.get_all_values()
-    total_expense=0
-    for row in all_expense_data[1:]:
-        actual_expense=row[0]
-        expense_amount=float(actual_expense)
-        total_expense=total_expense+expense_amount
-    return total_expense
-
-
-def sum_of_income():
-    worksheet = SHEET.worksheet("Income")
-    all_income_data = worksheet.get_all_values()
-    total_income=0
-    for row in all_income_data[1:]:
-        actual_income=row[1]
-        income_amount=float(actual_income)
-        total_income=total_income+income_amount
-    return total_income
-"""
-
-
 
 def delete_expense():
     print("expense deleted")
