@@ -97,7 +97,7 @@ def create_id(worksheet_name):
         next_id = last_id + 1
     else:
         next_id = 1  # If there are no existing expenses, start with ID 1
-    print(next_id)
+    return next_id
     
 def get_category():
     """
@@ -129,6 +129,7 @@ def get_income_of_user():
     print("============")
     print("Income Details")
     print("============")
+    id=create_id("Income")
     print("Give your income_amount:")
     income= validate_user_income_or_expense()
     print(f"you entered: {income}")
@@ -137,7 +138,7 @@ def get_income_of_user():
     current_date_time=datetime.now().strftime("%d-%m-%y  %H:%M")
     print(f"{current_date_time}")
 
-    user_income_data=Income(source=income_details,income_amount=income,date_time=current_date_time)
+    user_income_data=Income(id=id,source=income_details,income_amount=income,date_time=current_date_time)
     return user_income_data
 
 
