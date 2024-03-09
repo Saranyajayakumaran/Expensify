@@ -1,6 +1,8 @@
 import gspread
 from google.oauth2.service_account import Credentials
 from datetime import datetime
+from gspread.exceptions import APIError
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -14,6 +16,7 @@ SHEET=GSPREAD_CLIENT.open('Expense tracker')
 
 expenses = SHEET.worksheet('Expenses')
 datas=expenses.get_all_values()
+
 
 class Expense:
     """
@@ -216,12 +219,16 @@ def show_expense_data():
     if len(all_expense_data)==0:
         print("No expense data available")
     else:
-        print(f"Expense datas:")
-        print("{:10}{:<15} {:<15} {:<35} {:<20}".format("ID","Amount(euro)","Category","Details","Date/Time"))
+        print(f"Expense datas record :")
+        print("{:15}{:<15} {:<15} {:<35} {:<20}".format("ItemNumber","Amount(euro)","Category","Details","Date/Time"))
         print("-"*100)
+
+        item = 0
         for row in all_expense_data[1:]:
-            print("{:10}{:<15} {:<15} {:<35} {:<20}".format(*row))
-            
+            print("{:^15}  {:<15} {:<15} {:<35} {:<20}".format(item+1, *row))
+            item += 1
+
+
 def show_income_data():
     """
     Show all the Incomes to the user in table
@@ -279,7 +286,27 @@ def summarize_expenses():
         print()
 
 def delete_expense():
-    print("expense deleted")
+        
+    expenses = SHEET.worksheet('Expenses')
+    all_expense_data=expenses.get_all_values()
+
+    show_expense_data()
+
+    print("==============================================")
+    print("Which item you want to delete")
+    item = int(input("Enter the item number:"))
+
+    if item > 0 and item <= len(all_expense_data):
+        try:
+            expenses.delete_rows(item + 1)
+            print("deleted item ! ",item)
+        except gspread.exceptions.APIError as e:
+            print(f"An error occurred: {e}")
+        except AttributeError:
+            print("Function is not available")
+    else:
+        print("Invalid item. Please enter valid item.")
+
 
 def income_or_expense():
     """
