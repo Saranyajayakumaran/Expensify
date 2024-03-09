@@ -23,8 +23,7 @@ class Expense:
     Class contains all the expense feilds to get from the user.
     """
     total_expense=0
-    def __init__(self,id,amount,category,details="",date_time=None):
-        self.id=id
+    def __init__(self,amount,category,details="",date_time=None):
         self.amount=amount
         self.category=category
         self.details=details
@@ -51,8 +50,7 @@ class Income:
     Get income details form the user
     """
     total_income=0
-    def __init__(self,id,income_amount,source,date_time):
-        self.id=id
+    def __init__(self,income_amount,source,date_time):
         self.income_amount=income_amount
         self.source=source
         self.date_time=date_time
@@ -77,7 +75,6 @@ def get_expense_of_user():
     Get the expenses form the user
     amount:int, category:string, details:string,date/time:date
     """
-    id=create_id("Expenses")
     print("Enter the amount which you spent:")
     cost = validate_user_income_or_expense()
     print(f"you have entered : {cost} euros")
@@ -123,7 +120,6 @@ def get_income_of_user():
     print("============")
     print("Income Details")
     print("============")
-    id=create_id("Income")
     print("Give your income_amount:")
     income= validate_user_income_or_expense()
     print(f"you entered: {income}")
@@ -135,21 +131,6 @@ def get_income_of_user():
     user_income_data=Income(id=id,source=income_details,income_amount=income,date_time=current_date_time)
     return user_income_data
 
-
-def create_id(worksheet_name):
-    """
-    Retrieve last id and create next id 
-    Create id for both expense and income worksheet
-    """
-    worksheet = SHEET.worksheet(worksheet_name)
-    all_expense_data = worksheet.get_all_values()
-    if len(all_expense_data) > 1:
-        last_id = int(all_expense_data[-1][0])  
-        next_id = last_id + 1
-    else:
-        next_id = 1  
-    return next_id
-
 def validate_user_income_or_expense():
     """
     Validate user income amount and expense amount for zero and negative values
@@ -157,7 +138,7 @@ def validate_user_income_or_expense():
     while True:
         try:
             amount=float(input(""))
-            if amount==0:
+            if amount==0:#if input is 0
                 print("Please give a valid amount, 0 is not allowed ")
             elif amount<0:
                 print("Please give a valid amount, Negative values are not allowed")
@@ -224,7 +205,7 @@ def show_expense_data():
         print("-"*100)
 
         item = 0
-        for row in all_expense_data[1:]:
+        for row in all_expense_data[1:]: # looping to get all the row values form google sheet
             print("{:^15}  {:<15} {:<15} {:<35} {:<20}".format(item+1, *row))
             item += 1
 
@@ -239,10 +220,10 @@ def show_income_data():
         print("No Income data available")
     else:
         print(f"Income datas:")
-        print("{:10}{:<25} {:<15} {:<15}".format("ID","Income Type","Actual Income","Date/Time"))
+        print("{:<25} {:<15} {:<15}".format("Income Type","Actual Income","Date/Time"))
         print("-"*65)
         for row in all_income_data[1:]:
-            print("{:10}{:<25} {:<15} {:<15}".format(*row))
+            print("{:<25} {:<15} {:<15}".format(*row))  
                 
 
     
@@ -405,10 +386,10 @@ def expense_menu_options():
     """
     options=["Record new Expense","View all expense","Summerize Expenses","Delete Expense","Return to Main Menu"]
 
-    while True:
+    while True:  
         print("****Options****")
         print()
-        for opt, option in enumerate(options,1):
+        for opt, option in enumerate(options,1): #looping to number the options
            print(f"{opt}.{option}")
         try:
             value_range=f"[1-{len(options)}]"
