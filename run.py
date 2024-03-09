@@ -39,7 +39,7 @@ class Expense:
         worksheet = SHEET.worksheet("Expenses")
         all_expense_data = worksheet.get_all_values()
         for row in all_expense_data[1:]:
-            actual_expense=row[1]
+            actual_expense=row[0]
             expense_amount=float(actual_expense)
             cls.total_expense+=expense_amount
         return cls.total_expense
@@ -260,8 +260,8 @@ def summarize_expenses():
     else:
         sum_of_category = {}
         for row in all_expense_data[1:]: 
-            category = row[2]
-            amount = float(row[1])
+            category = row[1]
+            amount = float(row[0])
             if category in sum_of_category:
                 sum_of_category[category] += amount
             else:
