@@ -1,8 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
 from datetime import datetime
-from gspread.exceptions import APIError
-
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -128,7 +126,7 @@ def get_income_of_user():
     current_date_time=datetime.now().strftime("%d-%m-%y  %H:%M")
     print(f"{current_date_time}")
 
-    user_income_data=Income(id=id,source=income_details,income_amount=income,date_time=current_date_time)
+    user_income_data=Income(source=income_details,income_amount=income,date_time=current_date_time)
     return user_income_data
 
 def validate_user_income_or_expense():
@@ -179,9 +177,9 @@ def save_data_to_worksheet(data,worksheet_name):
     worksheet=SHEET.worksheet(worksheet_name)
 
     if worksheet_name=="Expenses":
-        data_list=[data.id,data.amount,data.category,data.details,data.date_time]
+        data_list=[data.amount,data.category,data.details,data.date_time]
     elif worksheet_name=="Income":
-        data_list=[data.id,data.source,data.income_amount,data.date_time]
+        data_list=[data.source,data.income_amount,data.date_time]
     else:
         print("Invalid data type")
         return
