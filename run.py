@@ -267,53 +267,52 @@ def summarize_expenses():
         print(f"You have balance of {balance_amount} from your income")
         print()
 
-def delete_a_row(worksheetname):
-        
-    worksheet= SHEET.worksheet(worksheetname)
-    all_datas=worksheet.get_all_values()
 
-    if worksheetname=="Expenses":
+def delete_a_row(worksheetname):
+    """
+    Deleting a user specified row from the income or expense data"
+    """
+    worksheet = SHEET.worksheet(worksheetname)
+    all_datas = worksheet.get_all_values()
+
+    if worksheetname == "Expenses":
         show_datas("Expenses")
         print()
         print("==============================================")
-        print("Which Expense item you want to delete")
+        print("Which Expense item do you want to delete")
         print()
-        item = int(input("Enter the item number:\n"))
-
-
-        if item > 0 and item <= len(all_datas):
+        while True:
+            item = int(input("Enter the item number:\n"))
             try:
-                worksheet.delete_rows(item + 1)
-                print("deleted item ! ",item)
-            except gspread.exceptions.APIError as e:
-                print(f"An error occurred: {e}")
-            except AttributeError:
-                print("Function is not available")
-        else:
-            print("Invalid item. Please enter valid item.")
-    
-    elif worksheetname=="Income":
+                if item > 0 and item <= len(all_datas):
+                    worksheet.delete_rows(item + 1)
+                    print("Deleted item:", item)
+                    break
+                else:
+                    print("Invalid item. Please enter a valid item number.")
+                    
+            except:
+                print("Invalid Item, please enter a valid item")
+
+
+    elif worksheetname == "Income":
         show_datas("Income")
         print("==============================================")
-        print("Which Income item you want to delete")
-        item = int(input("Enter the item number:\n"))
-
-        if item > 0 and item <= len(all_datas):
+        print("Which Income item do you want to delete")
+        while True:
+            item = int(input("Enter the item number:\n"))
             try:
-                worksheet.delete_rows(item + 1)
-                print("deleted item ! ",item)
-            except gspread.exceptions.APIError as e:
-                print(f"An error occurred: {e}")
-            except AttributeError:
-                print("Function is not available")
-        else:
-            print("Invalid item. Please enter valid item.")
+                if item > 0 and item <= len(all_datas):
+                    worksheet.delete_rows(item + 1)
+                    print("Deleted item:", item)
+                    break
+                else:
+                    print("Invalid item. Please enter a valid item number.")
+            except:
+                print("Invaid Item,please enter a valid item")
     else:
         pass
-
-
-
-
+           
 def income_or_expense():
     """
     ask user which field they want to choose income or expense
