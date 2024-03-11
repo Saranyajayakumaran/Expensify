@@ -54,7 +54,7 @@ class Income:
         self.date_time=date_time
     
     def __str__(self):
-        return f"Income deatils:\nSource:{self.source},\nIncome:{self.income_amount},\nDate_Time:{self.date_time}"
+        return f"Income details:\nSource:{self.source},\nIncome:{self.income_amount},\nDate_Time:{self.date_time}"
     
     @classmethod
     def sum_of_income(cls):
@@ -73,6 +73,9 @@ def get_expense_of_user():
     Get the expenses form the user
     amount:int, category:string, details:string,date/time:date
     """
+    print("=================")
+    print("Expense Details")
+    print("=================")
     print("Enter the amount which you spent:\n")
     cost = validate_user_income_or_expense()
     print(f"you have entered : {cost} euros")
@@ -98,7 +101,7 @@ def get_category():
         try:
             for i , name_of_category in enumerate(categories,1):
                 print(f" {i}. {name_of_category}")
-            category_name_index=int(input("Select a category:\n"))-1
+            category_name_index=int(input("Select a category from [1-5]:\n"))-1
             print(f"you selected:{category_name_index}")
             
             if category_name_index in range(len(categories)):
@@ -106,18 +109,18 @@ def get_category():
                 return selected_category
                 
             else:
-                print(f"Invalid category . Please enter a valid ocategory from {[1-{len(categories)}]}")
+                print(f"Invalid category . Please enter a valid category from {[1-{len(categories)}]}")
         except Exception as e:
-            print(f"Invalid category . Please enter a valid ocategory from {[1-{len(categories)}]}")
+            print(f"Invalid category . Please enter a valid category from {[1-{len(categories)}]}")
 
    
 def get_income_of_user():
     """
     Get income of the user
     """
-    print("============")
+    print("=================")
     print("Income Details")
-    print("============")
+    print("=================")
     print("Give your income_amount:\n")
     income= validate_user_income_or_expense()
     print(f"you entered: {income}")
@@ -160,11 +163,11 @@ def validate_text_inputs(text,max_len):
     return user_input
 
 def validate_expense_message():
-    data=validate_text_inputs("Enter the expense details within 30 characters:",30)
+    data=validate_text_inputs("Enter the expense details within 30 characters:\n",30)
     return data
 
 def validate_income_source():
-    data=validate_text_inputs("Enter the income details within 30 characters:",25)
+    data=validate_text_inputs("Enter the income details within 30 characters:\n",25)
     return data
    
 
@@ -197,7 +200,8 @@ def show_datas(worksheetname):
         if len(all_datas)==0:
             print("No expense data available")
         else:
-            print(f"Expense datas record :")
+            print(f"EXPENSE DATAS RECORD")
+            print()
             print("{:15} {:<15} {:<15} {:<35} {:<20}".format("ItemNumber","Amount(euro)","Category","Details","Date/Time"))
             print("-"*100)
             expense_item = 0
@@ -208,7 +212,8 @@ def show_datas(worksheetname):
         if len(all_datas)==0:
             print("No Income data available")
         else:
-            print(f"Income datas record :")
+            print(f"INCOME DATAS RECORD")
+            print()
             print("{:15} {:<25} {:<15} {:<15}".format("ItemNumber","Income Type","Actual Income","Date/Time"))
             print("-"*65)
             income_item = 0
@@ -237,7 +242,9 @@ def summarize_expenses():
                 sum_of_category[category] += amount
             else:
                 sum_of_category[category] = amount
+        print("=============================")
         print("Expense Summary by Category:")
+        print("=============================")
         print()
         for category, total in sum_of_category.items():
             print(f"{category}: {total} euros")
@@ -263,9 +270,11 @@ def delete_a_row(worksheetname):
 
     if worksheetname=="Expenses":
         show_datas("Expenses")
+        print()
         print("==============================================")
         print("Which Expense item you want to delete")
-        item = int(input("Enter the item number:"))
+        print()
+        item = int(input("Enter the item number:\n"))
 
 
         if item > 0 and item <= len(all_datas):
@@ -283,7 +292,7 @@ def delete_a_row(worksheetname):
         show_datas("Income")
         print("==============================================")
         print("Which Income item you want to delete")
-        item = int(input("Enter the item number:"))
+        item = int(input("Enter the item number:\n"))
 
         if item > 0 and item <= len(all_datas):
             try:
@@ -349,13 +358,17 @@ def income_menu_option():
 
     while True:
         print()
-        print("****Options****")
+        print("===========================")
+        print("   MANAGE INCOME OPTIONS")
+        print("===========================")
+        print()
+
         for opt,options in enumerate(income_options,1):
             print(f"{opt}.{options}")
         try:
             value_range=f"[1-{len(income_options)}]"
             print()
-            selected_index=int(input(f"Select an option {value_range}"))
+            selected_index=int(input(f"Select an option from the following {value_range}:\n"))
             print()
             print(f"you have selected: {selected_index}")
             
@@ -401,14 +414,17 @@ def expense_menu_options():
     options=["Record new Expense","View all expense","Summerize Expenses","Delete Expense","Return to Main Menu"]
 
     while True:  
-        print("****Options****")
+        print()  
+        print("===========================")
+        print("   MANAGE EXPENSE OPTIONS")
+        print("===========================")
         print()
         for opt, option in enumerate(options,1): #looping to number the options
            print(f"{opt}.{option}")
         try:
             value_range=f"[1-{len(options)}]"
             print()
-            user_choice=int(input(f"Select an option {value_range}:"))
+            user_choice=int(input(f"Select an option from the following {value_range}:\n"))
             print()
             print(f"you ave selected:  {user_choice}")
             print()
