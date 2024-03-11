@@ -206,11 +206,11 @@ def show_datas(worksheetname):
         else:
             print(f"EXPENSE DATAS RECORD")
             print()
-            print("{:15} {:<15} {:<15} {:<25} {:<20}".format("ItemNumber","Amount(euro)","Category","Details","Date/Time"))
+            print("{:9} {:<10} {:<10} {:<25} {:<20}".format("Itm_No","Amount","Category","Details","Date/Time"))
             print("-"*100)
             expense_item = 0
             for row in all_datas[1:]: # looping to get all the row values form google sheet
-                print("{:^15}  {:<15} {:<15} {:<25} {:<20}".format(expense_item+1, *row))
+                print("{:^9} {:<10} {:<10} {:<25} {:<20}".format(expense_item+1, *row))
                 expense_item += 1
     elif worksheetname=="Income":
         if len(all_datas)==0:
@@ -218,7 +218,7 @@ def show_datas(worksheetname):
         else:
             print(f"INCOME DATAS RECORD")
             print()
-            print("{:15} {:<20} {:<15} {:<15}".format("ItemNumber","Income Type","Actual Income","Date/Time"))
+            print("{:15} {:<20} {:<15} {:<15}".format("Itm_No","Income Type","Actual Income","Date/Time"))
             print("-"*65)
             income_item = 0
             for row in all_datas[1:]:
