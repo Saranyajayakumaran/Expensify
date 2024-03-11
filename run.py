@@ -83,7 +83,7 @@ def get_expense_of_user():
     date_and_time=datetime.now().strftime("%d-%m-%y  %H:%M")
     print(date_and_time)
 
-    user_expense_data=Expense(id=id,amount=cost,category=user_selected_category,details=message,date_time=date_and_time)
+    user_expense_data=Expense(amount=cost,category=user_selected_category,details=message,date_time=date_and_time)
     return user_expense_data
 
 
@@ -199,7 +199,7 @@ def show_expense_data():
         print("No expense data available")
     else:
         print(f"Expense datas record :")
-        print("{:15}{:<15} {:<15} {:<35} {:<20}".format("ItemNumber","Amount(euro)","Category","Details","Date/Time"))
+        print("{:15} {:<15} {:<15} {:<35} {:<20}".format("ItemNumber","Amount(euro)","Category","Details","Date/Time"))
         print("-"*100)
 
         item = 0
