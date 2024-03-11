@@ -200,19 +200,23 @@ def show_datas(worksheetname):
             print(f"Expense datas record :")
             print("{:15} {:<15} {:<15} {:<35} {:<20}".format("ItemNumber","Amount(euro)","Category","Details","Date/Time"))
             print("-"*100)
-            item = 0
+            expense_item = 0
             for row in all_datas[1:]: # looping to get all the row values form google sheet
-                print("{:^15}  {:<15} {:<15} {:<35} {:<20}".format(item+1, *row))
-                item += 1
+                print("{:^15}  {:<15} {:<15} {:<35} {:<20}".format(expense_item+1, *row))
+                expense_item += 1
     elif worksheetname=="Income":
         if len(all_datas)==0:
             print("No Income data available")
         else:
-            print(f"Income datas:")
-            print("{:<25} {:<15} {:<15}".format("Income Type","Actual Income","Date/Time"))
+            print(f"Income datas record :")
+            print("{:15} {:<25} {:<15} {:<15}".format("ItemNumber","Income Type","Actual Income","Date/Time"))
             print("-"*65)
+            income_item = 0
             for row in all_datas[1:]:
-                print("{:<25} {:<15} {:<15}".format(*row))  
+                print("{:^15} {:<25} {:<15} {:<15}".format(income_item+1,*row))  
+                income_item += 1
+    else:
+        pass
             
             
 
@@ -252,27 +256,49 @@ def summarize_expenses():
         print(f"You have balance of {balance_amount} from your income")
         print()
 
-def delete_expense():
+def delete_a_row(worksheetname):
         
-    expenses = SHEET.worksheet('Expenses')
-    all_expense_data=expenses.get_all_values()
+    worksheet= SHEET.worksheet(worksheetname)
+    all_datas=worksheet.get_all_values()
 
-    show_datas("Expenses")
+    if worksheetname=="Expenses":
+        show_datas("Expenses")
+        print("==============================================")
+        print("Which Expense item you want to delete")
+        item = int(input("Enter the item number:"))
 
-    print("==============================================")
-    print("Which item you want to delete")
-    item = int(input("Enter the item number:"))
 
-    if item > 0 and item <= len(all_expense_data):
-        try:
-            expenses.delete_rows(item + 1)
-            print("deleted item ! ",item)
-        except gspread.exceptions.APIError as e:
-            print(f"An error occurred: {e}")
-        except AttributeError:
-            print("Function is not available")
+        if item > 0 and item <= len(all_datas):
+            try:
+                worksheet.delete_rows(item + 1)
+                print("deleted item ! ",item)
+            except gspread.exceptions.APIError as e:
+                print(f"An error occurred: {e}")
+            except AttributeError:
+                print("Function is not available")
+        else:
+            print("Invalid item. Please enter valid item.")
+    
+    elif worksheetname=="Income":
+        show_datas("Income")
+        print("==============================================")
+        print("Which Income item you want to delete")
+        item = int(input("Enter the item number:"))
+
+        if item > 0 and item <= len(all_datas):
+            try:
+                worksheet.delete_rows(item + 1)
+                print("deleted item ! ",item)
+            except gspread.exceptions.APIError as e:
+                print(f"An error occurred: {e}")
+            except AttributeError:
+                print("Function is not available")
+        else:
+            print("Invalid item. Please enter valid item.")
     else:
-        print("Invalid item. Please enter valid item.")
+        pass
+
+
 
 
 def income_or_expense():
@@ -319,7 +345,7 @@ def income_menu_option():
     """
     Giving user the option for income field to add datas, show datas
     """
-    income_options=["Record new income","View all income","Return to Main Menu"]
+    income_options=["Record new income","View all income","Delete Income data","Return to Main Menu"]
 
     while True:
         print()
@@ -339,8 +365,10 @@ def income_menu_option():
                     user_income_details=get_income_of_user()
                     save_data_to_worksheet(user_income_details,"Income")  
                 elif selected_index== 2:
-                   show_datas("Income")
-                elif selected_index==3:
+                    show_datas("Income")
+                elif selected_index== 3:
+                    delete_a_row("Income")
+                elif selected_index== 4:
                     print("Returning to main menu...........")
                     break
                 else:
@@ -395,7 +423,7 @@ def expense_menu_options():
                 elif user_choice== 3:
                     summarize_expenses()
                 elif user_choice== 4:
-                    delete_expense()
+                    delete_a_row("Expenses")
                 elif user_choice== 5:
                     print("Returning to main menu.....")
                     break
