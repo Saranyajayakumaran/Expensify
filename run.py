@@ -189,45 +189,33 @@ def save_data_to_worksheet(data,worksheet_name):
     print(data)
 
 
-def show_expense_data():
-    """
-    Show all the expenses to the user in table
-    """
-    worksheet=SHEET.worksheet("Expenses")
-    all_expense_data=worksheet.get_all_values()
-    if len(all_expense_data)==0:
-        print("No expense data available")
-    else:
-        print(f"Expense datas record :")
-        print("{:15} {:<15} {:<15} {:<35} {:<20}".format("ItemNumber","Amount(euro)","Category","Details","Date/Time"))
-        print("-"*100)
+def show_datas(worksheetname):
+    worksheet=SHEET.worksheet(worksheetname)
+    all_datas=worksheet.get_all_values()
 
-        item = 0
-        for row in all_expense_data[1:]: # looping to get all the row values form google sheet
-            print("{:^15}  {:<15} {:<15} {:<35} {:<20}".format(item+1, *row))
-            item += 1
+    if worksheetname=="Expenses":
+        if len(all_datas)==0:
+            print("No expense data available")
+        else:
+            print(f"Expense datas record :")
+            print("{:15} {:<15} {:<15} {:<35} {:<20}".format("ItemNumber","Amount(euro)","Category","Details","Date/Time"))
+            print("-"*100)
+            item = 0
+            for row in all_datas[1:]: # looping to get all the row values form google sheet
+                print("{:^15}  {:<15} {:<15} {:<35} {:<20}".format(item+1, *row))
+                item += 1
+    elif worksheetname=="Income":
+        if len(all_datas)==0:
+            print("No Income data available")
+        else:
+            print(f"Income datas:")
+            print("{:<25} {:<15} {:<15}".format("Income Type","Actual Income","Date/Time"))
+            print("-"*65)
+            for row in all_datas[1:]:
+                print("{:<25} {:<15} {:<15}".format(*row))  
+            
+            
 
-
-def show_income_data():
-    """
-    Show all the Incomes to the user in table
-    """
-    worksheet=SHEET.worksheet("Income")
-    all_income_data=worksheet.get_all_values()
-    if len(all_income_data)==0:
-        print("No Income data available")
-    else:
-        print(f"Income datas:")
-        print("{:<25} {:<15} {:<15}".format("Income Type","Actual Income","Date/Time"))
-        print("-"*65)
-        for row in all_income_data[1:]:
-            print("{:<25} {:<15} {:<15}".format(*row))  
-                
-
-    
-#user_expense_details=get_expense_of_user()
-        
-#save_data_to_worksheet(user_expense_details,"Expenses")
 def summarize_expenses():
     """
     Summarize expenses by category
@@ -269,7 +257,7 @@ def delete_expense():
     expenses = SHEET.worksheet('Expenses')
     all_expense_data=expenses.get_all_values()
 
-    show_expense_data()
+    show_datas("Expenses")
 
     print("==============================================")
     print("Which item you want to delete")
@@ -300,9 +288,9 @@ def income_or_expense():
             print("What would you like to do today?")
             print("Select an option from the following:")
             print()
-            print("1.Manage Income(I/i)")
-            print("2.Manage Expense(E/e)")
-            print("3.Exit(X/x)")
+            print("1.Manage Income")
+            print("2.Manage Expenses")
+            print("3.Exit")
             print()
             user_input=int(input("Enter your Choice[1-3]:"))
             print()
@@ -311,7 +299,7 @@ def income_or_expense():
             elif user_input==2:
                 expense_menu_options()
             elif user_input==3:
-                print("Exiting the program. Goodbye!")
+                print("Exiting from the App. HAVE A GOOD DAY")
                 break     
             else:
                 print("invalid input, please select (1-3)")
@@ -351,7 +339,7 @@ def income_menu_option():
                     user_income_details=get_income_of_user()
                     save_data_to_worksheet(user_income_details,"Income")  
                 elif selected_index== 2:
-                   show_income_data()
+                   show_datas("Income")
                 elif selected_index==3:
                     print("Returning to main menu...........")
                     break
@@ -403,7 +391,7 @@ def expense_menu_options():
                     user_expense_details=get_expense_of_user()
                     save_data_to_worksheet(user_expense_details,"Expenses")
                 elif user_choice== 2:
-                   show_expense_data()
+                   show_datas("Expenses")
                 elif user_choice== 3:
                     summarize_expenses()
                 elif user_choice== 4:
