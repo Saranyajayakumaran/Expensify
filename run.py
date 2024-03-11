@@ -62,7 +62,7 @@ class Income:
         worksheet = SHEET.worksheet("Income")
         all_income_data = worksheet.get_all_values()
         for row in all_income_data[1:]:
-            actual_income=row[2]
+            actual_income=row[1]
             income_amount=float(actual_income)
             cls.total_income+=income_amount
         return cls.total_income
