@@ -28,7 +28,7 @@ class Expense:
         self.date_time=date_time
 
     def __str__(self):
-        return f"Expense details:\nCost: {self.amount}euros,\nCategory: {self.category},\nDetails: {self.details},\ndate_time: {self.date_time}"
+        return f"Updated Expense Details:\n\nCost: {self.amount}euros,\nCategory: {self.category},\nDetails: {self.details},\ndate_time: {self.date_time}"
     
     @classmethod
     def sum_of_expense(cls):
@@ -54,7 +54,7 @@ class Income:
         self.date_time=date_time
     
     def __str__(self):
-        return f"Income details:\nSource:{self.source},\nIncome:{self.income_amount},\nDate_Time:{self.date_time}"
+        return f"Updated Income Details:\n\n,Source:{self.source},\nIncome:{self.income_amount},\nDate_Time:{self.date_time}"
     
     @classmethod
     def sum_of_income(cls):
@@ -74,19 +74,20 @@ def get_expense_of_user():
     amount:int, category:string, details:string,date/time:date
     """
     print("=================")
-    print("Expense Details")
+    print(" Expense Details ")
     print("=================")
-    print("Enter the amount which you spent:\n")
+    print("Enter the amount which you spent:")
     cost = validate_user_income_or_expense()
-    print(f"you have entered : {cost} euros")
+    #print(f"you have entered : {cost} euros")
     user_selected_category=get_category()
-    print(user_selected_category)
+    #print(user_selected_category)
     message=validate_expense_message()
-    print(f"you entered {message}")
+    #print(f"you entered {message}")
     date_and_time=datetime.now().strftime("%d-%m-%y  %H:%M")
-    print(date_and_time)
+    #print(date_and_time)
 
     user_expense_data=Expense(amount=cost,category=user_selected_category,details=message,date_time=date_and_time)
+    #print("You have entered:",user_expense_data)
     return user_expense_data
 
 
@@ -102,7 +103,7 @@ def get_category():
             for i , name_of_category in enumerate(categories,1):
                 print(f" {i}. {name_of_category}")
             category_name_index=int(input("Select a category from [1-5]:\n"))-1
-            print(f"you selected:{category_name_index}")
+            #print(f"you selected:{category_name_index+1}")
             
             if category_name_index in range(len(categories)):
                 selected_category=categories[category_name_index]
@@ -119,15 +120,15 @@ def get_income_of_user():
     Get income of the user
     """
     print("=================")
-    print("Income Details")
+    print("  Income Details ")
     print("=================")
-    print("Give your income_amount:\n")
+    print("Give your income_amount:")
     income= validate_user_income_or_expense()
-    print(f"you entered: {income}")
+    #print(f"you entered: {income}")
     income_details=validate_income_source()
-    print(f"you entered: {income_details}")
+    #print(f"you entered: {income_details}")
     current_date_time=datetime.now().strftime("%d-%m-%y  %H:%M")
-    print(f"{current_date_time}")
+    #print(f"{current_date_time}")
 
     user_income_data=Income(source=income_details,income_amount=income,date_time=current_date_time)
     return user_income_data
@@ -175,7 +176,7 @@ def save_data_to_worksheet(data,worksheet_name):
     """
     Recevies data from user and inserted into relevant worksheet
     """
-    print(f"updating datas in {worksheet_name} worksheet........\n")
+    print(f"Updating datas in {worksheet_name} worksheet........\n")
     print()
     worksheet=SHEET.worksheet(worksheet_name)
 
@@ -184,12 +185,15 @@ def save_data_to_worksheet(data,worksheet_name):
     elif worksheet_name=="Income":
         data_list=[data.source,data.income_amount,data.date_time]
     else:
-        print("Invalid data type")
+        print("Invalid data")
         return
 
     worksheet.append_row(data_list)
+    print()
     print(f"{worksheet_name}'worksheet updated successfully")
+    print()
     print(data)
+   
 
 
 def show_datas(worksheetname):
@@ -243,7 +247,7 @@ def summarize_expenses():
             else:
                 sum_of_category[category] = amount
         print("=============================")
-        print("Expense Summary by Category:")
+        print(" EXPENSE SUMMARY BY CATEGORY ")
         print("=============================")
         print()
         for category, total in sum_of_category.items():
@@ -314,10 +318,11 @@ def income_or_expense():
     """
     ask user which field they want to choose income or expense
     """
+    title()
     while True:
         try:
             print("========================================")
-            print("         WELCOME TO EXPENSIFY         ")
+            print("         WELCOME TO EXPENSIFY           ")
             print("========================================")
             print()
             print("What would you like to do today?")
@@ -327,7 +332,7 @@ def income_or_expense():
             print("2.Manage Expenses")
             print("3.Exit")
             print()
-            user_input=int(input("Enter your Choice[1-3]:"))
+            user_input=int(input("Enter you choice[1-3]:\n"))
             print()
             if user_input==1:
                 income_menu_option()    
@@ -335,6 +340,7 @@ def income_or_expense():
                 expense_menu_options()
             elif user_input==3:
                 print("Exiting from the App. HAVE A GOOD DAY")
+                print()
                 break     
             else:
                 print("invalid input, please select (1-3)")
@@ -359,7 +365,7 @@ def income_menu_option():
     while True:
         print()
         print("===========================")
-        print("   MANAGE INCOME OPTIONS")
+        print("   MANAGE INCOME MENU      ")
         print("===========================")
         print()
 
@@ -416,7 +422,7 @@ def expense_menu_options():
     while True:  
         print()  
         print("===========================")
-        print("   MANAGE EXPENSE OPTIONS")
+        print("   MANAGE EXPENSES MENU    ")
         print("===========================")
         print()
         for opt, option in enumerate(options,1): #looping to number the options
@@ -464,6 +470,15 @@ def expense_menu_options():
             print()
             print(f"Invalid Input ,Please enter a number from {value_range}")
             print()
+
+def title():
+    print(r"  _____   _     _   _____     _____   __    __   ______    ________   ______  _ _  __  ")
+    print(r" |  ____|\ \   / / |   _ \  |  ____| |  \  |  | |   __  \ |__    __| |  ____| \  \/  / ")
+    print(r" | |___   \ \ / /  |  |_| \ | |____  |   \ |  | \  \  \_|    |  |    |  |___   \    /  ")
+    print(r" |  ___|   \ \ /   |  _ __| |  ____| |    \   |  __  \__     |  |    |  ____|   \  /   ")
+    print(r" | |____   / / \   |  |     | |____  |  |\    | |  |_   |  __|  |__  |  |     _ / /    ")
+    print(r" |______| / /   \  |__|     |______| |__| \__ | \___  _ / |________| |__|    |___/     ")
+    print(r"                                                                                       ")
 
 def main():
     income_or_expense()
