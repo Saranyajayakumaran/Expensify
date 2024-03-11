@@ -153,7 +153,7 @@ def validate_user_income_or_expense():
 
 def validate_text_inputs(text,max_len):
     """
-    Validate user expense details and income details within 30 chracters
+    Validate user expense details and income details within 25 chracters
     """
     while True:
             user_input=input(text)
@@ -164,11 +164,11 @@ def validate_text_inputs(text,max_len):
     return user_input
 
 def validate_expense_message():
-    data=validate_text_inputs("Enter the expense details within 30 characters:\n",30)
+    data=validate_text_inputs("Enter the expense details within 25 characters:\n",25)
     return data
 
 def validate_income_source():
-    data=validate_text_inputs("Enter the income details within 30 characters:\n",25)
+    data=validate_text_inputs("Enter the income details within 25 characters:\n",25)
     return data
    
 
@@ -206,11 +206,11 @@ def show_datas(worksheetname):
         else:
             print(f"EXPENSE DATAS RECORD")
             print()
-            print("{:15} {:<15} {:<15} {:<35} {:<20}".format("ItemNumber","Amount(euro)","Category","Details","Date/Time"))
+            print("{:15} {:<15} {:<15} {:<25} {:<20}".format("ItemNumber","Amount(euro)","Category","Details","Date/Time"))
             print("-"*100)
             expense_item = 0
             for row in all_datas[1:]: # looping to get all the row values form google sheet
-                print("{:^15}  {:<15} {:<15} {:<35} {:<20}".format(expense_item+1, *row))
+                print("{:^15}  {:<15} {:<15} {:<25} {:<20}".format(expense_item+1, *row))
                 expense_item += 1
     elif worksheetname=="Income":
         if len(all_datas)==0:
@@ -218,11 +218,11 @@ def show_datas(worksheetname):
         else:
             print(f"INCOME DATAS RECORD")
             print()
-            print("{:15} {:<25} {:<15} {:<15}".format("ItemNumber","Income Type","Actual Income","Date/Time"))
+            print("{:15} {:<20} {:<15} {:<15}".format("ItemNumber","Income Type","Actual Income","Date/Time"))
             print("-"*65)
             income_item = 0
             for row in all_datas[1:]:
-                print("{:^15} {:<25} {:<15} {:<15}".format(income_item+1,*row))  
+                print("{:^15} {:<20} {:<15} {:<15}".format(income_item+1,*row))  
                 income_item += 1
     else:
         pass
