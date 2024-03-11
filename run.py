@@ -73,7 +73,7 @@ def get_expense_of_user():
     Get the expenses form the user
     amount:int, category:string, details:string,date/time:date
     """
-    print("Enter the amount which you spent:")
+    print("Enter the amount which you spent:\n")
     cost = validate_user_income_or_expense()
     print(f"you have entered : {cost} euros")
     user_selected_category=get_category()
@@ -98,7 +98,7 @@ def get_category():
         try:
             for i , name_of_category in enumerate(categories,1):
                 print(f" {i}. {name_of_category}")
-            category_name_index=int(input("Select a category:"))-1
+            category_name_index=int(input("Select a category:\n"))-1
             print(f"you selected:{category_name_index}")
             
             if category_name_index in range(len(categories)):
@@ -118,7 +118,7 @@ def get_income_of_user():
     print("============")
     print("Income Details")
     print("============")
-    print("Give your income_amount:")
+    print("Give your income_amount:\n")
     income= validate_user_income_or_expense()
     print(f"you entered: {income}")
     income_details=validate_income_source()
@@ -135,7 +135,7 @@ def validate_user_income_or_expense():
     """
     while True:
         try:
-            amount=float(input(""))
+            amount=float(input("\n"))
             if amount==0:#if input is 0
                 print("Please give a valid amount, 0 is not allowed ")
             elif amount<0:
