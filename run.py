@@ -125,10 +125,10 @@ def get_category():
             if category_name_index in range(len(categories)):
                 selected_category=categories[category_name_index]
                 return selected_category
-            #else:
-               # print(f"Invalid category . Please enter a valid category from {[1-{len(categories)}]}")
+            else:
+                print(f"Invalid category. Please enter a valid category [1-{len(categories)}]")
         except ValueError:
-            print(f"Invalid category . Please enter a valid category from {[1-{len(categories)}]}")
+            print(f"Invalid category. Please enter a valid category [1-{len(categories)}]")
 
 def get_income_of_user():
     """
@@ -246,11 +246,11 @@ def show_datas(worksheetname):
         else:
             print("INCOME DATAS RECORD")
             print()
-            print(f"{ 'Itm_No':<15} { 'Income Type':<20} { 'Actual Income':<15} { 'Date/Time':<15}")
+            print(f"{ 'Itm_No':9} { 'Income Type':<20} { 'Actual Income':<15} { 'Date/Time':<15}")
             print("-"*65)
             income_item = 0
             for row in all_datas[1:]:
-                print(f"{(income_item+1):^15} {row[0]:<20} {row[1]:<15} {row[2]:<15}")
+                print(f"{(income_item+1):^9} {row[0]:<20} {row[1]:<15} {row[2]:<15}")
                 income_item += 1
     else:
         pass
@@ -417,6 +417,7 @@ def income_menu_option():
                     delete_a_row("Income")
                 elif selected_index== 4:
                     print("Returning to main menu...........")
+                    print()
                     break
                 else:
                     print()
