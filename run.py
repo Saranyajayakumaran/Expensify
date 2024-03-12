@@ -356,23 +356,26 @@ def income_or_expense():
             print()
             print("1.Manage Income")
             print("2.Manage Expenses")
-            print("3.Exit")
+            print("3.Help")
+            print("4.Exit")
             print()
-            user_input=int(input("Enter you choice[1-3]:\n"))
+            user_input=int(input("Enter you choice[1-4]:\n"))
             print()
             if user_input==1:
                 income_menu_option()
             elif user_input==2:
                 expense_menu_options()
             elif user_input==3:
+                help_menu()
+            elif user_input==4:
                 print("Exiting from the App. HAVE A GOOD DAY")
                 print()
                 break
             else:
-                print("invalid input, please select (1-3)")
+                print("invalid input, please select (1-4)")
         except ValueError:
             print()
-            print("invalid input, please select (1-3)")
+            print("invalid input, please select (1-4)")
             print()
         except KeyboardInterrupt:
             print("\nKeyboard interruption detected. Exiting...")
@@ -491,6 +494,30 @@ def expense_menu_options():
             print()
             print(f"Invalid Input ,Please enter a number from {value_range}")
             print()
+
+def help_menu():
+    """
+    Printing the help menu
+    """
+    print("Manage Expenses Menu:")
+    print("------------------------------------------------------------------------------------")
+    print("1.Record Expense: Enter your expenses with the amount spent, category, and details.\n")
+    print("2.View Expenses: See a summary of all recorded expenses with categories and dates.\n")
+    print("3.Summarize Expense: Get a breakdown of your expenses by category\n")
+    print("4.Delete Expense: Delete an expense from the list.\n")
+    print()
+    print("Income Menu:")
+    print("------------------------------------------------------------------------------------")
+    print("1.Record Income: Enter your income with the amount received, source, and details.\n")
+    print("2.View Income: See a summary of all recorded income, including sources and dates.\n")
+    print("3.Delete Income: Delete an income from the list.\n")
+    print()
+    print("Instructions:")
+    print("All the cost must be in number values.\n")
+    print("The details of income or expense within 25 characters.\n")
+    print("Select options accordingly to exit from the app")
+
+    print()
 
 def title():
     """
