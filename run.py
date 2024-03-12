@@ -97,17 +97,13 @@ def get_expense_of_user():
     print("=================")
     print(" Expense Details ")
     print("=================")
+    print()
     print("Enter the amount which you spent(euros):")
     cost = validate_user_income_or_expense()
-    #print(f"you have entered : {cost} euros")
     user_selected_category=get_category()
-    #print(user_selected_category)
     message=validate_expense_message()
-    #print(f"you entered {message}")
     date_and_time=datetime.now().strftime("%d-%m-%y  %H:%M")
-    #print(date_and_time)
     user_expense_data=Expense(cost,user_selected_category,message,date_and_time)
-    #print("You have entered:",user_expense_data)
     return user_expense_data
 
 def get_category():
@@ -118,10 +114,10 @@ def get_category():
 
     while  True:
         try:
+            print("Expense Categories:")
             for i , name_of_category in enumerate(categories,1):
                 print(f" {i}. {name_of_category}")
             category_name_index=int(input("Select a category from [1-5]:\n"))-1
-            #print(f"you selected:{category_name_index+1}")
             if category_name_index in range(len(categories)):
                 selected_category=categories[category_name_index]
                 return selected_category
@@ -137,14 +133,11 @@ def get_income_of_user():
     print("=================")
     print("  Income Details ")
     print("=================")
+    print()
     print("Give your income_amount (in euros):")
     income= validate_user_income_or_expense()
-    #print(f"you entered: {income}")
     income_details=validate_income_source()
-    #print(f"you entered: {income_details}")
     current_date_time=datetime.now().strftime("%d-%m-%y  %H:%M")
-    #print(f"{current_date_time}")
-
     user_income_data=Income(source=income_details,income_amount=income,date_time=current_date_time)
     return user_income_data
 
@@ -254,6 +247,7 @@ def show_datas(worksheetname):
                 income_item += 1
     else:
         pass
+
 def summarize_expenses():
     """
     Summarize expenses by category
@@ -515,6 +509,5 @@ def main():
     Calling the functions
     """
     income_or_expense()
-
 
 main()
