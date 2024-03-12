@@ -513,6 +513,7 @@ def help_menu():
     print("3.Delete Income: Delete an income from the list.\n")
     print()
     print("Instructions:")
+    print("------------------------------------------------------------------------------------")
     print("All the cost must be in number values.\n")
     print("The details of income or expense within 25 characters.\n")
     print("Select options accordingly to exit from the app")
