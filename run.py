@@ -252,7 +252,7 @@ def show_datas(worksheetname):
         else:
             print("INCOME DATAS RECORD")
             print()
-            print(f"{ 'Itm_No':9} { 'Income Type':<30} { 'Actual Income':<15} { 'Date/Time':<15}")
+            print(f"{'Itm_No':9} {'Income Type':<30} {'Actual Income':<15} {'Date/Time':<15}")
             print("-"*65)
             income_item = 0
             for row in all_datas[1:]:
@@ -463,7 +463,7 @@ def expense_menu_options():
              "Return to Main Menu"]
     while True:
         print("===========================")
-        print("\033[96m    MANAGE EXPENSES MENU    \033[0m")
+        print("\033[96m   MANAGE EXPENSES MENU    \033[0m")
         print("===========================")
         print()
         for opt, option in enumerate(options,1): #looping to number the options
