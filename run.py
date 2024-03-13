@@ -166,10 +166,10 @@ def validate_user_income_or_expense(prompt):
                 print("\033[91mPlease give a valid amount, 0 is not allowed\033[0m")
             elif amount<0:#input cannot be minus
                 print("\033[91mPlease give a valid amount, Negative values are not allowed\033[0m")
-            elif len(str(int(abs(amount)))) > max_digits:
+            elif len(str(amount).replace('.', '')) > max_digits:
                 print("\033[91mPlease give a valid amount\033[0m")
                 print(f"\033[91mMaximum {max_digits} digits are allowed\033[0m")
-                print("\033[91mIf the amount is greater than 8 digits\033[0m")
+                print(f"\033[91mIf the amount is greater than {max_digits} digits\033[0m")
                 print("\033[91mPlease split it into (10000000) and enter separately\033[0m")
             else:
                 break
