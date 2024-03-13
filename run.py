@@ -37,7 +37,7 @@ class Expense:
         using to print the data in string format
         """
         return (f"\033[96mUpdated Expense Details:\n\n\033[0m"
-                f"Cost: \033[93m{self.amount}euros\n\033[0m"
+                f"Cost: \033[93m{self.amount} euros\n\033[0m"
                 f"Category:\033[93m {self.category}\n\033[0m"
                 f"Details:\033[93m {self.details}\n\033[0m"
                 f"date_time:\033[93m {self.date_time}\n\033[0m")
@@ -75,7 +75,7 @@ class Income:
         """
         return (f"\033[96mUpdated Income Details:\n\n\033[0m"
                 f"Source:\033[93m{self.source}\n\033[0m"
-                f"Income:\033[93m{self.income_amount}\n\033[0m"
+                f"Income:\033[93m{self.income_amount} euros\n\033[0m"
                 f"Date_time:\033[93m{self.date_time}\n\033[0m")
 
     @classmethod
@@ -177,8 +177,14 @@ def validate_text_inputs(text,max_len):
     """
     while True:
         user_input = input(text)
-        if len(user_input) > max_len:
-            print(f"Please enter the data within {max_len} characters.")
+        if len(user_input)==0:
+            print()
+            print("\033[91mDetails cannot be empty\033[0m")
+            print(f"\033[91mPlease enter some details within {max_len} characters.\n\033[0m")
+        elif len(user_input) > max_len:
+            print()
+            print("\033[91mText is too long\033[0m")
+            print(f"\033[91mPlease enter the data within {max_len} characters.\033[0m")
         else:
             break
     return user_input
@@ -283,25 +289,25 @@ def summarize_expenses():
         print("=============================")
         print()
         for category, total in sum_of_category.items():
-            print(f"{category}: \033[96m{total}\033[0m euros")
+            print(f"{category}: \033[93m{total}\033[0m euros")
 
         max_category = max(sum_of_category, key=sum_of_category.get)
         max_expense = sum_of_category[max_category]
 
         print()
         print("You spent the most in the category")
-        print(f"\033[96m{max_category}\033[0m  with a total of \033[96m{max_expense}\033[0m euros.")
+        print(f"\033[93m{max_category}\033[0m  with a total of \033[93m{max_expense}\033[0m euros.")
         income=Income.sum_of_income()# access through class method sum of income
         expense=Expense.sum_of_expense() #access through class method sum of expense
 
         balance_amount=income-expense
         if expense < balance_amount:
             print()
-            print(f"You have balance of \033[96m{balance_amount}\033[0m euros from your income")
+            print(f"You have balance of \033[93m{balance_amount}\033[0m euros from your income")
             print()
         elif expense > balance_amount:
             print()
-            print(f"You have deficit of \033[96m{-balance_amount}\033[0m euros from your income")
+            print(f"You have deficit of \033[93m{-balance_amount}\033[0m euros from your income")
             print()
         else:
             print()
