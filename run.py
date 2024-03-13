@@ -102,8 +102,7 @@ def get_expense_of_user():
     print("\033[96m Expense Details \033[0m")
     print("=================")
     print()
-    print("Enter the amount which you spent(euros):")
-    cost = validate_user_income_or_expense()
+    cost = validate_user_income_or_expense("Enter the amount which you spent (euros):\n")
     user_selected_category = get_category()
     message = validate_expense_message()
     date_and_time = datetime.now().strftime("%d-%m-%y  %H:%M")
@@ -145,8 +144,7 @@ def get_income_of_user():
     print("\033[96m  Income Details \033[0m")
     print("=================")
     print()
-    print("Give your income_amount (in euros):")
-    income = validate_user_income_or_expense()
+    income = validate_user_income_or_expense("Give your income_amount (in euros):\n")
     income_details = validate_income_source()
     current_date_time = datetime.now().strftime("%d-%m-%y  %H:%M")
     user_income_data = Income(source = income_details,
@@ -154,7 +152,7 @@ def get_income_of_user():
                               date_time = current_date_time)
     return user_income_data
 
-def validate_user_income_or_expense():
+def validate_user_income_or_expense(prompt):
     """
     Validate user income amount and expense amount for zero and negative values
     returns:
@@ -162,7 +160,7 @@ def validate_user_income_or_expense():
     """
     while True:
         try:
-            amount=float(input("\n"))
+            amount=float(input(prompt))
             if amount==0:#if input is 0
                 print("\033[91mPlease give a valid amount, 0 is not allowed\033[0m")
             elif amount<0:#input cannot be minus
@@ -364,7 +362,7 @@ def income_or_expense():
             print("\033[96m         WELCOME TO EXPENSIFY           \033[0m")
             print("========================================")
             print()
-            print("What would you like to do today?")
+            print("HI, WHAT WOULD YOU LIKE TO DO TODAY?\n")
             print("Select an option from the following:")
             print()
             print("1.Manage Income")
