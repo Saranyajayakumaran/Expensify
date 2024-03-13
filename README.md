@@ -11,10 +11,10 @@ Expensify is a versatile expense tracker designed to help users manage their fin
     - Visual studio code IDE is used to write ,edit and debug python code.
 
 - Google sheet
-    Google sheet is  a cloud Api used to store and edit datas.
+    - Google sheet is  a cloud Api used to store and edit datas.
 
 - GitHub
-    -GitHub is a Version control system for managing codebase and collaboration.
+    - GitHub is a Version control system for managing codebase and collaboration.
 
 - Git
     - Git is used to tracking changes and managing branches from the development Interface.
@@ -58,7 +58,7 @@ Expensify is a versatile expense tracker designed to help users manage their fin
     - Return to main menu:
             Allow user to navigate back to main menu when they needed
 
-## Manage Expense
+### Manage Expense
 - The Manage expense feature helps user to efficiently track and manage their expenses.
 - When user selects the Manage Expense option from the main menu, users can seamlessly record new expense entries by providing details such as the expense amount, its category, and any relevant additional information. 
    
@@ -77,8 +77,8 @@ Expensify is a versatile expense tracker designed to help users manage their fin
     - Delete expense: 
             Allow users to remove a specific expense entry by selecting the item number.
 
-## Help
+### Help
 - The Help feature provides users with a simple and intuitive interface to access the Expensify app.
 
-## Exit
+### Exit
 - Exit feature allows user to exit the application.

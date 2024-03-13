@@ -1,5 +1,6 @@
 """
-This module provides functionality for interacting with Google Sheets using the gspread library.
+This module provides functionality for interacting with
+Google Sheets using the gspread library.
 """
 from datetime import datetime
 import gspread
@@ -10,10 +11,10 @@ SCOPE = [
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive"
     ]
-CREDS=Credentials.from_service_account_file('creds.json')
-SCOPED_CREDS=CREDS.with_scopes(SCOPE)
-GSPREAD_CLIENT=gspread.authorize(SCOPED_CREDS)
-SHEET=GSPREAD_CLIENT.open('Expense tracker')
+CREDS = Credentials.from_service_account_file('creds.json')
+SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+SHEET = GSPREAD_CLIENT.open('Expense tracker')
 
 #expenses = SHEET.worksheet('Expenses')
 #datas=expenses.get_all_values()
@@ -23,11 +24,12 @@ class Expense:
     Class contains all the expense feilds to get from the user.
     """
     total_expense=0
-    def __init__(self,amount,category,details="",date_time=None):
-        self.amount=amount
-        self.category=category
-        self.details=details
-        self.date_time=date_time
+
+    def __init__(self, amount, category, details="", date_time=None):
+        self.amount = amount
+        self.category = category
+        self.details = details
+        self.date_time = date_time
 
     def __str__(self):
         """"
@@ -45,24 +47,26 @@ class Expense:
         """
         Get the total expense from the user
         """
-        cls.total_expense=0
+        cls.total_expense = 0
         worksheet = SHEET.worksheet("Expenses")
         all_expense_data = worksheet.get_all_values()
         for row in all_expense_data[1:]:
-            actual_expense=row[0]
+            actual_expense = row[0]
             expense_amount=float(actual_expense)
             cls.total_expense+=expense_amount
         return cls.total_expense
+
 
 class Income:
     """
     Get income details form the user
     """
-    total_income=0
-    def __init__(self,income_amount,source,date_time):
-        self.income_amount=income_amount
-        self.source=source
-        self.date_time=date_time
+    total_income = 0
+
+    def __init__(self, income_amount, source, date_time):
+        self.income_amount = income_amount
+        self.source = source
+        self.date_time = date_time
 
     def __str__(self):
         """"
@@ -79,13 +83,13 @@ class Income:
         """"
         Get the total income from the user
         """""
-        cls.total_income=0
+        cls.total_income = 0
         worksheet = SHEET.worksheet("Income")
         all_income_data = worksheet.get_all_values()
         for row in all_income_data[1:]:
-            actual_income=row[1]
-            income_amount=float(actual_income)
-            cls.total_income+=income_amount
+            actual_income = row[1]
+            income_amount = float(actual_income)
+            cls.total_income += income_amount
         return cls.total_income
 
 
@@ -100,31 +104,38 @@ def get_expense_of_user():
     print()
     print("Enter the amount which you spent(euros):")
     cost = validate_user_income_or_expense()
-    user_selected_category=get_category()
-    message=validate_expense_message()
-    date_and_time=datetime.now().strftime("%d-%m-%y  %H:%M")
-    user_expense_data=Expense(cost,user_selected_category,message,date_and_time)
+    user_selected_category = get_category()
+    message = validate_expense_message()
+    date_and_time = datetime.now().strftime("%d-%m-%y  %H:%M")
+    user_expense_data = Expense(cost, user_selected_category, message, date_and_time)
     return user_expense_data
+
 
 def get_category():
     """
-    Get the category of expense from the user 
+    Get the category of expense from the user
     """
-    categories=["Food","Home","Fun","Car","Miscellenious"]
+    categories = ["Food", "Home", "Fun", "Car", "Misc"]
 
-    while  True:
+    while True:
         try:
             print("Expense Categories:")
-            for i , name_of_category in enumerate(categories,1):
+            for i ,name_of_category in enumerate(categories,1):
                 print(f" {i}. {name_of_category}")
-            category_name_index=int(input("Select a category from [1-5]:\n"))-1
+            category_name_index = int(input("\n\033[94mSelect a category from [1-5]:\n\033[0m"))-1
             if category_name_index in range(len(categories)):
                 selected_category=categories[category_name_index]
                 return selected_category
             else:
-                print(f"Invalid category. Please enter a valid category [1-{len(categories)}]")
+                print()
+                print("\033[91mInvalid category.\033[0m")
+                print(f"\033[91mPlease enter a valid category [1-{len(categories)}]\033[0m")
+                print()
         except ValueError:
-            print(f"Invalid category. Please enter a valid category [1-{len(categories)}]")
+            print()
+            print("\033[91mInvalid category.\033[0m")
+            print(f"\033[91mPlease enter a valid category [1-{len(categories)}]\033[0m")
+            print()
 
 def get_income_of_user():
     """
@@ -135,10 +146,12 @@ def get_income_of_user():
     print("=================")
     print()
     print("Give your income_amount (in euros):")
-    income= validate_user_income_or_expense()
-    income_details=validate_income_source()
-    current_date_time=datetime.now().strftime("%d-%m-%y  %H:%M")
-    user_income_data=Income(source=income_details,income_amount=income,date_time=current_date_time)
+    income = validate_user_income_or_expense()
+    income_details = validate_income_source()
+    current_date_time = datetime.now().strftime("%d-%m-%y  %H:%M")
+    user_income_data = Income(source = income_details,
+                              income_amount = income,
+                              date_time = current_date_time)
     return user_income_data
 
 def validate_user_income_or_expense():
@@ -151,13 +164,13 @@ def validate_user_income_or_expense():
         try:
             amount=float(input("\n"))
             if amount==0:#if input is 0
-                print("Please give a valid amount, 0 is not allowed ")
+                print("\033[91mPlease give a valid amount, 0 is not allowed\033[0m")
             elif amount<0:#input cannot be minus
-                print("Please give a valid amount, Negative values are not allowed")
+                print("\033[91mPlease give a valid amount, Negative values are not allowed\033[0m")
             else:
                 break
         except ValueError:
-            print("Invalid input. please enter a valid number")
+            print("\033[91mInvalid input. please enter a valid number\033[0m")
     return amount
 
 def validate_text_inputs(text,max_len):
@@ -165,8 +178,8 @@ def validate_text_inputs(text,max_len):
     Validate user expense details and income details within 25 chracters
     """
     while True:
-        user_input=input(text)
-        if len(user_input)>max_len:
+        user_input = input(text)
+        if len(user_input) > max_len:
             print(f"Please enter the data within {max_len} characters.")
         else:
             break
@@ -196,7 +209,8 @@ def save_data_to_worksheet(data,worksheet_name):
     """
     Recevies data from user and inserted into relevant worksheet
     """
-    print(f"Updating datas in {worksheet_name} worksheet........\n")
+    print()
+    print(f"\033[93mUpdating datas in {worksheet_name} worksheet........\n\033[0m")
     print()
     worksheet=SHEET.worksheet(worksheet_name)
 
@@ -205,12 +219,11 @@ def save_data_to_worksheet(data,worksheet_name):
     elif worksheet_name=="Income":
         data_list=[data.source,data.income_amount,data.date_time]
     else:
-        print("Invalid worksheet, please enter a valid worksheet name")
+        print("\033[91mInvalid worksheet, please enter a valid worksheet name\033[0m")
         return
 
     worksheet.append_row(data_list)
-    print()
-    print(f"{worksheet_name} worksheet updated successfully")
+    print(f"\033[93m{worksheet_name} worksheet updated successfully\033[0m")
     print()
     print(data)
 
@@ -223,11 +236,11 @@ def show_datas(worksheetname):
 
     if worksheetname=="Expenses":
         if len(all_datas)==0:
-            print("No expense data available")
+            print("\033[91mNo expense data available\033[0m")
         else:
             print("EXPENSE DATAS RECORD")
             print()
-            print(f"{'Itm_No':9} {'Amount':<10} {'Category':<10} {'Details':<30} {'Date/Time':<20}")
+            print(f"{'Itm_No':9} {'Amount':<10} {'Category':<15} {'Details':<30} {'Date/Time':<20}")
             print("-"*80)
             expense_item = 0
             for row in all_datas[1:]: # looping to get all the row values form google sheet
@@ -235,15 +248,15 @@ def show_datas(worksheetname):
                 expense_item += 1
     elif worksheetname=="Income":
         if len(all_datas)==0:
-            print("No Income data available")
+            print("\033[91mNo Income data available\033[0m")
         else:
             print("INCOME DATAS RECORD")
             print()
-            print(f"{ 'Itm_No':9} { 'Income Type':<20} { 'Actual Income':<15} { 'Date/Time':<15}")
+            print(f"{ 'Itm_No':9} { 'Income Type':<30} { 'Actual Income':<15} { 'Date/Time':<15}")
             print("-"*65)
             income_item = 0
             for row in all_datas[1:]:
-                print(f"{(income_item+1):^9} {row[0]:<20} {row[1]:<15} {row[2]:<15}")
+                print(f"{(income_item+1):^9} {row[0]:<30} {row[1]:<15} {row[2]:<15}")
                 income_item += 1
     else:
         pass
@@ -257,7 +270,7 @@ def summarize_expenses():
     worksheet = SHEET.worksheet("Expenses")
     all_expense_data = worksheet.get_all_values()
     if len(all_expense_data) == 0:
-        print("No expense datas available")
+        print("\033[91mNo expense datas available\033[0m")
     else:
         sum_of_category = {}
         for row in all_expense_data[1:]:
@@ -272,29 +285,29 @@ def summarize_expenses():
         print("=============================")
         print()
         for category, total in sum_of_category.items():
-            print(f"{category}: {total} euros")
+            print(f"{category}: \033[96m{total}\033[0m euros")
 
         max_category = max(sum_of_category, key=sum_of_category.get)
         max_expense = sum_of_category[max_category]
 
         print()
         print("You spent the most in the category")
-        print(f"{max_category} with a total of {max_expense} euros.")
+        print(f"\033[96m{max_category}\033[0m  with a total of \033[96m{max_expense}\033[0m euros.")
         income=Income.sum_of_income()# access through class method sum of income
         expense=Expense.sum_of_expense() #access through class method sum of expense
 
         balance_amount=income-expense
         if expense < balance_amount:
             print()
-            print(f"You have balance of {balance_amount} euros from your income")
+            print(f"You have balance of \033[96m{balance_amount}\033[0m euros from your income")
             print()
         elif expense > balance_amount:
             print()
-            print(f"You have deficit of {-balance_amount} euros from your income")
+            print(f"You have deficit of \033[96m{-balance_amount}\033[0m euros from your income")
             print()
         else:
             print()
-            print("You have no balance from your income")
+            print("\033[93mYou have no balance from your income\033[0m")
             print()
 
 def delete_a_row(worksheetname):
@@ -315,12 +328,12 @@ def delete_a_row(worksheetname):
             try:
                 if item > 0 and item <= (len(all_datas)-1):
                     worksheet.delete_rows(item + 1)
-                    print("Deleted item:", item)
+                    print("\033[93mDeleted item:\033[0m", item)
                     break
                 else:
-                    print("Invalid item. Please enter a valid item number.")
+                    print("\033[91mInvalid item. Please enter a valid item number.\033[0m")
             except ValueError:
-                print("Invalid Item, please enter a valid item")
+                print("\033[91mInvalid Item, please enter a valid item\033[0m")
 
     elif worksheetname == "Income":
         show_datas("Income")
@@ -331,12 +344,12 @@ def delete_a_row(worksheetname):
             try:
                 if item > 0 and item <= (len(all_datas)-1):
                     worksheet.delete_rows(item + 1)
-                    print("Deleted item:", item)
+                    print("\033[93mDeleted item:\033[0m", item)
                     break
                 else:
-                    print("Invalid item. Please enter a valid item number.")
+                    print("\033[91mInvalid item. Please enter a valid item number.\033[0m")
             except ValueError:
-                print("Invaid Item,please enter a valid item")
+                print("\033[91mInvaid Item,please enter a valid item\033[0m")
     else:
         pass
 
@@ -348,7 +361,7 @@ def income_or_expense():
     while True:
         try:
             print("========================================")
-            print("         WELCOME TO EXPENSIFY           ")
+            print("\033[96m         WELCOME TO EXPENSIFY           \033[0m")
             print("========================================")
             print()
             print("What would you like to do today?")
@@ -359,7 +372,7 @@ def income_or_expense():
             print("3.Help")
             print("4.Exit")
             print()
-            user_input=int(input("Enter you choice[1-4]:\n"))
+            user_input=int(input("\033[94mEnter you choice[1-4]:\n\033[0m"))
             print()
             if user_input==1:
                 income_menu_option()
@@ -368,17 +381,17 @@ def income_or_expense():
             elif user_input==3:
                 help_menu()
             elif user_input==4:
-                print("Exiting from the App. HAVE A GOOD DAY")
+                print("\033[92mEXITING FROM EXPENSIFY. HAVE A GOOD DAY\033[0m")
                 print()
                 break
             else:
-                print("invalid input, please select (1-4)")
+                print("\033[91mInvalid input, please select (1-4)\033[0m")
         except ValueError:
             print()
-            print("invalid input, please select (1-4)")
+            print("\033[91mInvalid input, please select (1-4)\033[0m")
             print()
         except KeyboardInterrupt:
-            print("\nKeyboard interruption detected. Exiting...")
+            print("\033[91m\nKeyboard interruption detected. Exiting...\033[0m")
             break
 
 def income_menu_option():
@@ -390,7 +403,6 @@ def income_menu_option():
                     "Delete Income data",
                     "Return to Main Menu"]
     while True:
-        print()
         print("===========================")
         print("   MANAGE INCOME MENU      ")
         print("===========================")
@@ -401,7 +413,7 @@ def income_menu_option():
         try:
             value_range=f"[1-{len(income_options)}]"
             print()
-            selected_index=int(input(f"Select an option from the following {value_range}:\n"))
+            selected_index=int(input(f"\033[94mSelect an option from {value_range}:\n\033[0m"))
             print()
             #print(f"you have selected: {selected_index}")
             if selected_index in range(len(income_options)+1):
@@ -413,26 +425,28 @@ def income_menu_option():
                 elif selected_index== 3:
                     delete_a_row("Income")
                 elif selected_index== 4:
-                    print("Returning to main menu...........")
+                    print("\033[92mReturning to main menu...........\033[0m")
                     print()
                     break
                 else:
                     print()
-                    print(f"Invalid option, Please enter a valid option from {value_range}")
+                    print("\033[91mInvalid option\033[0m")
+                    print(f"\033[91mPlease enter a valid option from {value_range}\033[0m")
                     print()
             else:
                 print()
-                print(f"Invalid option, Please enter a valid option from {value_range}")
+                print("\033[91mInvalid option\033[0m")
+                print(f"\033[91mPlease enter a valid option from {value_range}\033[0m")
                 print()
 
         except KeyboardInterrupt:
             print()
-            print("\nKeyboard interruption detected. Exiting...")
+            print("\n\033[91mKeyboard interruption detected. Exiting...\033[0m")
             print()
             break
         except ValueError:
             print()
-            print(f"Invalid Input ,Please enter a number from {value_range}")
+            print(f"\033[91mInvalid Input ,Please enter a number from {value_range}\033[0m")
             print()
             print()
 
@@ -448,7 +462,6 @@ def expense_menu_options():
              "Delete Expense",
              "Return to Main Menu"]
     while True:
-        print()
         print("===========================")
         print("   MANAGE EXPENSES MENU    ")
         print("===========================")
@@ -458,7 +471,7 @@ def expense_menu_options():
         try:
             value_range=f"[1-{len(options)}]"
             print()
-            user_choice=int(input(f"Select an option from the following {value_range}:\n"))
+            user_choice=int(input(f"\033[94mSelect an option from {value_range}:\n\033[0m"))
             print()
             print(f"you ave selected:  {user_choice}")
             print()
@@ -473,46 +486,48 @@ def expense_menu_options():
                 elif user_choice== 4:
                     delete_a_row("Expenses")
                 elif user_choice== 5:
-                    print("Returning to main menu.....")
+                    print("\033[92mReturning to main menu.....\033[0m")
                     break
                 else:
                     print()
-                    print(f"Invalid option, try again please enter a numnber from{value_range}")
+                    print("\033[91mInvalid option, try again\033[0m")
+                    print(f"\033[91mPlease enter a numnber from{value_range}\033[0m")
                     print("---------------------------")
                     print()
             else:
                 print()
-                print(f"Invalid option, try again please enter a numnber from{value_range}")
+                print("\033[91mInvalid option, try again\033[0m")
+                print(f"\033[91mPlease enter a numnber from{value_range}\033[0m")
                 print("----------------------------")
                 print()
         except KeyboardInterrupt:
             print()
-            print("\nKeyboard interruption detected. Exiting...")
+            print("\n\033[91mKeyboard interruption detected. Exiting...\033[0m")
             print()
             break
         except ValueError:
             print()
-            print(f"Invalid Input ,Please enter a number from {value_range}")
+            print(f"\033[91mInvalid Input ,Please enter a number from {value_range}\033[0m")
             print()
 
 def help_menu():
     """
     Printing the help menu
     """
-    print("Manage Expenses Menu:")
+    print("\033[96mManage Expenses Menu:\033[0m")
     print("------------------------------------------------------------------------------------")
     print("1.Record Expense: Enter your expenses with the amount spent, category, and details.\n")
     print("2.View Expenses: See a summary of all recorded expenses with categories and dates.\n")
     print("3.Summarize Expense: Get a breakdown of your expenses by category\n")
     print("4.Delete Expense: Delete an expense from the list.\n")
     print()
-    print("Income Menu:")
+    print("\033[96mIncome Menu:\033[0m")
     print("------------------------------------------------------------------------------------")
     print("1.Record Income: Enter your income with the amount received, source, and details.\n")
     print("2.View Income: See a summary of all recorded income, including sources and dates.\n")
     print("3.Delete Income: Delete an income from the list.\n")
     print()
-    print("Instructions:")
+    print("\033[96mInstructions:\033[0m")
     print("------------------------------------------------------------------------------------")
     print("All the cost must be in number values.\n")
     print("The details of income or expense within 25 characters.\n")
