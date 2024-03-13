@@ -158,6 +158,7 @@ def validate_user_income_or_expense(prompt):
     returns:
         float
     """
+    max_digits=8
     while True:
         try:
             amount=float(input(prompt))
@@ -165,6 +166,11 @@ def validate_user_income_or_expense(prompt):
                 print("\033[91mPlease give a valid amount, 0 is not allowed\033[0m")
             elif amount<0:#input cannot be minus
                 print("\033[91mPlease give a valid amount, Negative values are not allowed\033[0m")
+            elif len(str(int(abs(amount)))) > max_digits:
+                print("\033[91mPlease give a valid amount\033[0m")
+                print(f"\033[91mMaximum {max_digits} digits are allowed\033[0m")
+                print("\033[91mIf the amount is greater than 8 digits\033[0m")
+                print("\033[91mPlease split it into (10000000) and enter separately\033[0m")
             else:
                 break
         except ValueError:
@@ -243,7 +249,7 @@ def show_datas(worksheetname):
             print("\033[91mNo expense data available\033[0m")
         else:
             print("===================================")
-            print("\033[96mEXPENSE DATAS RECORD\033[0m")
+            print("\033[96m     EXPENSE DATAS RECORD\033[0m")
             print("===================================")
             print()
             print(f"{'Itm_No':9} {'Amount':<10} {'Category':<15} {'Details':<30} {'Date/Time':<20}")
@@ -256,15 +262,15 @@ def show_datas(worksheetname):
         if len(all_datas)==0:
             print("\033[91mNo Income data available\033[0m")
         else:
-            print("====================================")
-            print("\033[96mINCOME DATAS RECORD\033[0m")
+            print("=====================================")
+            print("\033[96m     INCOME DATAS RECORD\033[0m")
             print("=====================================")
             print()
-            print(f"{'Itm_No':9} {'Income Type':<30} {'Actual Income':<15} {'Date/Time':<15}")
-            print("-"*65)
+            print(f"{'Itm_No':9} {'Income Type':<30} {'Actual Income':<15} {'Date/Time':^15}")
+            print("-"*80)
             income_item = 0
             for row in all_datas[1:]:
-                print(f"{(income_item+1):^9} {row[0]:<30} {row[1]:<15} {row[2]:<15}")
+                print(f"{(income_item+1):^9} {row[0]:<30} {row[1]:^15} {row[2]:<15}")
                 print()
                 income_item += 1
     else:
