@@ -118,7 +118,7 @@ def get_category():
 
     while True:
         try:
-            print("Expense Categories:")
+            print("\033[96mExpense Categories:\033[0m")
             for i ,name_of_category in enumerate(categories,1):
                 print(f" {i}. {name_of_category}")
             category_name_index = int(input("\n\033[94mSelect a category from [1-5]:\n\033[0m"))-1
@@ -242,7 +242,9 @@ def show_datas(worksheetname):
         if len(all_datas)==0:
             print("\033[91mNo expense data available\033[0m")
         else:
-            print("EXPENSE DATAS RECORD")
+            print("===================================")
+            print("\033[96mEXPENSE DATAS RECORD\033[0m")
+            print("===================================")
             print()
             print(f"{'Itm_No':9} {'Amount':<10} {'Category':<15} {'Details':<30} {'Date/Time':<20}")
             print("-"*80)
@@ -254,13 +256,14 @@ def show_datas(worksheetname):
         if len(all_datas)==0:
             print("\033[91mNo Income data available\033[0m")
         else:
-            print("INCOME DATAS RECORD")
+            print("\033[96mINCOME DATAS RECORD\033[0m")
             print()
             print(f"{'Itm_No':9} {'Income Type':<30} {'Actual Income':<15} {'Date/Time':<15}")
             print("-"*65)
             income_item = 0
             for row in all_datas[1:]:
                 print(f"{(income_item+1):^9} {row[0]:<30} {row[1]:<15} {row[2]:<15}")
+                print()
                 income_item += 1
     else:
         pass
@@ -284,9 +287,9 @@ def summarize_expenses():
                 sum_of_category[category] += amount
             else:
                 sum_of_category[category] = amount
-        print("=============================")
+        print("=================================")
         print("\033[96m  EXPENSE SUMMARY BY CATEGORY \033[0m")
-        print("=============================")
+        print("=================================")
         print()
         for category, total in sum_of_category.items():
             print(f"{category}: \033[93m{total}\033[0m euros")
@@ -332,28 +335,33 @@ def delete_a_row(worksheetname):
             try:
                 if item > 0 and item <= (len(all_datas)-1):
                     worksheet.delete_rows(item + 1)
-                    print("\033[93mDeleted item:\033[0m", item)
+                    print("\033[93mDeleted item:\033[0m\n", item)
                     break
                 else:
-                    print("\033[91mInvalid item. Please enter a valid item number.\033[0m")
+                    print()
+                    print("\033[91mInvalid item. Please enter a valid item number.\033[0m\n")
             except ValueError:
-                print("\033[91mInvalid Item, please enter a valid item\033[0m")
+                print()
+                print("\033[91mInvalid Item, please enter a valid item\033[0m\n")
 
     elif worksheetname == "Income":
         show_datas("Income")
         print("==============================================")
         print("Which Income item do you want to delete")
+        print()
         while True:
             item = int(input("Enter the item number:\n"))
             try:
                 if item > 0 and item <= (len(all_datas)-1):
                     worksheet.delete_rows(item + 1)
-                    print("\033[93mDeleted item:\033[0m", item)
+                    print("\033[93mDeleted item:\033[0m\n", item)
                     break
                 else:
-                    print("\033[91mInvalid item. Please enter a valid item number.\033[0m")
+                    print()
+                    print("\033[91mInvalid item. Please enter a valid item number.\033[0m\n")
             except ValueError:
-                print("\033[91mInvaid Item,please enter a valid item\033[0m")
+                print()
+                print("\033[91mInvaid Item,please enter a valid item\033[0m\n")
     else:
         pass
 
