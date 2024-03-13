@@ -256,7 +256,9 @@ def show_datas(worksheetname):
         if len(all_datas)==0:
             print("\033[91mNo Income data available\033[0m")
         else:
+            print("====================================")
             print("\033[96mINCOME DATAS RECORD\033[0m")
+            print("=====================================")
             print()
             print(f"{'Itm_No':9} {'Income Type':<30} {'Actual Income':<15} {'Date/Time':<15}")
             print("-"*65)
