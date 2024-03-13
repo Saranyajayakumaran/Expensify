@@ -36,11 +36,11 @@ class Expense:
         Get the total expense from the user
         using to print the data in string format
         """
-        return (f"Updated Expense Details:\n"
-                f"Cost: {self.amount}euros\n"
-                f"Category: {self.category}\n"
-                f"Details: {self.details}\n"
-                f"date_time: {self.date_time}\n")
+        return (f"\033[96mUpdated Expense Details:\n\n\033[0m"
+                f"Cost: \033[93m{self.amount}euros\n\033[0m"
+                f"Category:\033[93m {self.category}\n\033[0m"
+                f"Details:\033[93m {self.details}\n\033[0m"
+                f"date_time:\033[93m {self.date_time}\n\033[0m")
 
     @classmethod
     def sum_of_expense(cls):
@@ -73,10 +73,10 @@ class Income:
         Get the total income from the user
         using to print the data in string format
         """
-        return (f"Updated Income\n"
-                f"Source:{self.source}\n"
-                f"Income:{self.income_amount}\n"
-                f"Date_time:{self.date_time}\n")
+        return (f"\033[96mUpdated Income Details:\n\n\033[0m"
+                f"Source:\033[93m{self.source}\n\033[0m"
+                f"Income:\033[93m{self.income_amount}\n\033[0m"
+                f"Date_time:\033[93m{self.date_time}\n\033[0m")
 
     @classmethod
     def sum_of_income(cls):
@@ -99,7 +99,7 @@ def get_expense_of_user():
     amount:int, category:string, details:string,date/time:date
     """
     print("=================")
-    print(" Expense Details ")
+    print("\033[96m Expense Details \033[0m")
     print("=================")
     print()
     print("Enter the amount which you spent(euros):")
@@ -142,7 +142,7 @@ def get_income_of_user():
     Get income of the user
     """
     print("=================")
-    print("  Income Details ")
+    print("\033[96m  Income Details \033[0m")
     print("=================")
     print()
     print("Give your income_amount (in euros):")
@@ -281,7 +281,7 @@ def summarize_expenses():
             else:
                 sum_of_category[category] = amount
         print("=============================")
-        print(" EXPENSE SUMMARY BY CATEGORY ")
+        print("\033[96m  EXPENSE SUMMARY BY CATEGORY \033[0m")
         print("=============================")
         print()
         for category, total in sum_of_category.items():
@@ -404,7 +404,7 @@ def income_menu_option():
                     "Return to Main Menu"]
     while True:
         print("===========================")
-        print("   MANAGE INCOME MENU      ")
+        print("\033[96m    MANAGE INCOME MENU       \033[0m")
         print("===========================")
         print()
 
@@ -463,7 +463,7 @@ def expense_menu_options():
              "Return to Main Menu"]
     while True:
         print("===========================")
-        print("   MANAGE EXPENSES MENU    ")
+        print("\033[96m    MANAGE EXPENSES MENU    \033[0m")
         print("===========================")
         print()
         for opt, option in enumerate(options,1): #looping to number the options
@@ -487,6 +487,7 @@ def expense_menu_options():
                     delete_a_row("Expenses")
                 elif user_choice== 5:
                     print("\033[92mReturning to main menu.....\033[0m")
+                    print()
                     break
                 else:
                     print()
