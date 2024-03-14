@@ -97,46 +97,66 @@ Expensify is a versatile expense tracker designed to help users manage their fin
 - Mobile app enchancements:
         Develop a mobile app version of Expensify to enhance accessibility and convenience for users on the go. 
 
+## How to Use Expensify
 
-## How the App works:
-- Step1: From the main menu user can select any one option manage income or manage expense.
-- Step2: When user selects manage expense it contains 5 options
-- Step3: if option1
-                Record new expense
-                        Enter the datas expense amount, select category, give details and it store in spread sheet with date and time.
-         else if option2
-                View all expense
-                        User can see all the recorded expense in a table with all the details
-         else if option3 
-                Summrize Expense
-                        User will see the breakdown of user expenses by category, it helps to understand your spending habits. 
-         else if option 4
-                Delete Expense
-                        It helps the user to delete a row of datas from google sheet with item number from expeses worksheet which user selected.
-         else if option 5
-                Return to main menu
-                        User can go back to main menu.
-- Step 4: When user selects manage income from main menu it contains 4 options
-- Step 5: if option 1
-                Record new income
-                        Enter the datas of income amount and its source and it store in spread sheet with date and time.
-         else if option 2
-                View all income
-                        User can see all the recorded income in a table with all the details
-         else if option 3 
-                Delete income
-                        It helps the user to delete a row of data from google sheet with the item number from income worksheet which user selected.
-         else if option 4
-                Return to main menu
-                        User can go back to main menu.
-- Step 6: When user selects help menu from main menu, It will show the overview of expensify app and show the informantion of each field and how to use it.
-- Step 7: When user selects exit menu from main menu, It will close the app.
+### Step 1: Selecting Options from the Main Menu
+- From the main menu, users can choose to manage income or manage expenses.
 
-(The amount will be validate with 0 nd negative numbers nd also limited to 8 digits)
-(The characters in message and details of income and expense are also limited to 25)
+### Step 2: Managing Expenses
+- When selecting "Manage Expenses," users are presented with five options:
+  1. **Record New Expense:**
+      - Users can enter the expense amount, select a category, provide details, and store the data in the spreadsheet along with the date and time.
+  2. **View All Expenses:**
+      - Users can view all recorded expenses in a table with detailed information.
+  3. **Summarize Expenses:**
+      - Users can see a breakdown of their expenses by category, helping them understand their spending habits.
+  4. **Delete Expense:**
+      - Allows users to delete a specific expense by selecting its item number from the expenses worksheet.
+  5. **Return to Main Menu:**
+      - Provides an option to return to the main menu for further navigation.
+
+### Step 3: Managing Income (Optional)
+- Alternatively, users can choose to manage income, which presents similar options for recording, viewing, summarizing, and deleting income data.
+  1. **Record New Income:**
+      - Users can enter the income amount, specify its source, and store the data in the spreadsheet along with the date and time.
+  2. **View All Income:**
+      - Users can view all recorded income entries in a table with detailed information.
+  3. **Delete Income:**
+      - Allows users to delete a specific income entry by selecting its item number from the income worksheet.
+  4. **Return to Main Menu:**
+      - Provides an option to return to the main menu for further navigation.
+
+### Step 4: Accessing Help
+- Users can access the help menu from the main menu to get an overview of the Expensify app and learn how to use its features effectively.
+
+### Step 5: Exiting the App
+- Users can choose the exit option from the main menu to close the Expensify app.
+
+
+## Validation Rules and Limits
+
+### Amount Validation
+- The amount entered for both income and expense entries is validated to ensure it meets the following criteria:
+  - It cannot be zero.
+  - It cannot be a negative number.
+  - It is limited to a maximum of 8 digits.
+
+### Message and Details Character Limit
+- When providing details or messages for income and expense entries, users are required to adhere to the following character limits:
+  - Messages and details are limited to a maximum of 25 characters.
+
+## Options Validation
+
+### Input Format
+- When selecting options within the Expensify app, users must provide numeric input.
+  - Options cannot be strings and must be numbers.
+  - The input must be within the specified range of available options.
+    - It cannot be zero.
+    - It cannot exceed the maximum number of available options.
+
+These validation rules ensure that users provide valid input when navigating the menu options in the Expensify app.
 
 ## Testing
 
-                      
 
                
