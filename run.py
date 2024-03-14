@@ -522,7 +522,7 @@ def income_menu_option():
         except KeyboardInterrupt:
             print()
             print("\n\033[91mKeyboard interruption detected."
-                  "Exiting...\033[0m")
+                  "Returning to Main Menu...\033[0m")
             print()
             break
         except ValueError:
@@ -541,8 +541,8 @@ def expense_menu_options():
     """
     options = ["Record new Expense",
                "View all expense",
-               "Summerize Expenses",
                "Delete Expense",
+               "Summerize Expenses",
                "Return to Main Menu"]
     while True:
         print("===========================")
@@ -564,9 +564,9 @@ def expense_menu_options():
                 elif user_choice == 2:
                     show_datas("Expenses")
                 elif user_choice == 3:
-                    summarize_expenses()
-                elif user_choice == 4:
                     delete_a_row("Expenses")
+                elif user_choice == 4:
+                    summarize_expenses()
                 elif user_choice == 5:
                     print("\033[92mReturning to main menu.....\033[0m")
                     print()
@@ -588,7 +588,7 @@ def expense_menu_options():
         except KeyboardInterrupt:
             print()
             print("\n\033[91mKeyboard interruption detected."
-                  " Exiting...\033[0m")
+                  " Returning to Main Menu...\033[0m")
             print()
             break
         except ValueError:

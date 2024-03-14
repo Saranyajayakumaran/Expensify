@@ -158,5 +158,35 @@ These validation rules ensure that users provide valid input when navigating the
 
 ## Testing
 
+## Functional testing
+
+### MAIN MENU
+#### Valid Input Handling
+
+|User Input|Expected Behavior|Pass/Fail|
+|------|---------------------|---------|
+|Enter 1 |Successfully navigate to Manage Income|Pass|
+|Enter 2 |Successfully navigate to Manage Expense|Pass|
+|Enter 3|Successfully navigate to Help menu|Pass|
+|Enter 4 |Successfully exit the application|Pass|
+
+
+#### Invalid Input Handling
+|User Input|Expected Behavior|Pass/Fail|
+|----------|-----------------|---------|
+|Enter 0|Prompt user to re-enter a valid option|Pass|
+|Enter value > 4|Prompt user to re-enter a valid option|Pass|
+|Enter a string/char|Prompt user to re-enter a valid numeric option|Pass|
+
+
+### MANAGE INCOME
+
+|User Input|Expected Behavior|Pass/Fail||pass|
+|------|---------------|
+
+
+
+
+
 
                
