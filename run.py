@@ -602,6 +602,14 @@ def help_menu():
     """
     Printing the help menu
     """
+    print("\033[96mEXPENSIFY:Your Personal Expense Tracker\033[0m")
+    print("-------------------------------------------"
+          "------------------------------------")
+    print("Expensify is a handy tool designed to\n\n"
+          "help you manage your expenses efficiently.\n\n"
+          "With Expensify, you can easily track your spending,\n\n"
+          "record your income, and categorize your transactions \n\n"
+          "to gain insights into your financial habits. \n\n")
     print("\033[96mManage Expenses Menu:\033[0m")
     print("-------------------------------------------"
           "----------------------------------")
@@ -617,7 +625,7 @@ def help_menu():
     print("4.Delete Expense:\n"
           "  Delete an expense from the list.\n")
     print()
-    print("\033[96mIncome Menu:\033[0m")
+    print("\033[96mManage Income Menu:\033[0m")
     print("-------------------------------------------"
           "-----------------------------------")
     print("1.Record Income:\n"
@@ -632,10 +640,10 @@ def help_menu():
     print("\033[96mInstructions:\033[0m")
     print("--------------------------------------------"
           "----------------------------------")
-    print("All the cost must be in number values(Max 8 digits).\n")
-    print("The details of income or expense"
+    print("1.All the cost must be in number values(Max 8 digits).\n")
+    print("2.The details of income or expense"
           " within 25 characters.\n")
-    print("Select options (Exit) accordingly to exit from the app")
+    print("3.Select options (Exit) accordingly to exit from the app")
     print()
 
 
