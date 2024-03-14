@@ -82,3 +82,61 @@ Expensify is a versatile expense tracker designed to help users manage their fin
 
 ### Exit
 - Exit feature allows user to exit the application.
+
+## Future Implementation
+- User Authentication and Account Management:
+        Implement user authentication and account creation to maintain personal accounts.
+- Budget and goal tracking:
+        Introduce budgeting tools that allow user to set spending limits for different categories.
+- Enable notifications:
+        Enable notification when amount the total amount is reducing from income.
+- Monthly spread sheeet:
+        Enable monthls spreadsheet for every month to track the expense and income.
+- Multi currency support:
+        Add support for multiple currencies and exchange rate conversions to accomodate users who travel internationally.
+- Mobile app enchancements:
+        Develop a mobile app version of Expensify to enhance accessibility and convenience for users on the go. 
+
+
+## How the App works:
+- Step1: From the main menu user can select any one option manage income or manage expense.
+- Step2: When user selects manage expense it contains 5 options
+- Step3: if option1
+                Record new expense
+                        Enter the datas expense amount, select category, give details and it store in spread sheet with date and time.
+         else if option2
+                View all expense
+                        User can see all the recorded expense in a table with all the details
+         else if option3 
+                Summrize Expense
+                        User will see the breakdown of user expenses by category, it helps to understand your spending habits. 
+         else if option 4
+                Delete Expense
+                        It helps the user to delete a row of datas from google sheet with item number from expeses worksheet which user selected.
+         else if option 5
+                Return to main menu
+                        User can go back to main menu.
+- Step 4: When user selects manage income from main menu it contains 4 options
+- Step 5: if option 1
+                Record new income
+                        Enter the datas of income amount and its source and it store in spread sheet with date and time.
+         else if option 2
+                View all income
+                        User can see all the recorded income in a table with all the details
+         else if option 3 
+                Delete income
+                        It helps the user to delete a row of data from google sheet with the item number from income worksheet which user selected.
+         else if option 4
+                Return to main menu
+                        User can go back to main menu.
+- Step 6: When user selects help menu from main menu, It will show the overview of expensify app and show the informantion of each field and how to use it.
+- Step 7: When user selects exit menu from main menu, It will close the app.
+
+(The amount will be validate with 0 nd negative numbers nd also limited to 8 digits)
+(The characters in message and details of income and expense are also limited to 25)
+
+## Testing
+
+                      
+
+               
