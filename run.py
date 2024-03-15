@@ -278,24 +278,24 @@ def show_datas(worksheetname):
     all_datas = worksheet.get_all_values()
 
     if worksheetname == "Expenses":
-        if len(all_datas) == 0:
+        if len(all_datas) <= 1:
             print("\033[91mNo expense data available\033[0m")
         else:
             print("===================================")
             print("\033[96m     EXPENSE DATAS RECORD\033[0m")
             print("===================================")
             print()
-            print(f"{'Itm_No':9} {'Amount':<10} {'Category':<15}"
-                  f"{'Details':<30} {'Date/Time':<20}")
+            print(f"{'Itm_No':9} {'Amount':^10} {'Category':^15}"
+                  f"{'Details':^15} {'Date/Time':^40}")
             print("-"*80)
             expense_item = 0
             for row in all_datas[1:]:
                 # looping to get all the row values form google sheet
-                print(f"{(expense_item+1):^9} {row[0]:<10}"
-                      f"{row[1]:<10} {row[2]:<30} {row[3]:<20}")
+                print(f"{(expense_item+1):^9} {row[0]:^10}"
+                      f"{row[1]:^15} {row[2]:^12} {row[3]:^30}")
                 expense_item += 1
     elif worksheetname == "Income":
-        if len(all_datas) == 0:
+        if len(all_datas) <= 1:
             print("\033[91mNo Income data available\033[0m")
         else:
             print("=====================================")
@@ -323,51 +323,52 @@ def summarize_expenses():
     """
     worksheet = SHEET.worksheet("Expenses")
     all_expense_data = worksheet.get_all_values()
-    if len(all_expense_data) == 0:
-        print("\033[91mNo expense Data available\033[0m")
-    else:
-        sum_of_category = {}
-        for row in all_expense_data[1:]:
-            category = row[1]
-            amount = float(row[0])
-            if category in sum_of_category:
-                sum_of_category[category] += amount
-            else:
-                sum_of_category[category] = amount
-        print("=================================")
-        print("\033[96m  EXPENSE SUMMARY BY CATEGORY \033[0m")
-        print("=================================")
-        print()
-        for category, total in sum_of_category.items():
-            print(f"{category}: \033[93m{total}\033[0m euros")
+    if len(all_expense_data) <= 1:
+        print("\033[91mNo expense data available\033[0m")
+        return
 
-        max_category = max(sum_of_category, key=sum_of_category.get)
-        max_expense = sum_of_category[max_category]
-
-        print()
-        print("You spent the most in the category")
-        print(f"\033[93m{max_category}\033[0m"
-              f" with a total of \033[93m{max_expense}"
-              " \033[0m euros.")
-        # access through class method sum of income
-        income = Income.sum_of_income()
-        # access through class method sum of expense
-        expense = Expense.sum_of_expense()
-        balance_amount = income-expense
-        if expense < balance_amount:
-            print()
-            print("You have balance of \033[93m"
-                  f" {balance_amount}\033[0m euros from your income")
-            print()
-        elif expense > balance_amount:
-            print()
-            print("You have deficit of \033[93m"
-                  f" {-balance_amount}\033[0m euros from your income")
-            print()
+    sum_of_category = {}
+    for row in all_expense_data[1:]:
+        category = row[1]
+        amount = float(row[0])
+        if category in sum_of_category:
+            sum_of_category[category] += amount
         else:
-            print()
-            print("\033[93mYou have no balance from your income\033[0m")
-            print()
+            sum_of_category[category] = amount
+    print("=================================")
+    print("\033[96m  EXPENSE SUMMARY BY CATEGORY \033[0m")
+    print("=================================")
+    print()
+    for category, total in sum_of_category.items():
+        print(f"{category}: \033[93m{total}\033[0m euros")
+
+    max_category = max(sum_of_category, key=sum_of_category.get)
+    max_expense = sum_of_category[max_category]
+
+    print()
+    print("You spent the most in the category")
+    print(f"\033[93m{max_category}\033[0m"
+          f" with a total of \033[93m{max_expense}"
+        " \033[0m euros.")
+    # access through class method sum of income
+    income = Income.sum_of_income()
+    # access through class method sum of expense
+    expense = Expense.sum_of_expense()
+    balance_amount = income-expense
+    if expense < balance_amount:
+        print()
+        print("You have balance of \033[93m"
+             f" {balance_amount}\033[0m euros from your income")
+        print()
+    elif expense > balance_amount:
+        print()
+        print("You have deficit of \033[93m"
+             f" -{balance_amount}\033[0m euros from your income")
+        print()
+    else:
+        print()
+        print("\033[93mYou have no balance from your income\033[0m")
+        print()
 
 
 def delete_a_row(worksheetname):
@@ -379,6 +380,11 @@ def delete_a_row(worksheetname):
     all_datas = worksheet.get_all_values()
 
     if worksheetname == "Expenses":
+         # Check if there are no data records except the header row
+        if len(all_datas) <= 1:
+            print("\033[91mNo expense data available\033[0m")
+            return
+
         show_datas("Expenses")
         print()
         print("==============================================")
@@ -403,6 +409,11 @@ def delete_a_row(worksheetname):
                       " Please enter a valid item\033[0m\n")
 
     elif worksheetname == "Income":
+        # Check if there are no data records except the header row
+        if len(all_datas) <= 1:
+            print("\033[91mNo income data available\033[0m")
+            return
+        
         show_datas("Income")
         print("==============================================")
         print("Which Income item do you want to delete")
@@ -411,7 +422,7 @@ def delete_a_row(worksheetname):
             try:
                 # Asking user to input a number
                 # Converting the input string to an integer
-                item = int(input("Enter the item number:\n"))     
+                item = int(input("Enter the item number:\n"))
                 if item > 0 and item <= (len(all_datas)-1):
                     worksheet.delete_rows(item + 1)
                     print("\033[93mDeleted item:\033[0m\n", item)
