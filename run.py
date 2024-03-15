@@ -305,12 +305,12 @@ def show_datas(worksheetname):
             print("=====================================")
             print()
             print(f"{'Itm_No':9} {'Income Type':<25}"
-                  f"{'Actual Income':<15} {'Date/Time':^15}")
+                  f"{'Actual Income':<15} {'Date/Time':^25}")
             print("-"*80)
             income_item = 0
             for row in all_datas[1:]:
                 print(f"{(income_item+1):^9} {row[0]:<25}"
-                      f"{row[1]:^15} {row[2]:<15}")
+                      f"{row[1]:^15} {row[2]:^30}")
                 print()
                 income_item += 1
     else:
