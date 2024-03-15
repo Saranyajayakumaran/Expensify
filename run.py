@@ -155,7 +155,7 @@ def get_income_of_user():
     print("=================")
     print()
     text = "Give your income_amount (in euros):\n"
-    digit = 8
+    digit = 9
     income = validate_user_income_or_expense(text, digit)
     income_details = validate_income_source()
     current_date_time = datetime.now().strftime("%d-%m-%y  %H:%M")
@@ -413,7 +413,7 @@ def delete_a_row(worksheetname):
         if len(all_datas) <= 1:
             print("\033[91mNo income data available\033[0m")
             return
-        
+
         show_datas("Income")
         print("==============================================")
         print("Which Income item do you want to delete")

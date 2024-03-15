@@ -183,7 +183,7 @@ These validation rules ensure that users provide valid input when navigating the
 ### MANAGE INCOME NENU
 #### Valid Input Handling
 
-|User Input|Expected Behavior|Pass/Fail||
+|User Input|Expected Behavior|Pass/Fail|
 |----------|-----------------|----------|
 |Enter 1|Successfully navigate to Record new income|Pass|
 |Enter 2|Successfully navigate to View all income|Pass|
@@ -311,9 +311,51 @@ These validation rules ensure that users provide valid input when navigating the
 |Case 1 |Enter 5|Exit the application|Pass|
 
 
+### Fixed Bugs
+
+|Bugs Found|Expectaion|How i solved it|
+|----------|----------|---------------|
+|Handling Empty Data|it should dipslay "No data available"| Add checks to handle cases where the user doesn't input any data.|     
+|Incorrect Printing of Data|it should print data in a table format|Ensure that data is printed correctly, especially when formatting table-like outputs.
+|Error Handling for Invalid Input|should show error message |Add error handling to handle cases where the user inputs invalid data or selections.| 
+|Getting all the digits in amount|it shuold accept only 8 digits|Add checks to handle cases where the user inputs more than 8 digits.|
+|Handling numeric data|It should not accept string data|Add checks to handle cases where the user inputs non-numeric data.| 
+
+### Unfixed Bugs     
 
 
+### Deployment
+The app was deployed through Heroku. The steps are as following:
 
+    1.Log into Github and locate Github Repository.
+    2.Create a Heroku Account:
+        - If you haven't already, sign up for a Heroku account at Heroku's website.
+    3.Create a New Heroku App:
+        - Log into your Heroku account.
+        - From the Heroku dashboard, click on the "New" button to create a new app.
+        - Choose a unique name for your app.
+        - Select the region closest to your location.
+        - Click "Create app" to finalize the creation.
+    4.Configure App Settings:
+        - Go to your newly created app's settings.
+        - Navigate to the "Config Vars" section.
+        - Add any necessary environment variables that your application requires. 
+        - Ensure that you have configured the necessary buildpacks for your application.
+    5.Deploy Your Application:
+        - Scroll down to the "Deployment Method" section on your app's dashboard.
+        - Select GitHub as the deployment method.
+        - Connect your Heroku app to your GitHub repository by searching for and selecting the repository name.
+        - Optionally, enable automatic deploys if you want your Heroku app to update automatically whenever changes are pushed to the connected GitHub repository.
+        - Click the "Deploy Branch" button to manually deploy your application for the first time.
+
+
+### Credits
+- I would thank many sources and people who spported to complete my project.
+        - Thank my mentor Dick vlaanderen who guided me and his ideas and corrections was very helpful.
+        - The idea of the project has beenn referred from Youtube Channel [pixegami](https://www.youtube.com/watch?v=HTD86h69PtE&list=PLUuWC4-foh23z65szhmk0sord5-JdGUq7&index=1)
+        - The detailed classes and methods are learned from the youtube channel [Error makes clever](https://www.youtube.com/watch?v=BVIoAILnZ4Q&list=PLvepBxfiuao1hO1vPOskQ1X4dbjGXF9bm)
+        - W3schools and stackoverflow plays a major role in learning the concepts.
+        - Google sheet concepts,saving datas to google sheet and heroku deployments are learned from [Love Sandwich](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+LS101+2021_T1/courseware/  293ee9d8ff3542d3b877137ed81b9a5b/e3b664e16366444c8d722c5d8340b340/?child=last)
 
 
 
