@@ -177,16 +177,79 @@ These validation rules ensure that users provide valid input when navigating the
 |Enter 0|Prompt user to re-enter a valid option|Pass|
 |Enter value > 4|Prompt user to re-enter a valid option|Pass|
 |Enter a string/char|Prompt user to re-enter a valid numeric option|Pass|
+|ctrl+c|Application should exit with interruption |Pass|
 
 
-### MANAGE INCOME
+### MANAGE INCOME NENU
+#### Valid Input Handling
 
-|User Input|Expected Behavior|Pass/Fail||pass|
-|------|---------------|
+|User Input|Expected Behavior|Pass/Fail||
+|----------|-----------------|----------|
+|Enter 1|Successfully navigate to Record new income|Pass|
+|Enter 2|Successfully navigate to View all income|Pass|
+|Enter 3|Sucessfully navigate to Delete income data|Pass|
+|Enter 4|Successfully navigate to Main menu|Pass|
+
+#### Invalid Input Handling
+|User Input|Expected Behavior|Passs/Fail|
+|----------|-----------------|----------|
+|Enter 0|Prompt user to re-enter a valid option|Pass|
+|Enter value > 4|Prompt user to re-enter a valid option|Pass|
+|Enter a string/char|Prompt user to re-enter a valid numeric option|Pass|
+|ctrl+c|Application should go to main neu with interruption|Pass|
+
+##### Record new income data
+
+##### Valid Input Handling
+
+|Test Case|User Input|Expected Behavior|Pass/Fail|
+|---------|----------|-----------------|---------|
+|Amount(int)|Enter amount|store in google sheet|Pass|
+|Amount(float)|Enter amount |Store in google sheet|Pass|
+|Details|Enter details|Store in googl sheeet|Pass|
+|Date/time|Current date/time|Store current date time in google sheet|Pass|
+
+##### Invalid Input Handling
+|Test Case|User Input|Expected Behavior|Pass/Fail|
+|---------|----------|-----------------|---------|
+|Amount|Enter 0|Prompt user to re-enter a valid option|Pass|
+|Amount|Enter>8 digit|Prompt user to re-enter a valid option|Pass|
+|Details|string>25|Prompt user to re-enter a valid option|Pass|
+|Details|Empty|Prompt user to re-enter a valid option|Pass|
+
+
+##### View all income data
+
+##### Valid Input Handling
+|Test Case|User Input|Expected Behavior|Passs/Fail|
+|---------|----------|-----------------|----------|
+|No datas in google sheet |Enter 2|Error:No data available in google sheet|Pass|
+|Datas in google sheet|Enter 2|Display all data in google sheet|Pass|
+
+
+#### Delete income data
+
+##### Valid Input Handling
+|Test Case|User Input|Expected Behavior|Passs/Fail|
+|---------|----------|-----------------|----------|
+|No datas in google sheet |Enter 3|Error:No data available in google sheet|Pass|
+|Datas in google sheet|Enter 3|Display all data in google sheet and ask user to enter item number to delete|Pass|
+|Item number available|enter item number|delete the item|Pass|
+
+|Test Case|User Input|Expected Behavior|Passs/Fail|
+|---------|----------|-----------------|----------|
+|Unavailable item number|Enter a number not available|Error:No data available in google sheet|Pass|
+|Unavailable item number|Enter a string/char|Error:invalid input and go to manage income menu|Pass|
 
 
 
 
 
 
-               
+
+
+
+
+
+
+

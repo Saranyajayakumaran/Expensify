@@ -385,8 +385,8 @@ def delete_a_row(worksheetname):
         print("Which Expense item do you want to delete")
         print()
         while True:
-            item = int(input("Enter the item number:\n"))
             try:
+                item = int(input("Enter the item number:\n"))
                 if item > 0 and item <= (len(all_datas)-1):
                     worksheet.delete_rows(item + 1)
                     print()
@@ -408,8 +408,10 @@ def delete_a_row(worksheetname):
         print("Which Income item do you want to delete")
         print()
         while True:
-            item = int(input("Enter the item number:\n"))
             try:
+                # Asking user to input a number
+                # Converting the input string to an integer
+                item = int(input("Enter the item number:\n"))     
                 if item > 0 and item <= (len(all_datas)-1):
                     worksheet.delete_rows(item + 1)
                     print("\033[93mDeleted item:\033[0m\n", item)
@@ -459,10 +461,12 @@ def income_or_expense():
                 print()
                 break
             else:
-                print("\033[91mInvalid input, please select (1-4)\033[0m")
+                print("\033[91mInvalid Option ,"
+                      "Please enter a valid option from [1-4]\033\033[0m")
         except ValueError:
             print()
-            print("\033[91mInvalid input, please select (1-4)\033[0m")
+            print("\033[91mInvalid Input ,"
+                  "Please enter a number from (1-4)\033[0m")
             print()
         except KeyboardInterrupt:
             print("\033[91m\nKeyboard interruption"
@@ -573,16 +577,16 @@ def expense_menu_options():
                     break
                 else:
                     print()
-                    print("\033[91mInvalid option, try again\033[0m")
+                    print("\033[91mInvalid option,\033[0m")
                     print("\033[91mPlease enter a"
-                          f" number from {value_range}\033[0m")
+                          f" valid option from {value_range}\033[0m")
                     print("---------------------------")
                     print()
             else:
                 print()
-                print("\033[91mInvalid option, try again\033[0m")
+                print("\033[91mInvalid option,\033[0m")
                 print("\033[91mPlease enter a"
-                      f" number from {value_range}\033[0m")
+                      f" valid option from {value_range}\033[0m")
                 print("----------------------------")
                 print()
         except KeyboardInterrupt:
