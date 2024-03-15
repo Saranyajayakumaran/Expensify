@@ -129,8 +129,8 @@ def get_category():
                 print(f" {i}. {name_of_category}")
             category_name_index = int(
                 input("\n\033[94mSelect a category from [1-5]:\n\033[0m"))
-            if category_name_index in range(len(categories)):
-                selected_category = categories[category_name_index]
+            if category_name_index in range(1,len(categories)+1):
+                selected_category = categories[category_name_index-1]
                 return selected_category
             else:
                 print()

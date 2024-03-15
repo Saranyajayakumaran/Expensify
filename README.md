@@ -201,7 +201,6 @@ These validation rules ensure that users provide valid input when navigating the
 ##### Record new income data
 
 ##### Valid Input Handling
-
 |Test Case|User Input|Expected Behavior|Pass/Fail|
 |---------|----------|-----------------|---------|
 |Amount(int)|Enter amount|store in google sheet|Pass|
@@ -214,6 +213,8 @@ These validation rules ensure that users provide valid input when navigating the
 |---------|----------|-----------------|---------|
 |Amount|Enter 0|Prompt user to re-enter a valid option|Pass|
 |Amount|Enter>8 digit|Prompt user to re-enter a valid option|Pass|
+|Amount|Enter negative|Prompt user to re-enter a valid option|Pass|
+|Amount|Enter string|Prompt user to re-enter a valid option|Pass|
 |Details|string>25|Prompt user to re-enter a valid option|Pass|
 |Details|Empty|Prompt user to re-enter a valid option|Pass|
 
@@ -233,15 +234,81 @@ These validation rules ensure that users provide valid input when navigating the
 |Test Case|User Input|Expected Behavior|Passs/Fail|
 |---------|----------|-----------------|----------|
 |No datas in google sheet |Enter 3|Error:No data available in google sheet|Pass|
-|Datas in google sheet|Enter 3|Display all data in google sheet and ask user to enter item number to delete|Pass|
-|Item number available|enter item number|delete the item|Pass|
+|Data available in google sheet|Enter 3|Display all data in Google Sheet and prompt user to enter item number to delete|Pass|
+|Item number available|enter item number|Delete the specified item|Pass|
 
+##### Invalid Input Handling
 |Test Case|User Input|Expected Behavior|Passs/Fail|
 |---------|----------|-----------------|----------|
-|Unavailable item number|Enter a number not available|Error:No data available in google sheet|Pass|
-|Unavailable item number|Enter a string/char|Error:invalid input and go to manage income menu|Pass|
+|Case 1|Enter a number not available|Error:No data available in google sheet|Pass|
+|case 2|Enter a string/char|Error:invalid input|Pass|
+
+### MANAGE EXPENSE MENU
+#### Record New Expense 
+
+##### Valid Input Handling
+|Test Case|User Input|Expected Behavior|Passs/Fail|
+|---------|----------|-----------------|----------|
+|Amount(int)|Enter amount|store in google sheet|Pass|
+|Amount(float)|Enter amount |Store in google sheet|Pass|
+|Category|select 1-5|store in gogole sheet|Pass|
+|Details|Enter details within 25 char|Store in Google sheet|Pass|
+
+##### Invalid Input Handling
+|Test Case|User Input|Expected Behavior|Passs|
+|---------|----------|-----------------|-----|
+|Amount|Enter 0|Prompt user to re-enter a valid option|Pass|
+|Amount|Enter>8 digit|Prompt user to re-enter a valid option|Pass|
+|Amount|Enter negative|Prompt user to re-enter a valid option|Pass|
+|Amount|Enter string|Prompt user to re-enter a valid option|Pass|
+|Category|Enter 0|Prompt user to re-enter a valid option|Pass|
+|Category|Enter >5|Prompt user to re-enter a valid option|Pass|
+|Category|Enter a string/char|Prompt user to re-enter a valid option|Pass|
+|Details|string>25|Prompt user to re-enter a valid option|Pass|
+|Details|Empty|Prompt user to re-enter a valid option|Pass|
+
+##### View all Expense data
+
+##### Valid Input Handling
+|Test Case|User Input|Expected Behavior|Passs/Fail|
+|---------|----------|-----------------|----------|
+|No datas in google sheet |Enter 2|Error:No data available in google sheet|Pass|
+|Datas in google sheet|Enter 2|Display all data in google sheet|Pass|
+
+#### Delete Expense data
+
+##### Valid Input Handling
+|Test Case|User Input|Expected Behavior|Passs/Fail|
+|---------|----------|-----------------|----------|
+|No datas in google sheet |Enter 3|Error:No data available in google sheet|Pass|
+|Data available in google sheet|Enter 3|Display all data in Google Sheet and prompt user to enter item number to delete|Pass|
+|Item number available|enter item number|Delete the specified item|Pass|
+
+##### Invalid Input Handling
+|Test Case|User Input|Expected Behavior|Passs/Fail|
+|---------|----------|-----------------|----------|
+|Case 1|Enter a number not available|Error:No data available in google sheet|Pass|
+|case 2|Enter a string/char|Error:invalid input|Pass|
 
 
+#### Summerize Expenses
+
+##### Valid Input Handling
+|Test Case|User Input|Expected Behavior|Passs/Fail|
+|---------|----------|-----------------|----------|
+|No datas in google sheet|Enter 4|Error:No data available in google sheet|Pass|
+|Datas in google sheet|Enter 4|Display all data in google sheet|Pass|
+
+
+### Help menu
+|Test Case|User Input|Expected Behavior|Passs/Fail|
+|---------|----------|-----------------|----------|
+|Case 1 |Enter 4|Display Help Menu|Pass|
+
+### Exit
+|Test Case|User Input|Expected Behavior|Passs/Fail|
+|---------|----------|-----------------|----------|
+|Case 1 |Enter 5|Exit the application|Pass|
 
 
 
