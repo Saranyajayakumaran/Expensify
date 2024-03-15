@@ -281,33 +281,35 @@ def show_datas(worksheetname):
         if len(all_datas) <= 1:
             print("\033[91mNo expense data available\033[0m")
         else:
+            print()
             print("===================================")
             print("\033[96m     EXPENSE DATAS RECORD\033[0m")
             print("===================================")
             print()
             print(f"{'Itm_No':9} {'Amount':^10} {'Category':^15}"
-                  f"{'Details':^15} {'Date/Time':^40}")
-            print("-"*80)
+                  f"{'Details':^20} {'Date/Time':^35}")
+            print("-"*83)
             expense_item = 0
             for row in all_datas[1:]:
                 # looping to get all the row values form google sheet
                 print(f"{(expense_item+1):^9} {row[0]:^10}"
-                      f"{row[1]:^15} {row[2]:^12} {row[3]:^30}")
+                      f"{row[1]:^15} {row[2]:<30} {row[3]:<25}")
                 expense_item += 1
     elif worksheetname == "Income":
         if len(all_datas) <= 1:
             print("\033[91mNo Income data available\033[0m")
         else:
+            print()
             print("=====================================")
             print("\033[96m     INCOME DATAS RECORD\033[0m")
             print("=====================================")
             print()
-            print(f"{'Itm_No':9} {'Income Type':<30}"
+            print(f"{'Itm_No':9} {'Income Type':<25}"
                   f"{'Actual Income':<15} {'Date/Time':^15}")
             print("-"*80)
             income_item = 0
             for row in all_datas[1:]:
-                print(f"{(income_item+1):^9} {row[0]:<30}"
+                print(f"{(income_item+1):^9} {row[0]:<25}"
                       f"{row[1]:^15} {row[2]:<15}")
                 print()
                 income_item += 1
@@ -490,8 +492,8 @@ def income_menu_option():
     Giving user the option for
     income field to add datas, show datas
     """
-    income_options = ["Record new income",
-                      "View all income",
+    income_options = ["Record new Income",
+                      "View all Income",
                       "Delete Income data",
                       "Return to Main Menu"]
     while True:
@@ -555,7 +557,7 @@ def expense_menu_options():
     show datas and summerize expense
     """
     options = ["Record new Expense",
-               "View all expense",
+               "View all Expense",
                "Delete Expense",
                "Summerize Expenses",
                "Return to Main Menu"]
