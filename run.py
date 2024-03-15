@@ -287,13 +287,13 @@ def show_datas(worksheetname):
             print("===================================")
             print()
             print(f"{'Itm_No':9} {'Amount':^10} {'Category':^12}"
-                  f"{'Details':^20} {'Date/Time':^22}")
+                  f"{'Details':^20} {'Date/Time':^25}")
             print("-"*80)
             expense_item = 0
             for row in all_datas[1:]:
                 # looping to get all the row values form google sheet
                 print(f"{(expense_item+1):^9} {row[0]:^10}"
-                      f"{row[1]:^12} {row[2]:<25} {row[3]:<22}")
+                      f"{row[1]:^12} {row[2]:<25} {row[3]:<25}")
                 expense_item += 1
     elif worksheetname == "Income":
         if len(all_datas) <= 1:
