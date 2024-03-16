@@ -221,7 +221,6 @@ I have validated our codebase using PEP8 to ensure adherence to Python's coding 
 |Enter a string/char|Prompt user to re-enter a valid numeric option|Pass|
 |ctrl+c|Application should exit with interruption |Pass|
 
-
 ### MANAGE INCOME MENU
 
 #### Valid Input Handling
@@ -264,7 +263,8 @@ I have validated our codebase using PEP8 to ensure adherence to Python's coding 
 |Details|string>25|Prompt user to re-enter a valid option|Pass|
 |Details|Empty|Prompt user to re-enter a valid option|Pass|
 
-
+![Record new income data errror ](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/error%20record%20income.png)
+![String error](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/erroe%20income%20details.png)
 ##### View all income data
 
 ##### Valid Input Handling
@@ -285,11 +285,15 @@ I have validated our codebase using PEP8 to ensure adherence to Python's coding 
 |Data available in google sheet|Enter 3|Display all data in Google Sheet and prompt user to enter item number to delete|Pass|
 |Item number available|enter item number|Delete the specified item|Pass|
 
+
 ##### Invalid Input Handling
 |Test Case|User Input|Expected Behavior|Pass/Fail|
 |---------|----------|-----------------|----------|
 |Case 1|Enter a number not available|Error:No data available in google sheet|Pass|
 |case 2|Enter a string/char|Error:invalid input|Pass|
+
+![Delete income error](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/delete%20income%20error.png)
+
 
 ### MANAGE EXPENSE MENU
 
@@ -318,6 +322,10 @@ I have validated our codebase using PEP8 to ensure adherence to Python's coding 
 |Details|string>25|Prompt user to re-enter a valid option|Pass|
 |Details|Empty|Prompt user to re-enter a valid option|Pass|
 
+![Record expense error](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/recod%20expense%20error.png)
+![String error](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/expense%20details%20error.png)
+![Category errro](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/category%20error.png)
+
 ##### View all Expense data
 
 ##### Valid Input Handling
@@ -343,6 +351,8 @@ I have validated our codebase using PEP8 to ensure adherence to Python's coding 
 |---------|----------|-----------------|----------|
 |Case 1|Enter a number not available|Error:No data available in google sheet|Pass|
 |case 2|Enter a string/char|Error:invalid input|Pass|
+
+![Delete expense Error](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/delete%20expense%20error.png)
 
 
 #### Summerize Expenses
