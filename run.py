@@ -408,7 +408,7 @@ def delete_a_row(worksheetname):
             except ValueError:
                 print()
                 print("\033[91mInvalid Item,"
-                      " Please enter a valid item\033[0m\n")
+                      " Please enter a valid item number\033[0m\n")
 
     elif worksheetname == "Income":
         # Check if there are no data records except the header row
@@ -436,7 +436,7 @@ def delete_a_row(worksheetname):
             except ValueError:
                 print()
                 print("\033[91mInvaid Item,"
-                      "Please enter a valid item\033[0m\n")
+                      "Please enter a valid item number\033[0m\n")
     else:
         pass
 
@@ -559,7 +559,7 @@ def expense_menu_options():
     options = ["Record new Expense",
                "View all Expense",
                "Delete Expense",
-               "Summerize Expenses",
+               "Sumarize Expenses",
                "Return to Main Menu"]
     while True:
         print("===========================")

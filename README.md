@@ -2,6 +2,9 @@
 
 Expensify is a versatile expense tracker designed to help users manage their finances efficiently. With Expensify, users can effortlessly record their expenses, track income, and gain valuable insights into their spending habits. Whether you're budgeting for personal expenses, managing business finances, or simply looking to gain better control over your money, Expensify offers a user-friendly solution tailored to your needs.
 
+Have a look at the projct by clicking the link below:
+https://expense-track-77e4d822539c.herokuapp.com/
+
 ## Technologies Used
 
 - Python
