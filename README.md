@@ -7,17 +7,17 @@ Expensify is a versatile expense tracker designed to help users manage their fin
 - Python
      - Programming language used for project development.
 
-- Vs code:
+- VS code:
     - Visual studio code IDE is used to write ,edit and debug python code.
 
 - Google sheet
-    - Google sheet is  a cloud Api used to store and edit datas.
+    - Google sheet is  a cloud API used to store and edit datas.
 
 - GitHub
     - GitHub is a Version control system for managing codebase and collaboration.
 
 - Git
-    - Git is used to tracking changes and managing branches from the development Interface.
+    - Git is used to tracking changes and managing branches from the development interface.
 
 - Heroku
     - Cloud platform used for deployment and hosting of the application.
@@ -91,7 +91,7 @@ Expensify is a versatile expense tracker designed to help users manage their fin
 - Enable notifications:
         Enable notification when amount the total amount is reducing from income.
 - Monthly spread sheeet:
-        Enable monthls spreadsheet for every month to track the expense and income.
+        Enable monthly spreadsheet for every month to track the expense and income.
 - Multi currency support:
         Add support for multiple currencies and exchange rate conversions to accomodate users who travel internationally.
 - Mobile app enchancements:
@@ -187,11 +187,11 @@ These validation rules ensure that users provide valid input when navigating the
 |----------|-----------------|----------|
 |Enter 1|Successfully navigate to Record new income|Pass|
 |Enter 2|Successfully navigate to View all income|Pass|
-|Enter 3|Sucessfully navigate to Delete income data|Pass|
+|Enter 3|Successfully navigate to Delete income data|Pass|
 |Enter 4|Successfully navigate to Main menu|Pass|
 
 #### Invalid Input Handling
-|User Input|Expected Behavior|Passs/Fail|
+|User Input|Expected Behavior|Pass/Fail|
 |----------|-----------------|----------|
 |Enter 0|Prompt user to re-enter a valid option|Pass|
 |Enter value > 4|Prompt user to re-enter a valid option|Pass|
@@ -222,7 +222,7 @@ These validation rules ensure that users provide valid input when navigating the
 ##### View all income data
 
 ##### Valid Input Handling
-|Test Case|User Input|Expected Behavior|Passs/Fail|
+|Test Case|User Input|Expected Behavior|Pass/Fail|
 |---------|----------|-----------------|----------|
 |No datas in google sheet |Enter 2|Error:No data available in google sheet|Pass|
 |Datas in google sheet|Enter 2|Display all data in google sheet|Pass|
@@ -231,14 +231,14 @@ These validation rules ensure that users provide valid input when navigating the
 #### Delete income data
 
 ##### Valid Input Handling
-|Test Case|User Input|Expected Behavior|Passs/Fail|
+|Test Case|User Input|Expected Behavior|Pass/Fail|
 |---------|----------|-----------------|----------|
 |No datas in google sheet |Enter 3|Error:No data available in google sheet|Pass|
 |Data available in google sheet|Enter 3|Display all data in Google Sheet and prompt user to enter item number to delete|Pass|
 |Item number available|enter item number|Delete the specified item|Pass|
 
 ##### Invalid Input Handling
-|Test Case|User Input|Expected Behavior|Passs/Fail|
+|Test Case|User Input|Expected Behavior|Pass/Fail|
 |---------|----------|-----------------|----------|
 |Case 1|Enter a number not available|Error:No data available in google sheet|Pass|
 |case 2|Enter a string/char|Error:invalid input|Pass|
@@ -247,7 +247,7 @@ These validation rules ensure that users provide valid input when navigating the
 #### Record New Expense 
 
 ##### Valid Input Handling
-|Test Case|User Input|Expected Behavior|Passs/Fail|
+|Test Case|User Input|Expected Behavior|Pass/Fail|
 |---------|----------|-----------------|----------|
 |Amount(int)|Enter amount|store in google sheet|Pass|
 |Amount(float)|Enter amount |Store in google sheet|Pass|
@@ -255,8 +255,8 @@ These validation rules ensure that users provide valid input when navigating the
 |Details|Enter details within 25 char|Store in Google sheet|Pass|
 
 ##### Invalid Input Handling
-|Test Case|User Input|Expected Behavior|Passs|
-|---------|----------|-----------------|-----|
+|Test Case|User Input|Expected Behavior|Passs/Fail|
+|---------|----------|-----------------|----------|
 |Amount|Enter 0|Prompt user to re-enter a valid option|Pass|
 |Amount|Enter>8 digit|Prompt user to re-enter a valid option|Pass|
 |Amount|Enter negative|Prompt user to re-enter a valid option|Pass|
@@ -270,7 +270,7 @@ These validation rules ensure that users provide valid input when navigating the
 ##### View all Expense data
 
 ##### Valid Input Handling
-|Test Case|User Input|Expected Behavior|Passs/Fail|
+|Test Case|User Input|Expected Behavior|Pass/Fail|
 |---------|----------|-----------------|----------|
 |No datas in google sheet |Enter 2|Error:No data available in google sheet|Pass|
 |Datas in google sheet|Enter 2|Display all data in google sheet|Pass|
@@ -278,14 +278,14 @@ These validation rules ensure that users provide valid input when navigating the
 #### Delete Expense data
 
 ##### Valid Input Handling
-|Test Case|User Input|Expected Behavior|Passs/Fail|
+|Test Case|User Input|Expected Behavior|Pass/Fail|
 |---------|----------|-----------------|----------|
 |No datas in google sheet |Enter 3|Error:No data available in google sheet|Pass|
 |Data available in google sheet|Enter 3|Display all data in Google Sheet and prompt user to enter item number to delete|Pass|
 |Item number available|enter item number|Delete the specified item|Pass|
 
 ##### Invalid Input Handling
-|Test Case|User Input|Expected Behavior|Passs/Fail|
+|Test Case|User Input|Expected Behavior|Pass/Fail|
 |---------|----------|-----------------|----------|
 |Case 1|Enter a number not available|Error:No data available in google sheet|Pass|
 |case 2|Enter a string/char|Error:invalid input|Pass|
@@ -294,31 +294,31 @@ These validation rules ensure that users provide valid input when navigating the
 #### Summerize Expenses
 
 ##### Valid Input Handling
-|Test Case|User Input|Expected Behavior|Passs/Fail|
+|Test Case|User Input|Expected Behavior|Pass/Fail|
 |---------|----------|-----------------|----------|
 |No datas in google sheet|Enter 4|Error:No data available in google sheet|Pass|
 |Datas in google sheet|Enter 4|Display all data in google sheet|Pass|
 
 
 ### Help menu
-|Test Case|User Input|Expected Behavior|Passs/Fail|
+|Test Case|User Input|Expected Behavior|Pass/Fail|
 |---------|----------|-----------------|----------|
 |Case 1 |Enter 4|Display Help Menu|Pass|
 
 ### Exit
-|Test Case|User Input|Expected Behavior|Passs/Fail|
+|Test Case|User Input|Expected Behavior|Pass/Fail|
 |---------|----------|-----------------|----------|
 |Case 1 |Enter 5|Exit the application|Pass|
 
 
 ### Fixed Bugs
 
-|Bugs Found|Expectaion|How i solved it|
+|Bugs Found|Expectation|How i solved it|
 |----------|----------|---------------|
-|Handling Empty Data|it should dipslay "No data available"| Add checks to handle cases where the user doesn't input any data.|     
+|Handling Empty Data|it should display "No data available"| Add checks to handle cases where the user doesn't input any data.|     
 |Incorrect Printing of Data|it should print data in a table format|Ensure that data is printed correctly, especially when formatting table-like outputs.
 |Error Handling for Invalid Input|should show error message |Add error handling to handle cases where the user inputs invalid data or selections.| 
-|Getting all the digits in amount|it shuold accept only 8 digits|Add checks to handle cases where the user inputs more than 8 digits.|
+|Getting all the digits in amount|it should accept only 8 digits|Add checks to handle cases where the user inputs more than 8 digits.|
 |Handling numeric data|It should not accept string data|Add checks to handle cases where the user inputs non-numeric data.| 
 
 ### Unfixed Bugs     
@@ -345,7 +345,7 @@ The app was deployed through Heroku. The steps are as following:
   - Scroll down to the "Deployment Method" section on your app's dashboard.
   - Select GitHub as the deployment method.
   - Connect your Heroku app to your GitHub repository by searching for and selecting the repository name.
-  - Optionally, enable automatic deploys if you want your Heroku app to update automatically whenever changes are pushed to the connected GitHub repository.
+  - Optionally, enable automatic deployment if you want your Heroku app to update automatically whenever changes are pushed to the connected GitHub repository.
   - Click the "Deploy Branch" button to manually deploy your application for the first time.
 
 
