@@ -218,7 +218,7 @@ I have validated our codebase using PEP8 to ensure adherence to Python's coding 
 |ctrl+c|Application should exit with interruption |Pass|
 
 
-### MANAGE INCOME NENU
+### MANAGE INCOME MENU
 
 #### Valid Input Handling
 
