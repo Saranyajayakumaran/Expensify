@@ -2,8 +2,11 @@
 
 Expensify is a versatile expense tracker designed to help users manage their finances efficiently. With Expensify, users can effortlessly record their expenses, track income, and gain valuable insights into their spending habits. Whether you're budgeting for personal expenses, managing business finances, or simply looking to gain better control over your money, Expensify offers a user-friendly solution tailored to your needs.
 
-Have a look at the projct by clicking the link below:
+Have a look at the project by clicking the link below:
 https://expense-track-77e4d822539c.herokuapp.com/
+
+
+[Title page](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/title%20page.png)
 
 ## Technologies Used
 
@@ -43,6 +46,7 @@ https://expense-track-77e4d822539c.herokuapp.com/
 
     
 ### Manage Income
+
 - The Manage income feature helps user to efficiently track and manage their source of income.
 - When user selects the Manage Income optionfrom the main menu, users can seamlessly record new income entries by providing details such as the income amount, its source, and any relevant additional information. 
    
@@ -61,7 +65,10 @@ https://expense-track-77e4d822539c.herokuapp.com/
     - Return to main menu:
             Allow user to navigate back to main menu when they needed
 
+[Manage Income](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/manage%20income%20.png)
+
 ### Manage Expense
+
 - The Manage expense feature helps user to efficiently track and manage their expenses.
 - When user selects the Manage Expense option from the main menu, users can seamlessly record new expense entries by providing details such as the expense amount, its category, and any relevant additional information. 
    
@@ -80,13 +87,18 @@ https://expense-track-77e4d822539c.herokuapp.com/
     - Delete expense: 
             Allow users to remove a specific expense entry by selecting the item number.
 
+[Manage Expense](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/manage%20expense%20.png)
+
 ### Help
 - The Help feature provides users with a simple and intuitive interface to access the Expensify app.
+
+[Help Menu](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/Help%20menu.png)
 
 ### Exit
 - Exit feature allows user to exit the application.
 
 ## Future Implementation
+
 - User Authentication and Account Management:
         Implement user authentication and account creation to maintain personal accounts.
 - Budget and goal tracking:
@@ -105,28 +117,37 @@ https://expense-track-77e4d822539c.herokuapp.com/
 ### Step 1: Selecting Options from the Main Menu
 - From the main menu, users can choose to manage income or manage expenses.
 
-### Step 2: Managing Expenses
-- When selecting "Manage Expenses," users are presented with five options:
-  1. **Record New Expense:**
-      - Users can enter the expense amount, select a category, provide details, and store the data in the spreadsheet along with the date and time.
-  2. **View All Expenses:**
-      - Users can view all recorded expenses in a table with detailed information.
-  3. **Summarize Expenses:**
-      - Users can see a breakdown of their expenses by category, helping them understand their spending habits.
-  4. **Delete Expense:**
-      - Allows users to delete a specific expense by selecting its item number from the expenses worksheet.
-  5. **Return to Main Menu:**
-      - Provides an option to return to the main menu for further navigation.
-
-### Step 3: Managing Income (Optional)
+### Step 2: Managing Income 
 - Alternatively, users can choose to manage income, which presents similar options for recording, viewing, summarizing, and deleting income data.
   1. **Record New Income:**
       - Users can enter the income amount, specify its source, and store the data in the spreadsheet along with the date and time.
   2. **View All Income:**
       - Users can view all recorded income entries in a table with detailed information.
+
+  [view income record]https://github.com/Saranyajayakumaran/Expensify/blob/main/images/income%20data.png
+  
   3. **Delete Income:**
       - Allows users to delete a specific income entry by selecting its item number from the income worksheet.
   4. **Return to Main Menu:**
+      - Provides an option to return to the main menu for further navigation.
+
+### Step 3: Managing Expenses
+- When selecting "Manage Expenses," users are presented with five options:
+  1. **Record New Expense:**
+      - Users can enter the expense amount, select a category, provide details, and store the data in the spreadsheet along with the date and time.
+  2. **View All Expenses:**
+      - Users can view all recorded expenses in a table with detailed information.
+
+  [View expense record](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/expense%20data%20record.png)
+
+  3. **Summarize Expenses:**
+      - Users can see a breakdown of their expenses by category, helping them understand their spending habits.
+
+    [Expense Summary](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/summerize%20expense.png)
+
+  4. **Delete Expense:**
+      - Allows users to delete a specific expense by selecting its item number from the expenses worksheet.
+  5. **Return to Main Menu:**
       - Provides an option to return to the main menu for further navigation.
 
 ### Step 4: Accessing Help
@@ -136,21 +157,28 @@ https://expense-track-77e4d822539c.herokuapp.com/
 - Users can choose the exit option from the main menu to close the Expensify app.
 
 
+## Flow Chart : How the project works
+
+[Flow chart](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/flowchart.png)
+
 ## Validation Rules and Limits
 
 ### Amount Validation
+
 - The amount entered for both income and expense entries is validated to ensure it meets the following criteria:
   - It cannot be zero.
   - It cannot be a negative number.
   - It is limited to a maximum of 8 digits.
 
 ### Message and Details Character Limit
+
 - When providing details or messages for income and expense entries, users are required to adhere to the following character limits:
   - Messages and details are limited to a maximum of 25 characters.
 
 ## Options Validation
 
 ### Input Format
+
 - When selecting options within the Expensify app, users must provide numeric input.
   - Options cannot be strings and must be numbers.
   - The input must be within the specified range of available options.
@@ -161,9 +189,14 @@ These validation rules ensure that users provide valid input when navigating the
 
 ## Testing
 
+I have validated our codebase using PEP8 to ensure adherence to Python's coding standards. Below is a screenshot demonstrating the PEP8 validation process for our project:
+
+[pylint screenshot](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/screen%20shot%20pep8.png)
+
 ## Functional testing
 
 ### MAIN MENU
+
 #### Valid Input Handling
 
 |User Input|Expected Behavior|Pass/Fail|
@@ -175,6 +208,7 @@ These validation rules ensure that users provide valid input when navigating the
 
 
 #### Invalid Input Handling
+
 |User Input|Expected Behavior|Pass/Fail|
 |----------|-----------------|---------|
 |Enter 0|Prompt user to re-enter a valid option|Pass|
@@ -184,6 +218,7 @@ These validation rules ensure that users provide valid input when navigating the
 
 
 ### MANAGE INCOME NENU
+
 #### Valid Input Handling
 
 |User Input|Expected Behavior|Pass/Fail|
@@ -194,6 +229,7 @@ These validation rules ensure that users provide valid input when navigating the
 |Enter 4|Successfully navigate to Main menu|Pass|
 
 #### Invalid Input Handling
+
 |User Input|Expected Behavior|Pass/Fail|
 |----------|-----------------|----------|
 |Enter 0|Prompt user to re-enter a valid option|Pass|
@@ -204,6 +240,7 @@ These validation rules ensure that users provide valid input when navigating the
 ##### Record new income data
 
 ##### Valid Input Handling
+
 |Test Case|User Input|Expected Behavior|Pass/Fail|
 |---------|----------|-----------------|---------|
 |Amount(int)|Enter amount|store in google sheet|Pass|
@@ -212,6 +249,7 @@ These validation rules ensure that users provide valid input when navigating the
 |Date/time|Current date/time|Store current date time in google sheet|Pass|
 
 ##### Invalid Input Handling
+
 |Test Case|User Input|Expected Behavior|Pass/Fail|
 |---------|----------|-----------------|---------|
 |Amount|Enter 0|Prompt user to re-enter a valid option|Pass|
@@ -225,6 +263,7 @@ These validation rules ensure that users provide valid input when navigating the
 ##### View all income data
 
 ##### Valid Input Handling
+
 |Test Case|User Input|Expected Behavior|Pass/Fail|
 |---------|----------|-----------------|----------|
 |No datas in google sheet |Enter 2|Error:No data available in google sheet|Pass|
@@ -234,6 +273,7 @@ These validation rules ensure that users provide valid input when navigating the
 #### Delete income data
 
 ##### Valid Input Handling
+
 |Test Case|User Input|Expected Behavior|Pass/Fail|
 |---------|----------|-----------------|----------|
 |No datas in google sheet |Enter 3|Error:No data available in google sheet|Pass|
@@ -247,9 +287,11 @@ These validation rules ensure that users provide valid input when navigating the
 |case 2|Enter a string/char|Error:invalid input|Pass|
 
 ### MANAGE EXPENSE MENU
+
 #### Record New Expense 
 
 ##### Valid Input Handling
+
 |Test Case|User Input|Expected Behavior|Pass/Fail|
 |---------|----------|-----------------|----------|
 |Amount(int)|Enter amount|store in google sheet|Pass|
@@ -258,6 +300,7 @@ These validation rules ensure that users provide valid input when navigating the
 |Details|Enter details within 25 char|Store in Google sheet|Pass|
 
 ##### Invalid Input Handling
+
 |Test Case|User Input|Expected Behavior|Passs/Fail|
 |---------|----------|-----------------|----------|
 |Amount|Enter 0|Prompt user to re-enter a valid option|Pass|
@@ -273,6 +316,7 @@ These validation rules ensure that users provide valid input when navigating the
 ##### View all Expense data
 
 ##### Valid Input Handling
+
 |Test Case|User Input|Expected Behavior|Pass/Fail|
 |---------|----------|-----------------|----------|
 |No datas in google sheet |Enter 2|Error:No data available in google sheet|Pass|
@@ -281,6 +325,7 @@ These validation rules ensure that users provide valid input when navigating the
 #### Delete Expense data
 
 ##### Valid Input Handling
+
 |Test Case|User Input|Expected Behavior|Pass/Fail|
 |---------|----------|-----------------|----------|
 |No datas in google sheet |Enter 3|Error:No data available in google sheet|Pass|
@@ -288,6 +333,7 @@ These validation rules ensure that users provide valid input when navigating the
 |Item number available|enter item number|Delete the specified item|Pass|
 
 ##### Invalid Input Handling
+
 |Test Case|User Input|Expected Behavior|Pass/Fail|
 |---------|----------|-----------------|----------|
 |Case 1|Enter a number not available|Error:No data available in google sheet|Pass|
@@ -297,6 +343,7 @@ These validation rules ensure that users provide valid input when navigating the
 #### Summerize Expenses
 
 ##### Valid Input Handling
+
 |Test Case|User Input|Expected Behavior|Pass/Fail|
 |---------|----------|-----------------|----------|
 |No datas in google sheet|Enter 4|Error:No data available in google sheet|Pass|
@@ -304,11 +351,13 @@ These validation rules ensure that users provide valid input when navigating the
 
 
 ### Help menu
+
 |Test Case|User Input|Expected Behavior|Pass/Fail|
 |---------|----------|-----------------|----------|
 |Case 1 |Enter 4|Display Help Menu|Pass|
 
 ### Exit
+
 |Test Case|User Input|Expected Behavior|Pass/Fail|
 |---------|----------|-----------------|----------|
 |Case 1 |Enter 5|Exit the application|Pass|
@@ -324,10 +373,21 @@ These validation rules ensure that users provide valid input when navigating the
 |Getting all the digits in amount|it should accept only 8 digits|Add checks to handle cases where the user inputs more than 8 digits.|
 |Handling numeric data|It should not accept string data|Add checks to handle cases where the user inputs non-numeric data.| 
 
-### Unfixed Bugs     
+### Unfixed Bugs 
+
+1. Currently, the code accepts any number of decimal points within a total of 8 digits.
+2. The code allows for the acceptance of all alphabets and special characters in the details and source code fields. 
+
+These bugs will be fixed in future.
+
+
+## Lighthouse Validation
+
+[Lighthouse validation](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/light%20house%20validation.png)
 
 
 ### Deployment
+
 The app was deployed through Heroku. The steps are as following:
 
 - **Log into Github and locate Github Repository.**
@@ -352,8 +412,8 @@ The app was deployed through Heroku. The steps are as following:
   - Click the "Deploy Branch" button to manually deploy your application for the first time.
 
 
-
 ### Credits
+
 - I would thank many sources and people who spported to complete my project.
      - Thank my mentor Dick vlaanderen who guided me and his ideas and corrections was very helpful.
      - The idea of the project has beenn referred from Youtube Channel [pixegami](https://www.youtube.com/watch?v=HTD86h69PtE&list=PLUuWC4-foh23z65szhmk0sord5-JdGUq7&index=1)
