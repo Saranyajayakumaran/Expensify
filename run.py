@@ -365,7 +365,7 @@ def summarize_expenses():
     elif expense > balance_amount:
         print()
         print("You have deficit of \033[93m"
-             f" -{balance_amount}\033[0m euros from your income")
+             f" {balance_amount}\033[0m euros from your income")
         print()
     else:
         print()
