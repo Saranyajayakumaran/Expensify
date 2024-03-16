@@ -6,7 +6,7 @@ Have a look at the project by clicking the link below:
 https://expense-track-77e4d822539c.herokuapp.com/
 
 
-[Title page](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/title%20page.png)
+![Tite page](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/title%20page.png)
 
 ## Technologies Used
 
@@ -65,7 +65,7 @@ https://expense-track-77e4d822539c.herokuapp.com/
     - Return to main menu:
             Allow user to navigate back to main menu when they needed
 
-[Manage Income](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/manage%20income%20.png)
+![Manage Income](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/manage%20income%20.png)
 
 ### Manage Expense
 
@@ -87,12 +87,12 @@ https://expense-track-77e4d822539c.herokuapp.com/
     - Delete expense: 
             Allow users to remove a specific expense entry by selecting the item number.
 
-[Manage Expense](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/manage%20expense%20.png)
+![Manage Expense](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/manage%20expense%20.png)
 
 ### Help
 - The Help feature provides users with a simple and intuitive interface to access the Expensify app.
 
-[Help Menu](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/Help%20menu.png)
+![Help Menu](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/Help%20menu.png)
 
 ### Exit
 - Exit feature allows user to exit the application.
@@ -138,12 +138,12 @@ https://expense-track-77e4d822539c.herokuapp.com/
   2. **View All Expenses:**
       - Users can view all recorded expenses in a table with detailed information.
 
-  [View expense record](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/expense%20data%20record.png)
+![View expense record](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/expense%20data%20record.png)
 
   3. **Summarize Expenses:**
       - Users can see a breakdown of their expenses by category, helping them understand their spending habits.
 
-    [Expense Summary](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/summerize%20expense.png)
+![Expense Summary](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/summerize%20expense.png)
 
   4. **Delete Expense:**
       - Allows users to delete a specific expense by selecting its item number from the expenses worksheet.
@@ -159,7 +159,7 @@ https://expense-track-77e4d822539c.herokuapp.com/
 
 ## Flow Chart : How the project works
 
-[Flow chart](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/flowchart.png)
+![Flow chart](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/flowchart.png)
 
 ## Validation Rules and Limits
 
@@ -191,7 +191,7 @@ These validation rules ensure that users provide valid input when navigating the
 
 I have validated our codebase using PEP8 to ensure adherence to Python's coding standards. Below is a screenshot demonstrating the PEP8 validation process for our project:
 
-[pylint screenshot](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/screen%20shot%20pep8.png)
+![pylint screenshot](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/screen%20shot%20pep8.png)
 
 ## Functional testing
 
@@ -383,7 +383,7 @@ These bugs will be fixed in future.
 
 ## Lighthouse Validation
 
-[Lighthouse validation](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/light%20house%20validation.png)
+![Lighthouse validation](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/light%20house%20validation.png)
 
 
 ### Deployment
