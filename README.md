@@ -70,11 +70,11 @@ https://expense-track-77e4d822539c.herokuapp.com/
 ### Manage Expense
 
 - The Manage expense feature helps user to efficiently track and manage their expenses.
-- When user selects the Manage Expense option from the main menu, users can seamlessly record new expense entries by providing details such as the expense amount, its category, and any relevant additional information. 
+- When user selects the Manage Expense option from the main menu, users can seamlessly record new expense entries by providing details such  as the expense amount, its category, and any relevant additional information. 
    
    - Options in manage expense
         - Record new Expense
-        - view all Expense
+        - View all Expense
         - Delete Expense
         - Return to main menu
 
@@ -122,13 +122,15 @@ https://expense-track-77e4d822539c.herokuapp.com/
 - Alternatively, users can choose to manage income, which presents similar options for recording, viewing, summarizing, and deleting income data.
    **Record New Income:**
       - Users can enter the income amount, specify its source, and store the data in the spreadsheet along with the date and time.
+![Record new income](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/record%20income%20.png)
    **View All Income:**
       - Users can view all recorded income entries in a table with detailed information.
 
-  ![view income record](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/income%20data.png)
+![view income record](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/income%20data.png)
   
    **Delete Income:**
       - Allows users to delete a specific income entry by selecting its item number from the income worksheet.
+![Delete Income]()
    **Return to Main Menu:**
       - Provides an option to return to the main menu for further navigation.
 
@@ -136,6 +138,7 @@ https://expense-track-77e4d822539c.herokuapp.com/
 - When selecting "Manage Expenses," users are presented with five options:
    **Record New Expense:**
       - Users can enter the expense amount, select a category, provide details, and store the data in the spreadsheet along with the date and time.
+![Record new Expense](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/expense%20data%20.png)
    **View All Expenses:**
       - Users can view all recorded expenses in a table with detailed information.
 
@@ -148,6 +151,7 @@ https://expense-track-77e4d822539c.herokuapp.com/
 
    **Delete Expense:**
       - Allows users to delete a specific expense by selecting its item number from the expenses worksheet.
+![Delete Expense](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/delete%20expense.png)
    **Return to Main Menu:**
       - Provides an option to return to the main menu for further navigation.
 

@@ -140,11 +140,10 @@ def get_category():
                 print()
         except ValueError:
             print()
-            print("\033[91mInvalid category.\033[0m")
+            print("\033[91mCategory must be a number.\033[0m")
             print("\033[91mPlease enter a valid"
-                  f" category [1-{len(categories)}]\033[0m")
+                  f"  category number [1-{len(categories)}]\033[0m")
             print()
-
 
 def get_income_of_user():
     """
@@ -202,6 +201,8 @@ def validate_text_inputs(text, max_len):
     """
     Validate user expense details and
     income details within 25 chracters
+    returns:
+        string
     """
     while True:
         user_input = input(text)
@@ -248,6 +249,9 @@ def save_data_to_worksheet(data, worksheet_name):
     """
     Recevies data from user
     and inserted into relevant worksheet
+    returns:
+        None
+    print the updated data in the worksheet
     """
     print()
     print("\033[93mUpdating datas in"
@@ -272,7 +276,8 @@ def save_data_to_worksheet(data, worksheet_name):
 
 def show_datas(worksheetname):
     """
-    Shows the datas in the worksheet
+    Shows the datas in the worksheet 
+    in a table format
     """
     worksheet = SHEET.worksheet(worksheetname)
     all_datas = worksheet.get_all_values()
@@ -320,6 +325,7 @@ def show_datas(worksheetname):
 def summarize_expenses():
     """
     Summarize expenses by category
+    and compares it with the total income amount
     returns:
         None
     """
@@ -427,7 +433,7 @@ def delete_a_row(worksheetname):
                 item = int(input("Enter the item number:\n"))
                 if item > 0 and item <= (len(all_datas)-1):
                     worksheet.delete_rows(item + 1)
-                    print("\033[93mDeleted item:\033[0m\n", item)
+                    print("\033[93mDeleted item:\033[0m", item)
                     break
                 else:
                     print()
