@@ -132,7 +132,9 @@ https://expense-track-77e4d822539c.herokuapp.com/
   
    **Delete Income:**
       - Allows users to delete a specific income entry by selecting its item number from the income worksheet.
-  
+
+![Delete income](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/Delete%20income.png) 
+
    **Return to Main Menu:**
       - Provides an option to return to the main menu for further navigation.
 
@@ -166,8 +168,9 @@ https://expense-track-77e4d822539c.herokuapp.com/
 
 ### Step 5: Exiting the App
 - Users can choose the exit option from the main menu to close the Expensify app.
+## How python Access Google sheet API
 
-
+![API access](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/expensify_diagrams%20flow%20chart-HowWrks.drawio.png)
 ## Flow Chart : How the project works
 
 ![Flow chart](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/flowchart.png)
@@ -362,8 +365,6 @@ I have validated our codebase using PEP8 to ensure adherence to Python's coding 
 
 
 #### Summerize Expenses
-
-##### Valid Input Handling
 
 |Test Case|User Input|Expected Behavior|Pass/Fail|
 |---------|----------|-----------------|----------|
