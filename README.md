@@ -120,6 +120,7 @@ https://expense-track-77e4d822539c.herokuapp.com/
 
 ### Step 2: Managing Income 
 - Alternatively, users can choose to manage income, which presents similar options for recording, viewing, summarizing, and deleting income data.
+   
    **Record New Income:**
       - Users can enter the income amount, specify its source, and store the data in the spreadsheet along with the date and time.
 
