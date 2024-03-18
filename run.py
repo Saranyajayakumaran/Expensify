@@ -187,9 +187,11 @@ def validate_user_income_or_expense(prompt, max_digits):
             if amount == 0:  # if input is 0
                 print(RED + "Please give a valid amount,"
                       " 0 is not allowed" + RESET)
+                print()
             elif amount < 0:  # input cannot be minus
                 print(RED + "Please give a valid amount,"
                       " Negative values are not allowed" + RESET)
+                print()
             elif len(str(amount).replace('.', '')) > max_digits:
                 print(RED + "Please give a valid amount" + RESET)
                 print(RED + f"Maximum {max_digits}"
@@ -198,11 +200,13 @@ def validate_user_income_or_expense(prompt, max_digits):
                       f" greater than {max_digits} digits" + RESET)
                 print(RED + "Please split it into"
                       " (10000000) and enter separately" + RESET)
+                print()
             else:
                 break
         except ValueError:
             print(RED + "Invalid input."
                   " Please enter a valid number" + RESET)
+            print()
     return amount
 
 
@@ -220,11 +224,13 @@ def validate_text_inputs(text, max_len):
             print(RED + "Details cannot be empty" + RESET)
             print(RED + "Please enter some details within"
                   f" {max_len} characters.\n" + RESET)
+            print()
         elif len(user_input) > max_len:
             print()
             print(RED + "Text is too long" + RESET)
             print(RED + "Please enter the data within"
                   f" {max_len} characters." + RESET)
+            print()
         else:
             break
     return user_input
@@ -343,6 +349,7 @@ def summarize_expenses():
     all_expense_data = worksheet.get_all_values()
     if len(all_expense_data) <= 1:
         print(RED + "No expense data available" + RESET)
+        print()
         return
 
     sum_of_category = {}
@@ -368,6 +375,7 @@ def summarize_expenses():
     print(f"{YELLOW}{max_category} {RESET}"
           f"with a total of {YELLOW}{max_expense}{RESET}"
           " euros.")
+    print()
     # access through class method sum of income
     income = Income.sum_of_income()
     # access through class method sum of expense
@@ -401,6 +409,7 @@ def delete_a_row(worksheetname):
         # Check if there are no data records except the header row
         if len(all_datas) <= 1:
             print(RED + "No expense data available" + RESET)
+            print()
             return
 
         show_datas("Expenses")
@@ -421,15 +430,18 @@ def delete_a_row(worksheetname):
                     print()
                     print(RED + "Invalid item."
                           " Please enter a valid item number.\n" + RESET)
+                    print()
             except ValueError:
                 print()
                 print(RED + "Invalid Item ,"
                       " Please enter a valid item number\n" + RESET)
+                print()
 
     elif worksheetname == "Income":
         # Check if there are no data records except the header row
         if len(all_datas) <= 1:
             print(RED + "No income data available" + RESET)
+            print()
             return
 
         show_datas("Income")
@@ -449,10 +461,12 @@ def delete_a_row(worksheetname):
                     print()
                     print(RED + "Invalid item."
                           "Please enter a valid item number.\n" + RESET)
+                    print()
             except ValueError:
                 print()
                 print(RED + "Invaid Item,"
                       "Please enter a valid item number" + RESET)
+                print()
     else:
         pass
 
@@ -492,6 +506,7 @@ def income_or_expense():
             else:
                 print(RED + "Invalid Option ,"
                       " Please enter a valid option from [1-4]" + RESET)
+                print()
         except ValueError:
             print()
             print(RED + "Invalid Input ,"
@@ -606,7 +621,7 @@ def expense_menu_options():
                     break
                 else:
                     print()
-                    print(RED + " Invalid option," + RESET)
+                    print(RED + "Invalid option," + RESET)
                     print(RED + "Please enter a"
                           f" valid option from {value_range}" + RESET)
                     print()
