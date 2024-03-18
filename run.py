@@ -46,9 +46,9 @@ class Expense:
         """
         return (f"{CYAN}Updated Expense Details:\n\n{RESET}"
                 f"Cost     : {YELLOW}{self.amount} euros\n{RESET}"
-                f"Category : {YELLOW} {self.category}\n{RESET}"
+                f"Category : {YELLOW}{self.category}\n{RESET}"
                 f"Details  : {YELLOW}{self.details}\n{RESET}"
-                f"date_time: {YELLOW} {self.date_time}\n{RESET}")
+                f"date_time: {YELLOW}{self.date_time}\n{RESET}")
 
     @classmethod
     def sum_of_expense(cls):
@@ -458,7 +458,9 @@ def delete_a_row(worksheetname):
                 item = int(input("Enter the item number:\n"))
                 if item > 0 and item <= (len(all_datas)-1):
                     worksheet.delete_rows(item + 1)
+                    print()
                     print(YELLOW + "Deleted item:" + RESET, item)
+                    print()
                     break
                 else:
                     print()
