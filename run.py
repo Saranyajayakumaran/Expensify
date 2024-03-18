@@ -135,7 +135,7 @@ def get_category():
             print(CYAN+"Expense Categories:" + RESET)
             for i, name_of_category in enumerate(categories, 1):
                 print(f" {i}. {name_of_category}")
-            prompt = f"\n{BLUE}Select a category from [1-5]:{RESET}"
+            prompt = f"\n{BLUE}Select a category from [1-5]:\n{RESET}"
             category_name_index = int(input(prompt))
             if category_name_index in range(1, len(categories)+1):
                 selected_category = categories[category_name_index-1]
@@ -185,14 +185,17 @@ def validate_user_income_or_expense(prompt, max_digits):
         try:
             amount = float(input(prompt))
             if amount == 0:  # if input is 0
+                print()
                 print(RED + "Please give a valid amount,"
                       " 0 is not allowed" + RESET)
                 print()
             elif amount < 0:  # input cannot be minus
+                print()
                 print(RED + "Please give a valid amount,"
                       " Negative values are not allowed" + RESET)
                 print()
             elif len(str(amount).replace('.', '')) > max_digits:
+                print()
                 print(RED + "Please give a valid amount" + RESET)
                 print(RED + f"Maximum {max_digits}"
                       " digits are allowed" + RESET)
@@ -222,13 +225,13 @@ def validate_text_inputs(text, max_len):
         if len(user_input) == 0:
             print()
             print(RED + "Details cannot be empty" + RESET)
-            print(RED + "Please enter some details within"
+            print(RED + "Please enter details within"
                   f" {max_len} characters.\n" + RESET)
             print()
         elif len(user_input) > max_len:
             print()
             print(RED + "Text is too long" + RESET)
-            print(RED + "Please enter the data within"
+            print(RED + "Please enter the details within"
                   f" {max_len} characters." + RESET)
             print()
         else:
@@ -433,8 +436,8 @@ def delete_a_row(worksheetname):
                     print()
             except ValueError:
                 print()
-                print(RED + "Invalid Item ,"
-                      " Please enter a valid item number\n" + RESET)
+                print(RED + "Invalid Input,"
+                      " Please enter a valid item from above table\n" + RESET)
                 print()
 
     elif worksheetname == "Income":
@@ -504,6 +507,7 @@ def income_or_expense():
                 print()
                 break
             else:
+                print()
                 print(RED + "Invalid Option ,"
                       " Please enter a valid option from [1-4]" + RESET)
                 print()
@@ -513,8 +517,10 @@ def income_or_expense():
                   " Please enter a number from (1-4)" + RESET)
             print()
         except KeyboardInterrupt:
+            print()
             print(RED + "[91m\nKeyboard interruption"
                   " detected. Exiting..." + RESET)
+            print()
             break
 
 
@@ -577,7 +583,6 @@ def income_menu_option():
             print()
             print(RED + "Invalid Input ,"
                   f" Please enter a number from {value_range}" + RESET)
-            print()
             print()
 
 
