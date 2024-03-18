@@ -418,7 +418,7 @@ def delete_a_row(worksheetname):
         show_datas("Expenses")
         print()
         print("==============================================")
-        print("Which Expense item do you want to delete")
+        print("Which Expense item do you want to delete?")
         print()
         while True:
             try:
@@ -449,7 +449,7 @@ def delete_a_row(worksheetname):
 
         show_datas("Income")
         print("==============================================")
-        print("Which Income item do you want to delete")
+        print("Which Income item do you want to delete?")
         print()
         while True:
             try:
