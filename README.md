@@ -6,7 +6,7 @@ Have a look at the project by clicking the link below:
 https://expense-track-77e4d822539c.herokuapp.com/
 
 
-![Tite page](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/title%20page.png)
+![Title page](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/title%20page.png)
 
 ## Technologies Used
 
@@ -14,16 +14,16 @@ https://expense-track-77e4d822539c.herokuapp.com/
      - Programming language used for project development.
 
 - VS code:
-    - Visual studio code IDE is used to write ,edit and debug python code.
+    - Visual Studio code IDE is used to write , edit and debug Python code.
 
 - Google sheet
-    - Google sheet is  a cloud API used to store and edit datas.
+    - Google sheet is a cloud API used to store and edit datas.
 
 - GitHub
-    - GitHub is a Version control system for managing codebase and collaboration.
+    - Web-based platform providing hosting services for Git repositories and collaboration tools.
 
 - Git
-    - Git is used to tracking changes and managing branches from the development interface.
+    - A distributed version control system for tracking changes in source code
 
 - Heroku
     - Cloud platform used for deployment and hosting of the application.
@@ -48,13 +48,13 @@ https://expense-track-77e4d822539c.herokuapp.com/
 ### Manage Income
 
 - The Manage income feature helps user to efficiently track and manage their source of income.
-- When user selects the Manage Income optionfrom the main menu, users can seamlessly record new income entries by providing details such as the income amount, its source, and any relevant additional information. 
+- When user selects the Manage Income option from the main menu, users can seamlessly record new income entries by providing details such as the income amount, its source, and any relevant additional information. 
    
    - Options in manage income
         - Record new Income
-        - view all Income
+        - View all Income
         - Delete Income
-        - Return to main menu
+        - Return to Main Menu
 
     - Record a new income: 
             Enable users to input their income details, including the amount, source, and date/time.
@@ -69,10 +69,10 @@ https://expense-track-77e4d822539c.herokuapp.com/
 
 ### Manage Expense
 
-- The Manage expense feature helps user to efficiently track and manage their expenses.
-- When user selects the Manage Expense option from the main menu, users can seamlessly record new expense entries by providing details such  as the expense amount, its category, and any relevant additional information. 
+- The Manage expense feature helps the user to efficiently track and manage their expenses.
+- When the user selects the Manage Expense option from the main menu, users can seamlessly record new expense entries by providing details such as the expense amount, its category, and any relevant additional information. 
    
-   - Options in manage expense
+   - Options for manage expense
         - Record new Expense
         - View all Expense
         - Delete Expense
@@ -96,7 +96,7 @@ https://expense-track-77e4d822539c.herokuapp.com/
 ![Help Menu](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/Help%20menu.png)
 
 ### Exit
-- Exit feature allows user to exit the application.
+- Exit feature allows the user to exit the application.
 
 ## Future Implementation
 
@@ -106,11 +106,11 @@ https://expense-track-77e4d822539c.herokuapp.com/
         Introduce budgeting tools that allow user to set spending limits for different categories.
 - Enable notifications:
         Enable notification when the expense amount is more than income.
-- Monthly spread sheeet:
+- Monthly spread sheet:
         Enable monthly spreadsheet for every month to track the expense and income.
 - Multi currency support:
-        Add support for multiple currencies and exchange rate conversions to accomodate users who travel internationally.
-- Mobile app enchancements:
+        Add support for multiple currencies and exchange rate conversions to accommodate users who travel internationally.
+- Mobile app enhancements:
         Develop a mobile app version of Expensify to enhance accessibility and convenience for users on the go. 
 
 ## How to Use Expensify
@@ -128,7 +128,7 @@ https://expense-track-77e4d822539c.herokuapp.com/
    **View All Income:**
       - Users can view all recorded income entries in a table with detailed information.
 
-![view income record](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/income%20data.png)
+![View income record](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/income%20data.png)
   
    **Delete Income:**
       - Allows users to delete a specific income entry by selecting its item number from the income worksheet.
@@ -168,9 +168,11 @@ https://expense-track-77e4d822539c.herokuapp.com/
 
 ### Step 5: Exiting the App
 - Users can choose the exit option from the main menu to close the Expensify app.
-## How python Access Google sheet API
+
+## How Python Access Google sheet API
 
 ![API access](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/expensify_diagrams%20flow%20chart-HowWrks.drawio.png)
+
 ## Flow Chart : How the project works
 
 ![Flow chart](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/flowchart.png)
@@ -203,7 +205,9 @@ These validation rules ensure that users provide valid input when navigating the
 
 ## Testing
 
-I have validated our codebase using PEP8 to ensure adherence to Python's coding standards. Below is a screenshot demonstrating the PEP8 validation process for our project:
+### Pep8 Validation
+
+I have validated our codebase using pylint to ensure adherence to Python's coding style guidelines. Below is a screenshot demonstrating the pylint validation process for our project:
 
 ![pylint screenshot](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/screen%20shot%20pep8.png)
 
@@ -213,42 +217,42 @@ I have validated our codebase using PEP8 to ensure adherence to Python's coding 
 
 #### Valid Input Handling
 
-|User Input|Expected Behavior|Pass/Fail|
-|------|---------------------|---------|
-|Enter 1 |Successfully navigate to Manage Income|Pass|
-|Enter 2 |Successfully navigate to Manage Expense|Pass|
-|Enter 3|Successfully navigate to Help menu|Pass|
-|Enter 4 |Successfully exit the application|Pass|
+|Test Case|User Input|Expected Behavior|Pass/Fail|
+|---------|----------|-----------------|---------|
+|Case 1|Enter 1 |Successfully navigate to Manage Income|Pass|
+|Case 2|Enter 2 |Successfully navigate to Manage Expense|Pass|
+|Case 3|Enter 3|Successfully navigate to Help menu|Pass|
+|Case 4|Enter 4 |Successfully exit the application|Pass|
 
 
 #### Invalid Input Handling
 
-|User Input|Expected Behavior|Pass/Fail|
-|----------|-----------------|---------|
-|Enter 0|Prompt user to re-enter a valid option|Pass|
-|Enter value > 4|Prompt user to re-enter a valid option|Pass|
-|Enter a string/char|Prompt user to re-enter a valid numeric option|Pass|
-|ctrl+c|Application should exit with interruption |Pass|
+|Test Case|User Input|Expected Behavior|Pass/Fail|
+|---------|----------|-----------------|---------|
+|Case 1|Enter 0|Prompt user to re-enter a valid option|Pass|
+|Case 2|Enter value > 4|Prompt user to re-enter a valid option|Pass|
+|Case 3|Enter a string/char|Prompt user to re-enter a valid numeric option|Pass|
+|Case 4|ctrl+c|Application should exit with interruption |Pass|
 
 ### MANAGE INCOME MENU
 
 #### Valid Input Handling
 
-|User Input|Expected Behavior|Pass/Fail|
-|----------|-----------------|----------|
-|Enter 1|Successfully navigate to Record new income|Pass|
-|Enter 2|Successfully navigate to View all income|Pass|
-|Enter 3|Successfully navigate to Delete income data|Pass|
-|Enter 4|Successfully navigate to Main menu|Pass|
+|Test Case|User Input|Expected Behavior|Pass/Fail|
+|---------|----------|-----------------|---------|
+|Case 1|Enter 1|Successfully navigate to Record new income|Pass|
+|Case 2|Enter 2|Successfully navigate to View all income|Pass|
+|Case 3|Enter 3|Successfully navigate to Delete income data|Pass|
+|Case 4|Enter 4|Successfully navigate to Main menu|Pass|
 
 #### Invalid Input Handling
 
-|User Input|Expected Behavior|Pass/Fail|
-|----------|-----------------|----------|
-|Enter 0|Prompt user to re-enter a valid option|Pass|
-|Enter value > 4|Prompt user to re-enter a valid option|Pass|
-|Enter a string/char|Prompt user to re-enter a valid numeric option|Pass|
-|ctrl+c|Application should go to main neu with interruption|Pass|
+|Test Case|User Input|Expected Behavior|Pass/Fail|
+|---------|----------|-----------------|---------|
+|Case1|Enter 0|Prompt user to re-enter a valid option|Pass|
+|Case 2|Enter value > 4|Prompt user to re-enter a valid option|Pass|
+|Case 3|Enter a string/char|Prompt user to re-enter a valid numeric option|Pass|
+|Case 4|ctrl+c|Application should go to main neu with interruption|Pass|
 
 ##### Record new income data
 
@@ -279,7 +283,7 @@ I have validated our codebase using PEP8 to ensure adherence to Python's coding 
 ##### Valid Input Handling
 
 |Test Case|User Input|Expected Behavior|Pass/Fail|
-|---------|----------|-----------------|----------|
+|---------|----------|-----------------|---------|
 |No datas in google sheet |Enter 2|Error:No data available in google sheet|Pass|
 |Datas in google sheet|Enter 2|Display all data in google sheet|Pass|
 
@@ -289,7 +293,7 @@ I have validated our codebase using PEP8 to ensure adherence to Python's coding 
 ##### Valid Input Handling
 
 |Test Case|User Input|Expected Behavior|Pass/Fail|
-|---------|----------|-----------------|----------|
+|---------|----------|-----------------|---------|
 |No datas in google sheet |Enter 3|Error:No data available in google sheet|Pass|
 |Data available in google sheet|Enter 3|Display all data in Google Sheet and prompt user to enter item number to delete|Pass|
 |Item number available|enter item number|Delete the specified item|Pass|
@@ -297,9 +301,9 @@ I have validated our codebase using PEP8 to ensure adherence to Python's coding 
 
 ##### Invalid Input Handling
 |Test Case|User Input|Expected Behavior|Pass/Fail|
-|---------|----------|-----------------|----------|
+|---------|----------|-----------------|---------|
 |Case 1|Enter a number not available|Error:No data available in google sheet|Pass|
-|case 2|Enter a string/char|Error:invalid input|Pass|
+|Case 2|Enter a string/char|Error:invalid input|Pass|
 
 ![Delete income error](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/delete%20income%20error.png)
 
@@ -311,7 +315,7 @@ I have validated our codebase using PEP8 to ensure adherence to Python's coding 
 ##### Valid Input Handling
 
 |Test Case|User Input|Expected Behavior|Pass/Fail|
-|---------|----------|-----------------|----------|
+|---------|----------|-----------------|---------|
 |Amount(int)|Enter amount|store in google sheet|Pass|
 |Amount(float)|Enter amount |Store in google sheet|Pass|
 |Category|select 1-5|store in gogole sheet|Pass|
@@ -340,7 +344,7 @@ I have validated our codebase using PEP8 to ensure adherence to Python's coding 
 ##### Valid Input Handling
 
 |Test Case|User Input|Expected Behavior|Pass/Fail|
-|---------|----------|-----------------|----------|
+|---------|----------|-----------------|---------|
 |No datas in google sheet |Enter 2|Error:No data available in google sheet|Pass|
 |Datas in google sheet|Enter 2|Display all data in google sheet|Pass|
 
@@ -349,7 +353,7 @@ I have validated our codebase using PEP8 to ensure adherence to Python's coding 
 ##### Valid Input Handling
 
 |Test Case|User Input|Expected Behavior|Pass/Fail|
-|---------|----------|-----------------|----------|
+|---------|----------|-----------------|---------|
 |No datas in google sheet |Enter 3|Error:No data available in google sheet|Pass|
 |Data available in google sheet|Enter 3|Display all data in Google Sheet and prompt user to enter item number to delete|Pass|
 |Item number available|enter item number|Delete the specified item|Pass|
@@ -357,9 +361,9 @@ I have validated our codebase using PEP8 to ensure adherence to Python's coding 
 ##### Invalid Input Handling
 
 |Test Case|User Input|Expected Behavior|Pass/Fail|
-|---------|----------|-----------------|----------|
+|---------|----------|-----------------|---------|
 |Case 1|Enter a number not available|Error:No data available in google sheet|Pass|
-|case 2|Enter a string/char|Error:invalid input|Pass|
+|Case 2|Enter a string/char|Error:invalid input|Pass|
 
 ![Delete expense Error](https://github.com/Saranyajayakumaran/Expensify/blob/main/images/delete%20expense%20error.png)
 
@@ -367,7 +371,7 @@ I have validated our codebase using PEP8 to ensure adherence to Python's coding 
 #### Summerize Expenses
 
 |Test Case|User Input|Expected Behavior|Pass/Fail|
-|---------|----------|-----------------|----------|
+|---------|----------|-----------------|---------|
 |No datas in google sheet|Enter 4|Error:No data available in google sheet|Pass|
 |Datas in google sheet|Enter 4|Display all data in google sheet|Pass|
 
@@ -375,32 +379,25 @@ I have validated our codebase using PEP8 to ensure adherence to Python's coding 
 ### Help menu
 
 |Test Case|User Input|Expected Behavior|Pass/Fail|
-|---------|----------|-----------------|----------|
+|---------|----------|-----------------|---------|
 |Case 1 |Enter 4|Display Help Menu|Pass|
 
 ### Exit
 
 |Test Case|User Input|Expected Behavior|Pass/Fail|
-|---------|----------|-----------------|----------|
+|---------|----------|-----------------|---------|
 |Case 1 |Enter 5|Exit the application|Pass|
 
 
 ### Fixed Bugs
 
 |Bugs Found|Expectation|How i solved it|
-|----------|----------|---------------|
+|----------|----------|----------------|
 |Handling Empty Data|it should display "No data available"| Add checks to handle cases where the user doesn't input any data.|     
 |Incorrect Printing of Data|it should print data in a table format|Ensure that data is printed correctly, especially when formatting table-like outputs.
 |Error Handling for Invalid Input|should show error message |Add error handling to handle cases where the user inputs invalid data or selections.| 
 |Getting all the digits in amount|it should accept only 8 digits|Add checks to handle cases where the user inputs more than 8 digits.|
 |Handling numeric data|It should not accept string data|Add checks to handle cases where the user inputs non-numeric data.| 
-
-### Unfixed Bugs 
-
-1. Currently, the code accepts any number of decimal points within a total of 8 digits.
-2. The code allows for the acceptance of all alphabets and special characters in the details and source code fields. 
-
-These bugs will be fixed in future.
 
 
 ## Lighthouse Validation
@@ -410,7 +407,7 @@ These bugs will be fixed in future.
 
 ### Deployment
 
-The app was deployed through Heroku. The steps are as following:
+The app was deployed through Heroku. The steps are as follows:
 
 - **Log into Github and locate Github Repository.**
 - **Create a Heroku Account:**
@@ -425,7 +422,7 @@ The app was deployed through Heroku. The steps are as following:
   - Go to your newly created app's settings.
   - Navigate to the "Config Vars" section.
   - Add any necessary environment variables that your application requires.
-  - Ensure that you have configured the necessary buildpacks for your application.
+  - Ensure that you have configured the necessary build packs for your application.
 - **Deploy Your Application:**
   - Scroll down to the "Deployment Method" section on your app's dashboard.
   - Select GitHub as the deployment method.
@@ -436,12 +433,12 @@ The app was deployed through Heroku. The steps are as following:
 
 ### Credits
 
-- I would thank many sources and people who spported to complete my project.
-     - Thank my mentor Dick vlaanderen who guided me and his ideas and corrections was very helpful.
-     - The idea of the project has beenn referred from Youtube Channel [pixegami](https://www.youtube.com/watch?v=HTD86h69PtE&list=PLUuWC4-foh23z65szhmk0sord5-JdGUq7&index=1)
-     - The detailed classes and methods are learned from the youtube channel [Error makes clever](https://www.youtube.com/watch?v=BVIoAILnZ4Q&list=PLvepBxfiuao1hO1vPOskQ1X4dbjGXF9bm)
-     - W3schools and stackoverflow plays a major role in learning the concepts.
-     - Google sheet concepts,saving datas to google sheet and heroku deployments are learned from [Love Sandwich](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+LS101+2021_T1/courseware/  293ee9d8ff3542d3b877137ed81b9a5b/e3b664e16366444c8d722c5d8340b340/?child=last)
+- I would thank many sources and people who supported to complete my project.
+     - Thank my mentor Dick vlaanderen who guided me and his ideas and corrections were very helpful.
+     - The idea of the project has been referred from Youtube Channel [pixegami](https://www.youtube.com/watch?v=HTD86h69PtE&list=PLUuWC4-foh23z65szhmk0sord5-JdGUq7&index=1)
+     - The detailed classes and methods are learned from the Youtube channel [Error makes clever](https://www.youtube.com/watch?v=BVIoAILnZ4Q&list=PLvepBxfiuao1hO1vPOskQ1X4dbjGXF9bm)
+     - W3schools and Stackoverflow plays a major role in learning the concepts.
+     - Google sheet concepts, saving data to Google sheet and Heroku deployments are learned from [Love Sandwich](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+LS101+2021_T1/courseware/  293ee9d8ff3542d3b877137ed81b9a5b/e3b664e16366444c8d722c5d8340b340/?child=last)
 
 
 
