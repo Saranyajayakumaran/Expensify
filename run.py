@@ -609,14 +609,12 @@ def expense_menu_options():
                     print(RED + " Invalid option," + RESET)
                     print(RED + "Please enter a"
                           f" valid option from {value_range}" + RESET)
-                    print("---------------------------")
                     print()
             else:
                 print()
                 print(RED + "Invalid option," + RESET)
                 print(RED + "Please enter a"
                       f" valid option from {value_range}" + RESET)
-                print("----------------------------")
                 print()
         except KeyboardInterrupt:
             print()
